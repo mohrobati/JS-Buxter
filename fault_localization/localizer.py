@@ -19,9 +19,9 @@ class Localizer:
             first = meta.start.offset
             last = meta.end.offset
             self.pinPointList[(first, last)] = node
-            if node.type == 'ExpressionStatement' or node.type == 'VariableDeclaration':
+            if node.type == 'ExpressionStatement' or node.type == 'VariableDeclaration' or node.type == 'ReturnStatement':
                 self.codes.append([(first, last), self.generateSingleLine(first, last)])
-            elif node.type == 'IfStatement':
+            elif node.type == 'IfStatement' or node.type == 'WhileStatement':
                 self.codes.append([(first, last), self.generateIfStatement(first, last)])
             elif node.type == 'FunctionDeclaration' or node.type == 'ArrowFunctionExpression':
                 self.codes.append([(first, last), self.generateFunctionDeclaration(first, last)])
