@@ -3,3 +3,5 @@ IfStatement
 ExpressionStatement
 ReturnStatement
 WhileStatement
+FunctionDeclaration
+ArrowFunctionExpression
