@@ -9,4 +9,3 @@ output = esprima.parseScript(program, delegate=localizer.preprocess)
 localizer.printProgram()
 
 
-
