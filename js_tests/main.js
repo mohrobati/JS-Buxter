@@ -1,20 +1,16 @@
-function gcdWrong(a, b, j) {
+function gcdWrongPrint(a, b) {
     if(a == 0) {
         console.log(a)
+        return
     }
     while(b != 0) {
-        if(a > b) {
+        if (a>b) {
             a = a - b;
-        } else if (c > d) {
-            try {
-                a = 3
-            } catch (err) {
-                b = 4
-            }
         } else {
-            d = 5
+            b = b - a;
         }
     }
     console.log(a)
-    if (j > 5) n = 3
+    return
 }
+gcdWrongPrint(a, b)

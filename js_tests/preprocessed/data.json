@@ -1,0 +1,47 @@
+[
+    {
+        "input": [
+            "let a = 0",
+            "let b = 0"
+        ],
+        "output": [
+            0
+        ]
+    },
+    {
+        "input": [
+            "let a = 0",
+            "let b = 10"
+        ],
+        "output": [
+            10
+        ]
+    },
+    {
+        "input": [
+            "let a = 10",
+            "let b = 0"
+        ],
+        "output": [
+            10
+        ]
+    },
+    {
+        "input": [
+            "let a = 10",
+            "let b = 15"
+        ],
+        "output": [
+            5
+        ]
+    },
+    {
+        "input": [
+            "let a = 15",
+            "let b = 10"
+        ],
+        "output": [
+            5
+        ]
+    }
+]

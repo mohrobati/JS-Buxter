@@ -1,0 +1,6 @@
+const fs = require('fs');
+let data = fs.readFileSync('./data.json',
+            {encoding:'utf8', flag:'r'});
+data = JSON.parse(data)
+%%inputs
+%%code
