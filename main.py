@@ -11,5 +11,6 @@ file.close()
 preprocessor = Preprocessor(program)
 parsedCode = esprima.parseScript(program, delegate=preprocessor.preprocess)
 preprocessedCode = preprocessor.getPreprocessedCode()
-Runner(fileName, preprocessedCode).run()
+Runner(fileName, preprocessedCode).run(program, debug=True)
+
 

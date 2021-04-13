@@ -1,7 +1,7 @@
 import subprocess
 import json
 import ast
-
+from .localizer import Localizer
 
 class Runner:
 
@@ -58,19 +58,24 @@ class Runner:
             color = self.__FAIL
         return msg, color
 
-    def run(self):
+    def run(self, program, debug=False):
         counter = 1
+        localizer = Localizer(program)
         for test in self.__testCases:
             inputs, output = self.__getInputsOutputs(test)
             code = self.__tempCode.replace("%%inputs", inputs)
             code = code.replace("%%code", self.__preprocessedCode)
             path = self.__writePreprocessedCode(self.__fileName, code)
             predictedValue, locs, evaluation = self.__executeCommant(path, test)
-            msg, color = self.__evaluateTest(evaluation)
-            print(color + 'TestCase #'+str(counter)+': --', msg)
-            print("Real Value:", test['output'][0])
-            print("Predicted Value:", output)
-            print("Locations:", locs, self.__ENDC)
-            print()
+            if debug:
+                msg, color = self.__evaluateTest(evaluation)
+                print(color + 'TestCase #'+str(counter)+': --', msg)
+                print("Real Value:", test['output'][0])
+                print("Predicted Value:", output)
+                print("Locations:", locs, self.__ENDC)
+                print()
+            localizer.addTestCase(evaluation, locs)
             counter += 1
+        localizer.calculateTarantula()
+        localizer.rankBuggyCodeElements(localizer.calculateTarantula(), debug)
 
