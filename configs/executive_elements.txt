@@ -6,3 +6,5 @@ WhileStatement
 BlockStatement
 FunctionDeclaration
 ArrowFunctionExpression
+TryStatement
+CatchClause

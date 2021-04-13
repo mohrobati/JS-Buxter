@@ -5,8 +5,14 @@ function gcdWrong(a, b, j) {
     while(b != 0) {
         if(a > b) {
             a = a - b;
+        } else if (c > d) {
+            try {
+                a = 3
+            } catch (err) {
+                b = 4
+            }
         } else {
-            a = 1
+            d = 5
         }
     }
     console.log(a)
