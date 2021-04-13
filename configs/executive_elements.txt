@@ -3,5 +3,6 @@ IfStatement
 ExpressionStatement
 ReturnStatement
 WhileStatement
+BlockStatement
 FunctionDeclaration
 ArrowFunctionExpression

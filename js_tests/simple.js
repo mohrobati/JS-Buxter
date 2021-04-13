@@ -1,6 +1,7 @@
-if(a>b) {
-    a = 3;
-    if (b < c) {
-        hello()
-    }
+if(a > b) {
+    a = a - b;
+} else if (x) {
+    a = 1
+} else {
+    b = 2
 }

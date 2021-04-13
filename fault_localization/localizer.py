@@ -6,6 +6,7 @@ class Localizer:
         self.pinPointListName = "fl_list"
         self.pinPointList = {}
         self.codes = []
+        self.chainStack = []
 
     def getExecutiveElements(self):
         executive_elements = []
@@ -21,10 +22,19 @@ class Localizer:
             self.pinPointList[(first, last)] = node
             if node.type == 'ExpressionStatement' or node.type == 'VariableDeclaration' or node.type == 'ReturnStatement':
                 self.codes.append([(first, last), self.generateSingleLine(first, last)])
-            elif node.type == 'IfStatement' or node.type == 'WhileStatement':
-                self.codes.append([(first, last), self.generateIfStatement(first, last)])
-            elif node.type == 'FunctionDeclaration' or node.type == 'ArrowFunctionExpression':
-                self.codes.append([(first, last), self.generateFunctionDeclaration(first, last)])
+            elif node.type == 'IfStatement' and node.alternate:
+                if node.alternate.type == 'BlockStatement':
+                    self.chainStack.append([(first, last), ""])
+                    self.codes.append([(first, last), self.generateIfElseBlockStatement(first, last)])
+                elif node.alternate.type == 'IfStatement':
+                    self.chainStack.append([(first, last), ""])
+                    self.codes.append([(first, last), self.generateElseIfBlockStatement(first, last)])
+            elif node.type == 'BlockStatement':
+                self.chainStack.append([(first, last), ""])
+            elif node.type == 'IfStatement' or node.type == 'WhileStatement' or node.type == 'FunctionDeclaration':
+                if node.type == 'IfStatement':
+                    self.chainStack.append([(first, last), ""])
+                self.codes.append([(first, last), self.generateBlockStatement(first, last)])
 
     def printProgram(self):
         for code in self.codes:
@@ -36,7 +46,7 @@ class Localizer:
     def generateSingleLine(self, first, last):
         return self.program[first:last] + '\n' + self.pinPointAugmenter(first, last)
 
-    def generateIfStatement(self, first, last):
+    def generateBlockStatement(self, first, last):
         tmp = []
         for c in self.codes[::-1]:
             if c[0][0] > first and c[0][1] <= last:
@@ -55,5 +65,58 @@ class Localizer:
             code += "}\n"
         return code
 
-    def generateFunctionDeclaration(self, first, last):
-        pass
+    def generateIfElseBlockStatement(self, first, last):
+        tmp = []
+        for c in self.codes[::-1]:
+            if c[0][0] > first and c[0][1] <= last:
+                tmp.append(self.codes.pop())
+            else:
+                break
+        tmp.reverse()
+        start = self.program[first:tmp[0][0][0]]
+        code = start + "{\n"
+        code += self.pinPointAugmenter(first, last)
+        lastBlock = self.chainStack.pop()
+        for c in tmp:
+            if not (lastBlock[0][0] < c[0][0] and lastBlock[0][1] > c[0][1]):
+                code += c[1]
+                tmp.pop(0)
+            else:
+                break
+        if start.replace(" ", "").replace("\n", "")[len(start.replace(" ", "").replace("\n", "")) - 1] == '{':
+            code += "}}"
+        else:
+            code += "}"
+        code += ' else {\n'
+        code += self.pinPointAugmenter(lastBlock[0][0], lastBlock[0][1])
+        for c in tmp:
+            code += c[1]
+        return code + "}"
+
+    def generateElseIfBlockStatement(self, first, last):
+        tmp = []
+        for c in self.codes[::-1]:
+            if c[0][0] > first and c[0][1] <= last:
+                tmp.append(self.codes.pop())
+            else:
+                break
+        tmp.reverse()
+        start = self.program[first:tmp[0][0][0]]
+        code = start + "{\n"
+        code += self.pinPointAugmenter(first, last)
+        lastBlock = self.chainStack.pop()
+        for c in tmp:
+            if not (lastBlock[0][0] < c[0][0] and lastBlock[0][1] > c[0][1]):
+                code += c[1]
+                tmp.pop(0)
+            else:
+                break
+        if start.replace(" ", "").replace("\n", "")[len(start.replace(" ", "").replace("\n", "")) - 1] == '{':
+            code += "}}"
+        else:
+            code += "}"
+        code += ' else {\n'
+        code += self.pinPointAugmenter(lastBlock[0][0], lastBlock[0][1])
+        for c in tmp:
+            code += c[1]
+        return code + "}"
