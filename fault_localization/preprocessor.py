@@ -5,15 +5,15 @@ class Preprocessor:
 
     def __init__(self, program):
         self.__program = program
-        self.__executive_elements = self.__getExecutiveElements()
+        self.__executive_elements = self.__getExecutiveElements('./configs/executive_elements.txt')
         self.__pinPointListName = "fl_list"
         self.__pinPointList = {}
         self.__codes = []
         self.__chainStack = []
 
-    def __getExecutiveElements(self):
+    def __getExecutiveElements(self, path):
         executive_elements = []
-        file = open('./configs/executive_elements.txt')
+        file = open(path)
         for line in file:
             executive_elements.append(line.replace("\n", ""))
         return executive_elements

@@ -11,7 +11,7 @@ class Runner:
         self.__preprocessedCode = preprocessedCode
         self.__preprocessedCodePath = './sample_codes/preprocessed/' + fileName + '_preprocessed.js'
         self.__tempCode = self.__getTempCode('./configs/input_reader.txt')
-        self.__testCases = self.__getTestCases('./sample_codes/test_cases/'+fileName+'_test_cases.json')
+        self.__testCases = self.__getTestCases('./sample_codes/test_cases/' + fileName + '_test_cases.json')
         self.__OKGREEN = '\033[92m'
         self.__FAIL = '\033[91m'
         self.__ENDC = '\033[0m'
@@ -70,7 +70,7 @@ class Runner:
             predictedValue, locs, evaluation = self.__executeCommant(path, test)
             if debug:
                 msg, color = self.__evaluateTest(evaluation)
-                print(color + 'TestCase #'+str(counter)+': --', msg)
+                print(color + 'TestCase #' + str(counter) + ': --', msg)
                 print("Real Value:", test['output'][0])
                 print("Predicted Value:", output)
                 print("Locations:", locs, self.__ENDC)
@@ -78,4 +78,3 @@ class Runner:
             localizer.addTestCase(evaluation, locs)
             counter += 1
         localizer.rankBuggyCodeElements(localizer.calculateTarantula(), debug)
-

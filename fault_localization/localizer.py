@@ -1,5 +1,5 @@
 import ast
-
+from repair.bug_classifier import BugClassifier
 
 class Localizer:
 
@@ -32,13 +32,16 @@ class Localizer:
         return SBFLValues
 
     def rankBuggyCodeElements(self, SBFLValues, debug=False):
+        bugClassifier = BugClassifier()
         sortedCodeElements = sorted(SBFLValues.items(), key=lambda kv: kv[1], reverse=True)
-        if debug:
-            for ce in sortedCodeElements:
-                loc = ast.literal_eval(ce[0])
+        for ce in sortedCodeElements:
+            loc = ast.literal_eval(ce[0])
+            codeElementSyntax = self.__program[loc[0]:loc[1]]
+            bugPatterns = bugClassifier.classify(codeElementSyntax)
+            if debug:
                 print(self.__WARNING + "#####\nCode Element: ", "(Suspiciousness: " + str(ce[1]) + ")")
                 print("Location: ", loc)
-                print(self.__program[loc[0]:loc[1]])
+                print(codeElementSyntax)
                 print("#####\n" + self.__ENDC)
         return sortedCodeElements
 

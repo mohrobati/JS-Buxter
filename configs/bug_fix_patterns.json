@@ -1,0 +1,10 @@
+{
+  "METHOD_CALL": ["MC-DAP", "MC-DNP", "SQ-RMO", "TY-ATC", "IF-APC"],
+  "METHOD_CHAIN_CALL": ["IF-APC", "SQ-RMO"],
+  "WHILE": ["LP-CC", "LP-CE"],
+  "IF": ["IF-CC", "IF-RMV"],
+  "BLOCK": ["IF-RBR"],
+  "FUNCTION": ["MD-CHG"],
+  "ASSIGNMENT": ["SQ-RFO"],
+  "RETURN": ["SQ-RMO"]
+}
