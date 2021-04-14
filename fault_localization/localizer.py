@@ -21,13 +21,14 @@ class Localizer:
 
     def calculateTarantula(self):
         SBFLValues = {}
-        for loc in self._allLocs:
-            key = str(loc)
-            if key not in self.__failed:
-                continue
-            SBFLValues[key] = (self.__failed[key] / self.__totalFailed) / \
-                              ((self.__passed[key] / self.__totalPassed) +
-                               (self.__failed[key] / self.__totalFailed))
+        if not (self.__totalFailed == 0 or self.__totalPassed == 0):
+            for loc in self._allLocs:
+                key = str(loc)
+                if key not in self.__failed or key not in self.__passed:
+                    continue
+                SBFLValues[key] = (self.__failed[key] / self.__totalFailed) / \
+                                  ((self.__passed[key] / self.__totalPassed) +
+                                   (self.__failed[key] / self.__totalFailed))
         return SBFLValues
 
     def rankBuggyCodeElements(self, SBFLValues, debug=False):
@@ -36,6 +37,7 @@ class Localizer:
             for ce in sortedCodeElements:
                 loc = ast.literal_eval(ce[0])
                 print(self.__WARNING + "#####\nCode Element: ", "(Suspiciousness: " + str(ce[1]) + ")")
+                print("Location: ", loc)
                 print(self.__program[loc[0]:loc[1]])
                 print("#####\n" + self.__ENDC)
         return sortedCodeElements

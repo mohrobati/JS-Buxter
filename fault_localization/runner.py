@@ -3,6 +3,7 @@ import json
 import ast
 from .localizer import Localizer
 
+
 class Runner:
 
     def __init__(self, fileName, preprocessedCode):
@@ -33,7 +34,7 @@ class Runner:
             inputs += input + '\n'
         return inputs, test['output']
 
-    def __writePreprocessedCode(self, fileName, code):
+    def __writePreprocessedCode(self, code):
         file = open(self.__preprocessedCodePath, "w+")
         file.write(code)
         file.close()
@@ -65,7 +66,7 @@ class Runner:
             inputs, output = self.__getInputsOutputs(test)
             code = self.__tempCode.replace("%%inputs", inputs)
             code = code.replace("%%code", self.__preprocessedCode)
-            path = self.__writePreprocessedCode(self.__fileName, code)
+            path = self.__writePreprocessedCode(code)
             predictedValue, locs, evaluation = self.__executeCommant(path, test)
             if debug:
                 msg, color = self.__evaluateTest(evaluation)
@@ -76,6 +77,5 @@ class Runner:
                 print()
             localizer.addTestCase(evaluation, locs)
             counter += 1
-        localizer.calculateTarantula()
         localizer.rankBuggyCodeElements(localizer.calculateTarantula(), debug)
 

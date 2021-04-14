@@ -21,8 +21,11 @@ class Preprocessor:
     def __pinPointAugmenter(self, first, last):
         return self.__pinPointListName + ".push(" + str([first, last]) + ");\n"
 
-    def __generateSingleLine(self, first, last):
-        return self.__program[first:last] + '\n' + self.__pinPointAugmenter(first, last)
+    def __generateSingleLine(self, first, last, after=True):
+        if after:
+            return self.__program[first:last] + '\n' + self.__pinPointAugmenter(first, last)
+        else:
+            return self.__pinPointAugmenter(first, last) + '\n' + self.__program[first:last]
 
     def __generateBlockStatement(self, first, last):
         tmp = self.__getCodes(first, last)
@@ -109,7 +112,10 @@ class Preprocessor:
             last = meta.end.offset
             self.__pinPointList[(first, last)] = node
             if node.type == 'ExpressionStatement' or node.type == 'VariableDeclaration' or node.type == 'ReturnStatement':
-                code = self.__generateSingleLine(first, last)
+                if node.type == 'ReturnStatement':
+                    code = self.__generateSingleLine(first, last, after=False)
+                else:
+                    code = self.__generateSingleLine(first, last)
                 self.__codes.append([(first, last), code])
                 self.__chainStack.append([(first, last), code])
             elif node.type == 'IfStatement' and node.alternate:
