@@ -2,7 +2,7 @@ import esprima
 from fault_localization.preprocessor import Preprocessor
 from fault_localization.runner import Runner
 
-fileName = 'sample_02'
+fileName = 'sample_04'
 inputPath = 'sample_codes/' + fileName + ".js"
 file = open(inputPath)
 program = file.read()

@@ -23,7 +23,9 @@ class Repair:
         print(repairedProgram)
         allPassed = self._runner.run(repairedProgram, debug=self._debug, fix=False)
         if allPassed:
-            print("Repaired!")
+            print("Repaired!\n")
+            print("Patch:")
+            print(type(self).__name__ + " on \"" + self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]] + "\"")
             sys.exit(0)
 
     def fix(self):
