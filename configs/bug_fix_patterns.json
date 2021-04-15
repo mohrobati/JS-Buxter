@@ -1,10 +1,36 @@
 {
-  "METHOD_CALL": ["MC-DAP", "MC-DNP", "SQ-RMO", "TY-ATC", "IF-APC"],
-  "METHOD_CHAIN_CALL": ["IF-APC", "SQ-RMO"],
-  "WHILE": ["LP-CC", "LP-CE"],
-  "IF": ["IF-CC", "IF-RMV"],
-  "BLOCK": ["IF-RBR"],
-  "FUNCTION": ["MD-CHG"],
-  "ASSIGNMENT": ["SQ-RFO"],
-  "RETURN": ["SQ-RMO"]
+  "METHOD_CALL": [
+    "MC_DAP",
+    "MC_DNP",
+    "SQ_RMO",
+    "TY_ATC",
+    "IF_APC"
+  ],
+  "METHOD_CHAIN_CALL": [
+    "MC_DAP",
+    "MC_DNP",
+    "IF_APC",
+    "SQ_RMO",
+    "TY_ATC"
+  ],
+  "WHILE": [
+    "LP_CC",
+    "LP_CE"
+  ],
+  "IF": [
+    "IF_CC",
+    "IF_RMV"
+  ],
+  "BLOCK": [
+    "IF_RBR"
+  ],
+  "FUNCTION": [
+    "MD_CHG"
+  ],
+  "ASSIGNMENT": [
+    "SQ_RFO"
+  ],
+  "RETURN": [
+    "SQ_RMO"
+  ]
 }

@@ -29,15 +29,18 @@ class Preprocessor:
 
     def __generateBlockStatement(self, first, last):
         tmp = self.__getCodes(first, last)
-        start = self.__program[first:tmp[0][0][0]]
-        code = start + "{\n"
-        code += self.__pinPointAugmenter(first, last)
-        for c in tmp:
-            code += c[1]
-        if start.replace(" ", "").replace("\n", "")[len(start.replace(" ", "").replace("\n", "")) - 1] == '{':
-            code += "}}\n"
+        if tmp:
+            start = self.__program[first:tmp[0][0][0]]
+            code = start + "{\n"
+            code += self.__pinPointAugmenter(first, last)
+            for c in tmp:
+                code += c[1]
+            if start and start.replace(" ", "").replace("\n", "")[len(start.replace(" ", "").replace("\n", "")) - 1] == '{':
+                code += "}}\n"
+            else:
+                code += "}\n"
         else:
-            code += "}\n"
+            code = self.__program[first:last] + "\n"
         return code
 
     def __generateIfElseBlockStatement(self, first, last):

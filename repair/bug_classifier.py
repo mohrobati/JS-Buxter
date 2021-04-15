@@ -25,7 +25,7 @@ class BugClassifier:
     def classify(self, codeElement):
         parsedCodeElement = esprima.parseScript(codeElement, tolerant=True)
         possibleFixTypes = self.__classifiers[parsedCodeElement.body[0].type](parsedCodeElement.body[0])
-        print(possibleFixTypes)
+        return possibleFixTypes
 
     def __ifStatementClassify(self, codeElement):
         return self.__bugFixPatterns['IF']

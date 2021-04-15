@@ -1,6 +1,7 @@
 import ast
 from repair.bug_classifier import BugClassifier
 
+
 class Localizer:
 
     def __init__(self, program):
@@ -24,8 +25,10 @@ class Localizer:
         if not (self.__totalFailed == 0 or self.__totalPassed == 0):
             for loc in self._allLocs:
                 key = str(loc)
-                if key not in self.__failed or key not in self.__passed:
+                if key not in self.__failed:
                     continue
+                if key not in self.__passed:
+                    self.__passed[key] = 0
                 SBFLValues[key] = (self.__failed[key] / self.__totalFailed) / \
                                   ((self.__passed[key] / self.__totalPassed) +
                                    (self.__failed[key] / self.__totalFailed))
@@ -34,12 +37,12 @@ class Localizer:
     def rankBuggyCodeElements(self, SBFLValues, debug=False):
         bugClassifier = BugClassifier()
         sortedCodeElements = sorted(SBFLValues.items(), key=lambda kv: kv[1], reverse=True)
-        for ce in sortedCodeElements:
-            loc = ast.literal_eval(ce[0])
+        for i in range(len(sortedCodeElements)):
+            loc = ast.literal_eval(sortedCodeElements[i][0])
             codeElementSyntax = self.__program[loc[0]:loc[1]]
-            bugPatterns = bugClassifier.classify(codeElementSyntax)
+            sortedCodeElements[i] = (ast.literal_eval(sortedCodeElements[i][0]),) + (sortedCodeElements[i][1], ) + (bugClassifier.classify(codeElementSyntax),)
             if debug:
-                print(self.__WARNING + "#####\nCode Element: ", "(Suspiciousness: " + str(ce[1]) + ")")
+                print(self.__WARNING + "#####\nCode Element: ", "(Suspiciousness: " + str(sortedCodeElements[i][1]) + ")")
                 print("Location: ", loc)
                 print(codeElementSyntax)
                 print("#####\n" + self.__ENDC)

@@ -1,7 +1,8 @@
 import subprocess
 import json
 import ast
-from .localizer import Localizer
+from fault_localization.localizer import Localizer
+from repair.bug_fix import BugFix
 
 
 class Runner:
@@ -40,13 +41,16 @@ class Runner:
         file.close()
         return self.__preprocessedCodePath
 
-    def __executeCommant(self, path, test):
+    def __executeCommand(self, path, test, fix):
         result = subprocess.run(['node', path], stdout=subprocess.PIPE).stdout.decode('utf-8').replace(
             "\n", "")
         first = result.find("%%locs")
         second = result.rfind("%%locs")
-        predictedValue = result[:first].replace(" ", "")
-        locs = ast.literal_eval(result[first + len("%%locs"):second].replace(" ", ""))
+        predictedValue = result
+        locs = []
+        if fix:
+            predictedValue = result[:first].replace(" ", "")
+            locs = ast.literal_eval(result[first + len("%%locs"):second].replace(" ", ""))
         evaluation = predictedValue == str(test['output'][0])
         return predictedValue, locs, evaluation
 
@@ -59,15 +63,22 @@ class Runner:
             color = self.__FAIL
         return msg, color
 
-    def run(self, program, debug=False):
+    def run(self, program, debug=False, fix=False):
         counter = 1
         localizer = Localizer(program)
+        hasFailedTestCase = False
         for test in self.__testCases:
             inputs, output = self.__getInputsOutputs(test)
             code = self.__tempCode.replace("%%inputs", inputs)
-            code = code.replace("%%code", self.__preprocessedCode)
+            if fix:
+                code = code.replace("%%code", self.__preprocessedCode)
+            else:
+                code = code.replace("%%code", program)
             path = self.__writePreprocessedCode(code)
-            predictedValue, locs, evaluation = self.__executeCommant(path, test)
+            predictedValue, locs, evaluation = self.__executeCommand(path, test, fix)
+            print(evaluation)
+            if not evaluation:
+                hasFailedTestCase = True
             if debug:
                 msg, color = self.__evaluateTest(evaluation)
                 print(color + 'TestCase #' + str(counter) + ': --', msg)
@@ -77,4 +88,8 @@ class Runner:
                 print()
             localizer.addTestCase(evaluation, locs)
             counter += 1
-        localizer.rankBuggyCodeElements(localizer.calculateTarantula(), debug)
+        if fix:
+            possibleBuggyCodes = localizer.rankBuggyCodeElements(localizer.calculateTarantula(), debug)
+            bugFix = BugFix(self, program, possibleBuggyCodes, self.__fileName, debug)
+            bugFix.fix()
+        return not hasFailedTestCase
