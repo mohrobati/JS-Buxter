@@ -13,6 +13,7 @@ class BugClassifier:
             "WhileStatement": self.__whileStatementClassify,
             "BlockStatement": self.__blockStatementClassify,
             "FunctionDeclaration": self.__functionDeclarationClassify,
+            "VariableDeclaration": self.__variableDeclarationClassify,
             "ReturnStatement": self.__returnStatementClassify,
         }
 
@@ -39,6 +40,9 @@ class BugClassifier:
     def __functionDeclarationClassify(self, codeElement):
         return self.__bugFixPatterns['FUNCTION']
 
+    def __variableDeclarationClassify(self, codeElement):
+        return self.__bugFixPatterns['ASSIGNMENT']
+
     def __returnStatementClassify(self, codeElement):
         return self.__bugFixPatterns['RETURN']
 
@@ -57,6 +61,7 @@ class BugClassifier:
             return self.__bugFixPatterns['METHOD_CHAIN_CALL']
         else:
             return self.__bugFixPatterns['METHOD_CALL']
+
 
 
 

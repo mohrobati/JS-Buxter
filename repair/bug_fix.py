@@ -15,7 +15,8 @@ class BugFix:
         self.__debug = debug
 
     def fix(self):
+        print(self.__possibleBuggyCodes)
         for buggyCode in self.__possibleBuggyCodes:
             for bugFixPattern in buggyCode[2]:
-                if bugFixPattern == "IF_RBR" or bugFixPattern == "SQ_RMO":
+                if bugFixPattern == "IF_RBR" or bugFixPattern == "SQ_RMO" or bugFixPattern == "SQ_RFO":
                     globals()[bugFixPattern+"_Repair"](self.__runner, self.__program, buggyCode[0], self.__fileName, self.__debug).fix()

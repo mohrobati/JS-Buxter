@@ -1,6 +1,7 @@
 import subprocess
 import json
 import ast
+import glob
 from fault_localization.localizer import Localizer
 from repair.bug_fix import BugFix
 
@@ -12,7 +13,7 @@ class Runner:
         self.__preprocessedCode = preprocessedCode
         self.__preprocessedCodePath = './sample_codes/preprocessed/' + fileName + '_preprocessed.js'
         self.__tempCode = self.__getTempCode('./configs/input_reader.txt')
-        self.__testCases = self.__getTestCases('./sample_codes/test_cases/' + fileName + '_test_cases.json')
+        self.__testCases = self.__getTestCases('./sample_codes/' + fileName + '/inputs/')
         self.__OKGREEN = '\033[92m'
         self.__FAIL = '\033[91m'
         self.__ENDC = '\033[0m'
@@ -24,16 +25,15 @@ class Runner:
         return tempCode
 
     def __getTestCases(self, path):
-        file = open(path)
-        testCases = json.loads(file.read())
-        file.close()
-        return testCases
+        tests = glob.glob(path + '*.txt')
+        tests.reverse()
+        return tests
 
-    def __getInputsOutputs(self, test):
-        inputs = ""
-        for input in test['input']:
-            inputs += input + '\n'
-        return inputs, test['output']
+    def __getOutput(self, test):
+        file = open(test.replace("input", "output"))
+        output = file.read()
+        file.close()
+        return output
 
     def __writePreprocessedCode(self, code):
         file = open(self.__preprocessedCodePath, "w+")
@@ -41,17 +41,20 @@ class Runner:
         file.close()
         return self.__preprocessedCodePath
 
-    def __executeCommand(self, path, test, fix):
-        result = subprocess.run(['node', path], stdout=subprocess.PIPE).stdout.decode('utf-8').replace(
-            "\n", "")
-        first = result.find("%%locs")
-        second = result.rfind("%%locs")
-        predictedValue = result
-        locs = []
+    def __executeCommand(self, path, test, output, fix):
+        cmd = "cat " + test + " | node " + path
+        ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        result = ps.communicate()[0].decode('utf-8').replace("\n", "")
+        print(result)
         if fix:
+            first = result.find("%%locs")
+            second = result.rfind("%%locs")
             predictedValue = result[:first].replace(" ", "")
             locs = ast.literal_eval(result[first + len("%%locs"):second].replace(" ", ""))
-        evaluation = predictedValue == str(test['output'][0])
+        else:
+            predictedValue = result
+            locs = []
+        evaluation = predictedValue == output
         return predictedValue, locs, evaluation
 
     def __evaluateTest(self, evaluation):
@@ -68,22 +71,22 @@ class Runner:
         localizer = Localizer(program)
         hasFailedTestCase = False
         for test in self.__testCases:
-            inputs, output = self.__getInputsOutputs(test)
-            code = self.__tempCode.replace("%%inputs", inputs)
+            output = self.__getOutput(test)
+            code = self.__tempCode
             if fix:
                 code = code.replace("%%code", self.__preprocessedCode)
             else:
                 code = code.replace("%%code", program)
             path = self.__writePreprocessedCode(code)
-            predictedValue, locs, evaluation = self.__executeCommand(path, test, fix)
+            predictedValue, locs, evaluation = self.__executeCommand(path, test, output, fix)
             print(evaluation)
             if not evaluation:
                 hasFailedTestCase = True
             if debug:
                 msg, color = self.__evaluateTest(evaluation)
                 print(color + 'TestCase #' + str(counter) + ': --', msg)
-                print("Real Value:", test['output'][0])
-                print("Predicted Value:", output)
+                print("Real Value:", output)
+                print("Predicted Value:", predictedValue)
                 print("Locations:", locs, self.__ENDC)
                 print()
             localizer.addTestCase(evaluation, locs)
