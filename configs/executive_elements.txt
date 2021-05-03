@@ -3,6 +3,7 @@ IfStatement
 ExpressionStatement
 ReturnStatement
 WhileStatement
+ForStatement
 BlockStatement
 FunctionDeclaration
 ArrowFunctionExpression

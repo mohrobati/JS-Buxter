@@ -43,6 +43,28 @@ class Preprocessor:
             code = self.__program[first:last] + "\n"
         return code
 
+    def __generateForStatement(self, first, last):
+        lastBlock = self.__chainStack.pop()
+        tmp = []
+        if lastBlock:
+            tmp = self.__getCodes(lastBlock[0][0], lastBlock[0][1])
+        if tmp:
+            start = self.__program[first:lastBlock[0][0]]
+            code = start + "{\n"
+            code += self.__pinPointAugmenter(first, last)
+            if tmp:
+                for c in tmp:
+                    code += c[1]
+            else:
+                code += lastBlock[1]
+            if start and start.replace(" ", "").replace("\n", "")[len(start.replace(" ", "").replace("\n", "")) - 1] == '{':
+                code += "}}\n"
+            else:
+                code += "}\n"
+        else:
+            code = self.__program[first:last] + "\n"
+        return code
+
     def __generateIfElseBlockStatement(self, first, last):
         tmp = self.__getCodes(first, last)
         start = self.__program[first:tmp[0][0][0]]
@@ -102,7 +124,7 @@ class Preprocessor:
     def __getCodes(self, first, last):
         tmp = []
         for c in self.__codes[::-1]:
-            if c[0][0] > first and c[0][1] <= last:
+            if c[0][0] >= first and c[0][1] <= last:
                 tmp.append(self.__codes.pop())
             else:
                 break
@@ -114,7 +136,8 @@ class Preprocessor:
             first = meta.start.offset
             last = meta.end.offset
             self.__pinPointList[(first, last)] = node
-            if node.type == 'ExpressionStatement' or node.type == 'VariableDeclaration' or node.type == 'ReturnStatement':
+            if node.type == 'ExpressionStatement' or node.type == 'VariableDeclaration' or\
+                    node.type == 'ReturnStatement':
                 if node.type == 'ReturnStatement':
                     code = self.__generateSingleLine(first, last, after=False)
                 else:
@@ -132,11 +155,16 @@ class Preprocessor:
                     self.__chainStack.append([(first, last), code])
             elif node.type == 'BlockStatement':
                 self.__chainStack.append([(first, last), ""])
-            elif node.type == 'IfStatement' or node.type == 'WhileStatement' or node.type == 'FunctionDeclaration':
+            elif node.type == 'IfStatement' or node.type == 'WhileStatement' or\
+                    node.type == 'FunctionDeclaration':
                 code = self.__generateBlockStatement(first, last)
                 self.__codes.append([(first, last), code])
                 if node.type == 'IfStatement':
                     self.__chainStack.append([(first, last), code])
+            elif node.type == 'ForStatement':
+                code = self.__generateForStatement(first, last)
+                self.__codes.append([(first, last), code])
+                self.__chainStack.append([(first, last), code])
             elif node.type == 'TryStatement':
                 code = self.__generateTryCatchBlockStatement(first, last)
                 self.__codes.append([(first, last), code])

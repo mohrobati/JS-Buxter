@@ -10,7 +10,9 @@ file.close()
 
 preprocessor = Preprocessor(program)
 parsedCode = esprima.parseScript(program, delegate=preprocessor.preprocess)
+print(parsedCode)
 preprocessedCode = preprocessor.getPreprocessedCode()
-Runner(fileName, preprocessedCode).run(program, debug=True, fix=True)
+print(preprocessedCode)
+# Runner(fileName, preprocessedCode).run(program, debug=True, fix=True)
 
 

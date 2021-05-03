@@ -1,5 +1,5 @@
 let a = readline()
-if (a == 0) {
-    a = 5
-}
+for(i = 0; i < 10; i++)
+    if (a>5)
+        a += " - hi - "
 console.log(a)
