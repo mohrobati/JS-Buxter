@@ -6,7 +6,7 @@ class Preprocessor:
     def __init__(self, program):
         self.__program = program
         self.__executive_elements = self.__getExecutiveElements('./configs/executive_elements.txt')
-        self.__pinPointListName = "fl_list"
+        self.__pinPointListName = "fl_set"
         self.__pinPointList = {}
         self.__codes = []
         self.__chainStack = []
@@ -21,7 +21,7 @@ class Preprocessor:
         return executive_elements
 
     def __pinPointAugmenter(self, first, last):
-        return self.__pinPointListName + ".push(" + str([first, last]) + ");\n"
+        return self.__pinPointListName + ".add(JSON.stringify(" + str([first, last]) + "));\n"
 
     def __generateReturnStatement(self, first, last):
         return self.__pinPointAugmenter(first, last) + self.__program[first:last] + ";\n"
@@ -232,8 +232,8 @@ class Preprocessor:
                 self.__chainStack.append([(first, last), code])
 
     def getPreprocessedCode(self):
-        declare = 'var ' + self.__pinPointListName + ' = [];\n'
-        printList = 'console.log(" %%%locs",' + self.__pinPointListName + ',"%%locs");\n'
+        declare = 'var ' + self.__pinPointListName + ' = new Set();\n'
+        printList = 'console.log(" %%%locs", Array.from(' + self.__pinPointListName + ') ,"%%locs");\n'
         codes = ""
         for code in self.__codes:
             codes += str(code[1])

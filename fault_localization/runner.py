@@ -48,10 +48,11 @@ class Runner:
         if fix:
             first = result.find("%%locs")
             second = result.rfind("%%locs")
-            predictedValue = result[:first].replace(" ", "")
+            predictedValue = result[:first].replace(" ", "").replace("\n", "")
             locs = ast.literal_eval(result[first + len("%%locs"):second].replace(" ", ""))
+            locs = [ast.literal_eval(loc) for loc in locs]
         else:
-            predictedValue = result
+            predictedValue = result.replace("\n", "")
             locs = []
         evaluation = predictedValue == output
         return predictedValue, locs, evaluation
@@ -70,7 +71,7 @@ class Runner:
         localizer = Localizer(program)
         hasFailedTestCase = False
         for test in self.__testCases:
-            output = self.__getOutput(test)
+            output = self.__getOutput(test).replace("\n", "")
             code = self.__tempCode
             if fix:
                 code = code.replace("%%code", self.__preprocessedCode)
@@ -93,5 +94,6 @@ class Runner:
         if fix:
             possibleBuggyCodes = localizer.rankBuggyCodeElements(localizer.calculateTarantula(), debug)
             bugFix = BugFix(self, program, possibleBuggyCodes, self.__fileName, debug)
+            print(possibleBuggyCodes)
             bugFix.fix()
         return not hasFailedTestCase

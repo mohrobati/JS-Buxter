@@ -1,29 +1,15 @@
-const xx = readline();
-Array(Number(xx)).fill(1).map((t, i) => {
-    var n = BigInt(readline());
-    var array = new Array(18)
-    var value = 2050
-    for (let j = 0; j < 18; j++) {
-        array[j] = value
-        value *= 10
-    }
-    var i = 17
-    var ans = 0
-    while (n > 0 && i >= 0) {
-
-        while (n >= array[i]) {
-            ans++
-            n -= array[i]
-        }
-        i--
-    }
-    switch (cond) {
-      case 0:
-        day = "Sunday";
-        break;
-      case 1:
-        day = "Monday";
-        break;
-}
-    console.log(ans)
+const x = readline();
+Array(Number(x)).fill(1).map((t, iii) => {
+    var [p, a, b, c] = readline().split(' ').map((x, iii) => {
+        return BigInt(x)
+    })
+    var aa = (p + a - BigInt(1)) / a * a - p
+    var bb = (p + b - BigInt(1)) / b * b - p
+    var cc = (p + c - BigInt(1)) / c * c - p
+    var min = aa < bb ? aa : bb
+    min = cc < min ? cc : min
+    if(min > 5)
+        min += BigInt(1)
+    console.log(min.toString())
+    return
 })
