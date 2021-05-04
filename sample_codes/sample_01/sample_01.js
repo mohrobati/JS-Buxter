@@ -1,5 +1,3 @@
-var maxN = 2 * 1e5 + 10
-var mod = 1e9 + 7
 const xx = readline();
 Array(Number(xx)).fill(1).map((t, i) => {
     var n = BigInt(readline());

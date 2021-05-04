@@ -28,7 +28,6 @@ class Preprocessor:
 
     def __generateExpressionStatement(self, first, last):
         lastBlock = tmp = []
-        print(self.__program[first: last], self.__isBlockSeen)
         if self.__chainStack and self.__isBlockSeen:
             lastBlock = self.__chainStack.pop()
         if lastBlock:
@@ -190,13 +189,18 @@ class Preprocessor:
             elif node.type == 'BlockStatement':
                 self.__isBlockSeen = True
                 self.__chainStack.append([(first, last), ""])
-            elif node.type == 'IfStatement' or node.type == 'WhileStatement':
+            elif node.type == 'IfStatement' or node.type == 'WhileStatement' or\
+                node.type == 'FunctionDeclaration':
                 code = self.__generateBlockStatement(first, last)
                 self.__codes.append([(first, last), code])
                 if node.type == 'IfStatement':
                     self.__chainStack.append([(first, last), code])
-            elif node.type == 'ArrowFunctionExpression' or node.type == 'FunctionDeclaration':
-                self.__isArrowSeen = True
+            elif node.type == 'FunctionExpression' or node.type == 'ArrowFunctionExpression':
+                idx = first - 1
+                while idx > -1 and self.__program[idx] == " ":
+                    idx -= 1
+                if self.__program[idx] == "(":
+                    self.__isArrowSeen = True
             elif node.type == 'ForStatement':
                 code = self.__generateForStatement(first, last)
                 self.__codes.append([(first, last), code])
@@ -208,7 +212,6 @@ class Preprocessor:
                 code = self.__generateBlockStatement(first, last)
                 self.__codes.append([(first, last), code])
                 self.__chainStack.append([(first, last), code])
-            print(node.type, code, "\n\n")
 
     def getPreprocessedCode(self):
         declare = 'var ' + self.__pinPointListName + ' = [];\n'

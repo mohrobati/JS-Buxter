@@ -7,5 +7,6 @@ ForStatement
 BlockStatement
 FunctionDeclaration
 ArrowFunctionExpression
+FunctionExpression
 TryStatement
 CatchClause
