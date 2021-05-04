@@ -17,6 +17,13 @@ Array(Number(xx)).fill(1).map((t, i) => {
         }
         i--
     }
-    if (n !== 0) return console.log(-1)
+    switch (cond) {
+      case 0:
+        day = "Sunday";
+        break;
+      case 1:
+        day = "Monday";
+        break;
+}
     console.log(ans)
 })

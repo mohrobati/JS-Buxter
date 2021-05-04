@@ -136,6 +136,18 @@ class Preprocessor:
         code += lastBlock[1]
         return code
 
+    def __generateSwitchStatement(self, first, last):
+        tmp = self.__getCodes(first, last)
+        if tmp:
+            start = self.__program[first:tmp[0][0][0]]
+            code = start + "\n"
+            for c in tmp:
+                code += c[1]
+            code += "}\n"
+        else:
+            code = self.__program[first:last] + "\n"
+        return code
+
     def __generateTryCatchBlockStatement(self, first, last):
         tmp = self.__getCodes(first, last)
         start = self.__program[first:tmp[0][0][0]]
@@ -169,11 +181,10 @@ class Preprocessor:
             first = meta.start.offset
             last = meta.end.offset
             self.__pinPointList[(first, last)] = node
-            code = ""
             if node.type == 'ExpressionStatement' or node.type == 'VariableDeclaration':
                 code = self.__generateExpressionStatement(first, last)
                 self.__codes.append([(first, last), code])
-            elif node.type == 'ReturnStatement':
+            elif node.type == 'ReturnStatement' or node.type == 'BreakStatement':
                 code = self.__generateReturnStatement(first, last)
                 self.__codes.append([(first, last), code])
                 self.__chainStack.append([(first, last), code])
@@ -205,6 +216,13 @@ class Preprocessor:
                 code = self.__generateForStatement(first, last)
                 self.__codes.append([(first, last), code])
                 self.__chainStack.append([(first, last), code])
+            elif node.type == 'SwitchCase':
+                code = self.__generateBlockStatement(first, last)
+                self.__codes.append([(first, last), code])
+                self.__chainStack.append([(first, last), code])
+            elif node.type == 'SwitchStatement':
+                code = self.__generateSwitchStatement(first, last)
+                self.__codes.append([(first, last), code])
             elif node.type == 'TryStatement':
                 code = self.__generateTryCatchBlockStatement(first, last)
                 self.__codes.append([(first, last), code])

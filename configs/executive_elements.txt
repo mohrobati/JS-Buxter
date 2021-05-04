@@ -7,6 +7,9 @@ ForStatement
 BlockStatement
 FunctionDeclaration
 ArrowFunctionExpression
+SwitchStatement
+SwitchCase
+BreakStatement
 FunctionExpression
 TryStatement
 CatchClause

@@ -14,10 +14,3 @@ preprocessedCode = preprocessor.getPreprocessedCode()
 print(parsedCode)
 print(preprocessedCode)
 # Runner(fileName, preprocessedCode).run(program, debug=True, fix=True)
-
-
-# Empty arrow function         DONE
-# Let a = (a, b) => {}         DONE
-# function instead of () =>    DONE
-# question statement
-# switch case
