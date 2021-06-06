@@ -198,8 +198,9 @@ class Preprocessor:
                     self.__codes.append([(first, last), code])
                     self.__chainStack.append([(first, last), code])
             elif node.type == 'BlockStatement':
-                self.__isBlockSeen = True
+                code = self.__generateBlockStatement(first, last)
                 self.__chainStack.append([(first, last), ""])
+                self.__codes.append([(first, last), code])
             elif node.type == 'IfStatement' or node.type == 'WhileStatement' or\
                 node.type == 'FunctionDeclaration':
                 code = self.__generateBlockStatement(first, last)
@@ -212,6 +213,7 @@ class Preprocessor:
                     idx -= 1
                 if self.__program[idx] == "(":
                     self.__isArrowSeen = True
+                self.__isBlockSeen = True
             elif node.type == 'ForStatement':
                 code = self.__generateForStatement(first, last)
                 self.__codes.append([(first, last), code])
