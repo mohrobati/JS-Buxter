@@ -181,14 +181,20 @@ class Preprocessor:
             first = meta.start.offset
             last = meta.end.offset
             self.__pinPointList[(first, last)] = node
+            print(node.type)
             if node.type == 'ExpressionStatement' or node.type == 'VariableDeclaration':
                 code = self.__generateExpressionStatement(first, last)
+                # self.__chainStack.append([(first, last), code])
                 self.__codes.append([(first, last), code])
             elif node.type == 'ReturnStatement' or node.type == 'BreakStatement':
-                code = self.__generateReturnStatement(first, last)
+                if node.argument and node.argument.type == 'ArrowFunctionExpression':
+                    code = self.__generateBlockStatement(first, last)
+                else:
+                    code = self.__generateReturnStatement(first, last)
                 self.__codes.append([(first, last), code])
                 self.__chainStack.append([(first, last), code])
             elif node.type == 'IfStatement' and node.alternate:
+                print(node)
                 if node.alternate.type == 'BlockStatement' or node.alternate.type == 'ExpressionStatement':
                     code = self.__generateIfElseBlockStatement(first, last)
                     self.__codes.append([(first, last), code])
@@ -209,10 +215,12 @@ class Preprocessor:
                     self.__chainStack.append([(first, last), code])
             elif node.type == 'FunctionExpression' or node.type == 'ArrowFunctionExpression':
                 idx = first - 1
-                while idx > -1 and self.__program[idx] == " ":
-                    idx -= 1
-                if self.__program[idx] == "(":
-                    self.__isArrowSeen = True
+                if 'return' in self.__program[first:last] or '{' in self.__program[first:last] :
+                    while idx > -1 and self.__program[idx] != ")":
+                        if self.__program[idx] == "(":
+                            self.__isArrowSeen = True
+                            break
+                        idx -= 1
                 self.__isBlockSeen = True
             elif node.type == 'ForStatement':
                 code = self.__generateForStatement(first, last)

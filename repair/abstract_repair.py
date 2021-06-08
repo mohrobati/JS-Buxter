@@ -10,7 +10,7 @@ class Repair:
         self._program = program
         self._buggyCodeLocation = buggyCodeLocation
         self._fileName = fileName
-        self._path = "./sample_codes/repaired/"+fileName+"_repaired.js"
+        self._path = "./sample_code/repaired/"+fileName+"_repaired.js"
         self._debug = debug
         pass
 

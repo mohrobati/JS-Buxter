@@ -11,9 +11,9 @@ class Runner:
     def __init__(self, fileName, preprocessedCode):
         self.__fileName = fileName
         self.__preprocessedCode = preprocessedCode
-        self.__preprocessedCodePath = './sample_codes/preprocessed/' + fileName + '_preprocessed.js'
+        self.__preprocessedCodePath = './sample_code/preprocessed/' + fileName + '_preprocessed.js'
         self.__tempCode = self.__getTempCode('./configs/input_reader.txt')
-        self.__testCases = self.__getTestCases('./sample_codes/' + fileName + '/inputs/')
+        self.__testCases = self.__getTestCases('./sample_code/' + fileName + '/inputs/')
         self.__OKGREEN = '\033[92m'
         self.__FAIL = '\033[91m'
         self.__ENDC = '\033[0m'
@@ -45,6 +45,7 @@ class Runner:
         cmd = "cat " + test + " | node " + path
         ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         result = ps.communicate()[0].decode('utf-8').replace("\n", "")
+        print(result)
         if fix:
             first = result.find("%%locs")
             second = result.rfind("%%locs")
@@ -71,7 +72,7 @@ class Runner:
         localizer = Localizer(program)
         hasFailedTestCase = False
         for test in self.__testCases:
-            output = self.__getOutput(test).replace("\n", "")
+            output = self.__getOutput(test).replace("\n", "").replace(" ", "")
             code = self.__tempCode
             if fix:
                 code = code.replace("%%code", self.__preprocessedCode)

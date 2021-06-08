@@ -2,3 +2,4 @@ venv
 sample_codes/preprocessed
 sample_codes/repaired
 .idea
+data.json
