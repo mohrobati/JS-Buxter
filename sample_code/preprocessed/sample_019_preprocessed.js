@@ -67,6 +67,8 @@ fl_set.add(JSON.stringify([280, 323]));
 fl_set.add(JSON.stringify([296, 323]));
 count[0]++
 fl_set.add(JSON.stringify([300, 310]));
+fl_set.add(JSON.stringify([313, 321]));
+continue;
 }}
 }
 if (count[a[i] - 1] >= 1) {

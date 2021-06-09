@@ -1,39 +1,26 @@
-var maxN = 21
-var mod = 1000000007
-
-var n = BigInt(readline())
-var a = readline().split(' ').map((x, iii) => {
-return BigInt(x)
-});
-var b = readline().split(' ').map((x, iii) => {
-return BigInt(x)
-});
-for (let i = BigInt(1); i <= n; i++) {
-a[i - BigInt(1)] = a[i - BigInt(1)] * i * (n - i + BigInt(1))
-}
-a = a.sort((a, b) => {
-if (a > b) {
-  return 1;
-} else if (a < b) {
-  return -1;
-} else {
-  return 0;
-}
-});
-b = b.sort((a, b) => {
-if (a > b) {
-  return 1;
-} else if (a < b) {
-  return -1;
-} else {
-  return 0;
-}
+const x = readline();
+var answer = []
+Array(Number(x)).fill(1).map((t, i) => {
+    var [n, m] = readline().split(' ').map(x => Number(x));
+    var sum = 0
+    var sum2 = 0
+    var array2 = []
+    var k = readline().split(' ').map(x => {
+        return Number(x) - 1
+    });
+    var c = readline().split(' ').map(x => {
+        return Number(x)
+    });
+    k = k.sort((a, b) => b - a)
+    var sum = 0
+    var j = 0
+    k.map((x, i) => {
+        if (c[j] < c[x]) {
+            sum += c[j]
+            j++
+        } else {
+            sum += c[x]
+        } 
+    })
+    console.log(sum)
 })
- 
-var sum = BigInt(0)
-for (let i = BigInt(0); i < n; i++) {
-sum = (sum + a[i] * b[n - i - BigInt(1)]) % mod
-}
-
-console.log(sum.toString())
- 

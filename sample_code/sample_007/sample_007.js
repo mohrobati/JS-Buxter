@@ -1,59 +1,22 @@
-var x = parseInt(readline())
-Array(parseInt(x)).fill(1).map((t, iii) => {
-
-var a = readline()
-var b = readline()
-var string = longestCommonSubstring(a,b)
-console.log(a.length + b.length - 2*string.length)
-})
-
-function longestCommonSubstring(string1, string2) {
-  const s1 = [...string1];
-  const s2 = [...string2];
-
-  const substringMatrix = Array(s2.length + 1).fill(null).map(() => {
-    return Array(s1.length + 1).fill(null);
-  });
-
-  for (let columnIndex = 0; columnIndex <= s1.length; columnIndex += 1) {
-    substringMatrix[0][columnIndex] = 0;
-  }
-
-  for (let rowIndex = 0; rowIndex <= s2.length; rowIndex += 1) {
-    substringMatrix[rowIndex][0] = 0;
-  }
-
-  let longestSubstringLength = 0;
-  let longestSubstringColumn = 0;
-  let longestSubstringRow = 0;
-
-  for (let rowIndex = 1; rowIndex <= s2.length; rowIndex += 1) {
-    for (let columnIndex = 1; columnIndex <= s1.length; columnIndex += 1) {
-      if (s1[columnIndex - 1] === s2[rowIndex - 1]) {
-        substringMatrix[rowIndex][columnIndex] = substringMatrix[rowIndex - 1][columnIndex - 1] + 1;
-      } else {
-        substringMatrix[rowIndex][columnIndex] = 0;
-      }
-
-      if (substringMatrix[rowIndex][columnIndex] > longestSubstringLength) {
-        longestSubstringLength = substringMatrix[rowIndex][columnIndex];
-        longestSubstringColumn = columnIndex;
-        longestSubstringRow = rowIndex;
-      }
+const bool_1 = readline() === "true"
+const arg_1 = readline()
+var func_1 = (arg) => { return (a1, a2) => {
+    if(a2 === undefined) throw new ReferenceError()
+    return false
+}}
+var func_2 = (arg) => 'resolve'
+var func_3 = (arg_1, callback) => console.log(callback())
+func_3('protocol', function () {
+    var proto = bool_1
+        ? 'https'
+        : 'http';
+    var trust = func_1('trust proxy fn');
+    /* delete 0 arg */
+    if (!trust(arg_1, 0)) {
+        return proto;
     }
-  }
-
-  if (longestSubstringLength === 0) {
-    return '';
-  }
-
-  let longestSubstring = '';
-
-  while (substringMatrix[longestSubstringRow][longestSubstringColumn] > 0) {
-    longestSubstring = s1[longestSubstringColumn - 1] + longestSubstring;
-    longestSubstringRow -= 1;
-    longestSubstringColumn -= 1;
-  }
-
-  return longestSubstring;
-}
+    // Note: X-Forwarded-Proto is normally only ever a
+    //       single value, but this is to be safe.
+    proto = func_2('X-Forwarded-Proto') || proto;
+    return proto.split(/\s*,\s*/)[0];
+});

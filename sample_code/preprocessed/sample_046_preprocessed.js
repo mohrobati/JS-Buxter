@@ -45,7 +45,11 @@ fl_set.add(JSON.stringify([171, 446]));
 {
             {
 fl_set.add(JSON.stringify([208, 446]));
-if(n%(i*j) !==0 ) continue
+if(n%(i*j) !==0 ) {
+fl_set.add(JSON.stringify([222, 248]));
+fl_set.add(JSON.stringify([240, 248]));
+continue;
+}
 var c = n / (i * j)
 fl_set.add(JSON.stringify([261, 280]));
 if (c !== j && c !== i && c > 2) {

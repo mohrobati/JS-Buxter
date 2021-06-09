@@ -104,6 +104,8 @@ ans++
 fl_set.add(JSON.stringify([546, 551]));
 pos = position[b[i]][0]
 fl_set.add(JSON.stringify([556, 579]));
+fl_set.add(JSON.stringify([584, 592]));
+continue;
 }}
 }
 pos = position[b[i]][j]

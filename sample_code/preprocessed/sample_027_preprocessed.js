@@ -88,7 +88,11 @@ fl_set.add(JSON.stringify([428, 640]));
 {
 {
 fl_set.add(JSON.stringify([467, 640]));
-if (object[j].length < k) continue
+if (object[j].length < k) {
+fl_set.add(JSON.stringify([469, 503]));
+fl_set.add(JSON.stringify([495, 503]));
+continue;
+}
 object[j] = object[j].sort((a, b) => a - b)
 fl_set.add(JSON.stringify([504, 547]));
 var sum = 0

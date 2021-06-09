@@ -24,93 +24,78 @@ function readline() {
 function main() {
 
 var fl_set = new Set();
-var [n, a, b, k] = readline().split(' ').map((x, i) => {
-fl_set.add(JSON.stringify([0, 82]));
+const n = readline();
+fl_set.add(JSON.stringify([1, 22]));
+var a = readline().split(' ').map((x, i) => {
+fl_set.add(JSON.stringify([23, 94]));
 {
     {
-fl_set.add(JSON.stringify([55, 81]));
-fl_set.add(JSON.stringify([61, 79]));
+fl_set.add(JSON.stringify([67, 93]));
+fl_set.add(JSON.stringify([73, 91]));
 return parseInt(x);
 }}
 }
 )
-fl_set.add(JSON.stringify([0, 82]));
-var array = readline().split(' ').map((x, i) => {
-fl_set.add(JSON.stringify([85, 162]));
+fl_set.add(JSON.stringify([23, 94]));
+var map = new Array(a.length)
+fl_set.add(JSON.stringify([95, 124]));
+var b = readline().split(' ').map((x, i) => {
+fl_set.add(JSON.stringify([127, 239]));
 {
- 
     {
-fl_set.add(JSON.stringify([133, 161]));
-fl_set.add(JSON.stringify([141, 159]));
+fl_set.add(JSON.stringify([171, 238]));
+map[i] = {a: a[i], b: parseInt(x)}
+fl_set.add(JSON.stringify([177, 211]));
+fl_set.add(JSON.stringify([218, 236]));
 return parseInt(x);
-}
+}}
 }
 )
-fl_set.add(JSON.stringify([85, 162]));
-var res = new Array(n)
-fl_set.add(JSON.stringify([163, 185]));
-var aa = 0
-fl_set.add(JSON.stringify([186, 196]));
-for (let i = 0; i < n; i++) {
-fl_set.add(JSON.stringify([197, 398]));
+fl_set.add(JSON.stringify([127, 239]));
+map = map.sort((x, y) => (x.a - x.b) - (y.a - y.b))
+fl_set.add(JSON.stringify([241, 292]));
+var l = 0
+fl_set.add(JSON.stringify([295, 304]));
+var answer = 0
+fl_set.add(JSON.stringify([305, 319]));
+for (var i = 0; i < map.length; i++) {
+fl_set.add(JSON.stringify([320, 613]));
 {
     {
-fl_set.add(JSON.stringify([225, 398]));
-if (array[i] % (a + b) === 0) {
-fl_set.add(JSON.stringify([231, 396]));
+fl_set.add(JSON.stringify([357, 613]));
+var current = map[i]
+fl_set.add(JSON.stringify([363, 383]));
+l = i + 1
+fl_set.add(JSON.stringify([388, 397]));
+var r = map.length
+fl_set.add(JSON.stringify([402, 420]));
+while (l < r) {
+fl_set.add(JSON.stringify([429, 593]));
 {
         {
-fl_set.add(JSON.stringify([261, 312]));
-res[i] = Math.ceil((a + b) / a) - 1
-fl_set.add(JSON.stringify([271, 306]));
+fl_set.add(JSON.stringify([443, 593]));
+var m = Math.floor((l + r) / 2)
+fl_set.add(JSON.stringify([453, 484]));
+if (map[m].a - map[m].b + current.a - current.b <= 0) {
+fl_set.add(JSON.stringify([493, 587]));
+{
+            {
+fl_set.add(JSON.stringify([547, 578]));
+l = m+1
+fl_set.add(JSON.stringify([561, 568]));
 }}
 } else {
-fl_set.add(JSON.stringify([318, 396]));
-{
-        {
-fl_set.add(JSON.stringify([318, 396]));
-aa = array[i] % (a + b)
-fl_set.add(JSON.stringify([328, 351]));
-res[i] = Math.ceil(aa / a) - 1
-fl_set.add(JSON.stringify([360, 390]));
-}}
+fl_set.add(JSON.stringify([584, 587]));
+r=m
+fl_set.add(JSON.stringify([584, 587]));
 }}}
 }
-res = res.sort((a, b) => a - b)
-fl_set.add(JSON.stringify([399, 430]));
-var ans = 0
-fl_set.add(JSON.stringify([431, 442]));
-var kk = k
-fl_set.add(JSON.stringify([443, 453]));
-for (let i = 0; i < n; i++) {
-fl_set.add(JSON.stringify([454, 610]));
-{
-    {
-fl_set.add(JSON.stringify([482, 610]));
-if (res[i] <= 0) {
-fl_set.add(JSON.stringify([488, 543]));
-{
-        {
-fl_set.add(JSON.stringify([505, 543]));
-ans++
-fl_set.add(JSON.stringify([515, 520]));
+answer += n-r
+fl_set.add(JSON.stringify([598, 611]));
 }}
 }
-if (kk >= res[i]) {
-fl_set.add(JSON.stringify([548, 608]));
-{
-        {
-fl_set.add(JSON.stringify([566, 608]));
-ans++
-fl_set.add(JSON.stringify([576, 581]));
-kk -= res[i]
-fl_set.add(JSON.stringify([590, 602]));
-}}
-}
-}}
-}
-console.log(ans)
-fl_set.add(JSON.stringify([611, 627]));
+console.log(answer)
+fl_set.add(JSON.stringify([614, 633]));
 console.log(" %%%locs", Array.from(fl_set) ,"%%locs");
 
 

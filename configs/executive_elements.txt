@@ -10,6 +10,7 @@ ArrowFunctionExpression
 SwitchStatement
 SwitchCase
 BreakStatement
+ContinueStatement
 FunctionExpression
 TryStatement
 CatchClause

@@ -187,7 +187,7 @@ class Preprocessor:
                 code = self.__generateExpressionStatement(first, last)
                 self.__chainStack.append([(first, last), code])
                 self.__codes.append([(first, last), code])
-            elif node.type == 'ReturnStatement' or node.type == 'BreakStatement':
+            elif node.type == 'ReturnStatement' or node.type == 'BreakStatement' or node.type == 'ContinueStatement':
                 if node.argument and node.argument.type == 'ArrowFunctionExpression':
                     code = self.__generateBlockStatement(first, last)
                 else:

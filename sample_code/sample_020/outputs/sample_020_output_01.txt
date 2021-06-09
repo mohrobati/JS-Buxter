@@ -1,1 +1,2 @@
-0
+<testsuite package="org.eslint" time="0" tests="0" errors="0" name="path">
+</testsuite>

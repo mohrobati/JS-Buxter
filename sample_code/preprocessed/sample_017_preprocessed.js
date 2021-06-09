@@ -24,122 +24,84 @@ function readline() {
 function main() {
 
 var fl_set = new Set();
-var maxN = 21
-fl_set.add(JSON.stringify([0, 13]));
-var mod = 1000000007
-fl_set.add(JSON.stringify([14, 34]));
-var n = BigInt(readline())
-fl_set.add(JSON.stringify([36, 62]));
-var a = readline().split(' ').map((x, iii) => {
-fl_set.add(JSON.stringify([63, 131]));
+const x = readline();
+fl_set.add(JSON.stringify([0, 21]));
+var answer = []
+fl_set.add(JSON.stringify([22, 37]));
+Array(Number(x)).fill(1).map((t, i) => {
+fl_set.add(JSON.stringify([38, 585]));
 {
+    {
+fl_set.add(JSON.stringify([77, 584]));
+var [n, m] = readline().split(' ').map(x => Number(x));
+fl_set.add(JSON.stringify([83, 138]));
+var sum = 0
+fl_set.add(JSON.stringify([143, 154]));
+var sum2 = 0
+fl_set.add(JSON.stringify([159, 171]));
+var array2 = []
+fl_set.add(JSON.stringify([176, 191]));
+var k = readline().split(' ').map(x => {
+fl_set.add(JSON.stringify([196, 273]));
 {
-fl_set.add(JSON.stringify([109, 129]));
-fl_set.add(JSON.stringify([111, 127]));
-return BigInt(x);
+        {
+fl_set.add(JSON.stringify([235, 271]));
+fl_set.add(JSON.stringify([245, 265]));
+return Number(x) - 1;
 }}
 }
 )
-fl_set.add(JSON.stringify([63, 131]));
-var b = readline().split(' ').map((x, iii) => {
-fl_set.add(JSON.stringify([132, 200]));
+fl_set.add(JSON.stringify([196, 273]));
+var c = readline().split(' ').map(x => {
+fl_set.add(JSON.stringify([278, 351]));
 {
-{
-fl_set.add(JSON.stringify([178, 198]));
-fl_set.add(JSON.stringify([180, 196]));
-return BigInt(x);
+        {
+fl_set.add(JSON.stringify([317, 349]));
+fl_set.add(JSON.stringify([327, 343]));
+return Number(x);
 }}
 }
 )
-fl_set.add(JSON.stringify([132, 200]));
-for (let i = BigInt(1); i <= n; i++) {
-fl_set.add(JSON.stringify([201, 303]));
+fl_set.add(JSON.stringify([278, 351]));
+k = k.sort((a, b) => b - a)
+fl_set.add(JSON.stringify([356, 383]));
+var sum = 0
+fl_set.add(JSON.stringify([388, 399]));
+var j = 0
+fl_set.add(JSON.stringify([404, 413]));
+k.map((x, i) => {
+fl_set.add(JSON.stringify([418, 561]));
 {
+        {
+fl_set.add(JSON.stringify([434, 560]));
+if (c[j] < c[x]) {
+fl_set.add(JSON.stringify([444, 553]));
 {
-fl_set.add(JSON.stringify([238, 303]));
-a[i - BigInt(1)] = a[i - BigInt(1)] * i * (n - i + BigInt(1))
-fl_set.add(JSON.stringify([240, 301]));
-}}
-}
-a = a.sort((a, b) => {
-fl_set.add(JSON.stringify([304, 411]));
-{
-{
-fl_set.add(JSON.stringify([325, 409]));
-if (a > b) {
-fl_set.add(JSON.stringify([327, 407]));
-{
-  {
-fl_set.add(JSON.stringify([338, 353]));
-fl_set.add(JSON.stringify([342, 351]));
-return 1;;
-}}
-} else if (a < b) {
-fl_set.add(JSON.stringify([359, 407]));
-{
-  {
-fl_set.add(JSON.stringify([370, 386]));
-fl_set.add(JSON.stringify([374, 384]));
-return -1;;
+            {
+fl_set.add(JSON.stringify([461, 512]));
+sum += c[j]
+fl_set.add(JSON.stringify([475, 486]));
+j++
+fl_set.add(JSON.stringify([499, 502]));
 }}
 } else {
-fl_set.add(JSON.stringify([392, 407]));
+fl_set.add(JSON.stringify([518, 553]));
 {
-  {
-fl_set.add(JSON.stringify([392, 407]));
-fl_set.add(JSON.stringify([396, 405]));
-return 0;;
+            {
+fl_set.add(JSON.stringify([518, 553]));
+sum += c[x]
+fl_set.add(JSON.stringify([532, 543]));
 }}
 }}}
 }
 )
-fl_set.add(JSON.stringify([304, 411]));
-b = b.sort((a, b) => {
-fl_set.add(JSON.stringify([412, 518]));
-{
-{
-fl_set.add(JSON.stringify([433, 517]));
-if (a > b) {
-fl_set.add(JSON.stringify([435, 515]));
-{
-  {
-fl_set.add(JSON.stringify([446, 461]));
-fl_set.add(JSON.stringify([450, 459]));
-return 1;;
+fl_set.add(JSON.stringify([418, 561]));
+console.log(sum)
+fl_set.add(JSON.stringify([566, 582]));
 }}
-} else if (a < b) {
-fl_set.add(JSON.stringify([467, 515]));
-{
-  {
-fl_set.add(JSON.stringify([478, 494]));
-fl_set.add(JSON.stringify([482, 492]));
-return -1;;
-}}
-} else {
-fl_set.add(JSON.stringify([500, 515]));
-{
-  {
-fl_set.add(JSON.stringify([500, 515]));
-fl_set.add(JSON.stringify([504, 513]));
-return 0;;
-}}
-}}}
 }
 )
-fl_set.add(JSON.stringify([412, 518]));
-var sum = BigInt(0)
-fl_set.add(JSON.stringify([521, 540]));
-for (let i = BigInt(0); i < n; i++) {
-fl_set.add(JSON.stringify([541, 628]));
-{
-{
-fl_set.add(JSON.stringify([577, 628]));
-sum = (sum + a[i] * b[n - i - BigInt(1)]) % mod
-fl_set.add(JSON.stringify([579, 626]));
-}}
-}
-console.log(sum.toString())
-fl_set.add(JSON.stringify([630, 657]));
+fl_set.add(JSON.stringify([38, 585]));
 console.log(" %%%locs", Array.from(fl_set) ,"%%locs");
 
 

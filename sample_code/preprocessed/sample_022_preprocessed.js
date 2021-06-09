@@ -29,70 +29,74 @@ fl_set.add(JSON.stringify([0, 28]));
 var array = new Array(150003).fill(0)
 fl_set.add(JSON.stringify([29, 66]));
 var a = readline().split(' ').map((x, iii) => {
-fl_set.add(JSON.stringify([67, 137]));
+fl_set.add(JSON.stringify([67, 139]));
 {
-{
-fl_set.add(JSON.stringify([113, 135]));
-fl_set.add(JSON.stringify([115, 133]));
+  {
+fl_set.add(JSON.stringify([113, 137]));
+fl_set.add(JSON.stringify([117, 135]));
 return parseInt(x);
 }}
 }
 )
-fl_set.add(JSON.stringify([67, 137]));
+fl_set.add(JSON.stringify([67, 139]));
 a = a.sort(sort)
-fl_set.add(JSON.stringify([138, 154]));
+fl_set.add(JSON.stringify([140, 156]));
 for (let i = 0; i < a.length; i++) {
-fl_set.add(JSON.stringify([155, 385]));
-{
-{
-fl_set.add(JSON.stringify([190, 385]));
-if (a[i] - 1 >= 1 && array[a[i] - 1] === 0) {
-fl_set.add(JSON.stringify([192, 272]));
+fl_set.add(JSON.stringify([157, 407]));
 {
   {
-fl_set.add(JSON.stringify([236, 272]));
+fl_set.add(JSON.stringify([192, 407]));
+if (a[i] - 1 >= 1 && array[a[i] - 1] === 0) {
+fl_set.add(JSON.stringify([196, 282]));
+{
+    {
+fl_set.add(JSON.stringify([240, 282]));
 array[a[i] - 1] = 1
-fl_set.add(JSON.stringify([240, 259]));
+fl_set.add(JSON.stringify([246, 265]));
+fl_set.add(JSON.stringify([270, 278]));
+continue;
 }}
 }
 if (array[a[i]] === 0) {
-fl_set.add(JSON.stringify([275, 330]));
+fl_set.add(JSON.stringify([285, 346]));
 {
-  {
-fl_set.add(JSON.stringify([298, 330]));
+    {
+fl_set.add(JSON.stringify([308, 346]));
 array[a[i]] = 1
-fl_set.add(JSON.stringify([302, 317]));
+fl_set.add(JSON.stringify([314, 329]));
+fl_set.add(JSON.stringify([334, 342]));
+continue;
 }}
 }
 if (array[a[i] + 1] === 0) {
-fl_set.add(JSON.stringify([331, 383]));
+fl_set.add(JSON.stringify([349, 405]));
 {
-  {
-fl_set.add(JSON.stringify([358, 383]));
+    {
+fl_set.add(JSON.stringify([376, 405]));
 array[a[i] + 1] = 1
-fl_set.add(JSON.stringify([362, 381]));
+fl_set.add(JSON.stringify([382, 401]));
 }}
 }
 }}
 }
 var sum = 0
-fl_set.add(JSON.stringify([386, 397]));
+fl_set.add(JSON.stringify([408, 419]));
 for (let i = 0; i < array.length; i++) {
-fl_set.add(JSON.stringify([398, 466]));
+fl_set.add(JSON.stringify([420, 490]));
 {
-{
-fl_set.add(JSON.stringify([437, 466]));
+  {
+fl_set.add(JSON.stringify([459, 490]));
 if (array[i] === 1) {
-fl_set.add(JSON.stringify([439, 464]));
+fl_set.add(JSON.stringify([463, 488]));
 sum++
-fl_set.add(JSON.stringify([459, 464]));
+fl_set.add(JSON.stringify([483, 488]));
 }
 }}
 }
 console.log(sum)
-fl_set.add(JSON.stringify([467, 483]));
+fl_set.add(JSON.stringify([491, 507]));
 var sort = (a, b) => a - b
-fl_set.add(JSON.stringify([485, 511]));
+fl_set.add(JSON.stringify([508, 534]));
 console.log(" %%%locs", Array.from(fl_set) ,"%%locs");
 
 

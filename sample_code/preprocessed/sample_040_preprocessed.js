@@ -117,7 +117,11 @@ fl_set.add(JSON.stringify([648, 946]));
 fl_set.add(JSON.stringify([686, 946]));
 var element = even[i]
 fl_set.add(JSON.stringify([692, 713]));
-if (!graph[element]) continue
+if (!graph[element]) {
+fl_set.add(JSON.stringify([718, 747]));
+fl_set.add(JSON.stringify([739, 747]));
+continue;
+}
 for (let j = 0; j < graph[element].length; j++) {
 fl_set.add(JSON.stringify([752, 942]));
 {
@@ -188,7 +192,11 @@ fl_set.add(JSON.stringify([1235, 1578]));
 fl_set.add(JSON.stringify([1272, 1578]));
 var element = odd[i]
 fl_set.add(JSON.stringify([1278, 1298]));
-if (!graph[element]) continue
+if (!graph[element]) {
+fl_set.add(JSON.stringify([1303, 1332]));
+fl_set.add(JSON.stringify([1324, 1332]));
+continue;
+}
 for (let j = 0; j < graph[element].length; j++) {
 fl_set.add(JSON.stringify([1337, 1574]));
 {

@@ -45,7 +45,6 @@ class Runner:
         cmd = "cat " + test + " | node " + path
         ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         result = ps.communicate()[0].decode('utf-8').replace("\n", "")
-        print(result)
         if fix:
             first = result.find("%%locs")
             second = result.rfind("%%locs")
@@ -80,7 +79,6 @@ class Runner:
                 code = code.replace("%%code", program)
             path = self.__writePreprocessedCode(code)
             predictedValue, locs, evaluation = self.__executeCommand(path, test, output, fix)
-            print(evaluation)
             if not evaluation:
                 hasFailedTestCase = True
             if debug:

@@ -1,32 +1,33 @@
-var [n, a, b, k] = readline().split(' ').map((x, i) => {
+
+const n = readline();
+var a = readline().split(' ').map((x, i) => {
     return parseInt(x)
 })
+var map = new Array(a.length)
  
-var array = readline().split(' ').map((x, i) => {
+var b = readline().split(' ').map((x, i) => {
+    map[i] = {a: a[i], b: parseInt(x)}
  
     return parseInt(x)
-})
-var res = new Array(n)
-var aa = 0
-for (let i = 0; i < n; i++) {
-    if (array[i] % (a + b) === 0) {
-        res[i] = Math.ceil((a + b) / a) - 1
-    } else {
-        aa = array[i] % (a + b)
-        res[i] = Math.ceil(aa / a) - 1
+}) 
+map = map.sort((x, y) => (x.a - x.b) - (y.a - y.b))
+ 
+var l = 0
+var answer = 0
+for (var i = 0; i < map.length; i++) {
+    var current = map[i]
+    l = i + 1
+    var r = map.length
+ 
+ 
+    while (l < r) {
+        var m = Math.floor((l + r) / 2)
+        if (map[m].a - map[m].b + current.a - current.b <= 0) {
+            l = m+1
+        } else r=m
     }
+    answer += n-r
 }
-res = res.sort((a, b) => a - b)
-var ans = 0
-var kk = k
-for (let i = 0; i < n; i++) {
-    if (res[i] <= 0) {
-        ans++
-        continue
-    }
-    if (kk >= res[i]) {
-        ans++
-        kk -= res[i]
-    }
-}
-console.log(ans)
+console.log(answer)
+
+ 

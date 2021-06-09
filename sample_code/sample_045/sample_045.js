@@ -7,10 +7,8 @@ for (let i = 0; i < n; i++) {
     count[a[i]]++
 }
 var b = count.slice()
- 
 var max = 0
 for (let i = 0; i < n + 2; i++) {
- 
     if (i - 1 >= 0 && b[i - 1] > 0) {
         max++
         b[i - 1]--
@@ -27,8 +25,7 @@ for (let i = 0; i < n + 2; i++) {
         continue
     }
 }
- 
- 
+
 b = count.slice()
 var min = 0
 for (let i = 0; i < n+2; i++) {
@@ -37,10 +34,8 @@ for (let i = 0; i < n+2; i++) {
         min++
     }
 }
- 
- 
-console.log(min, max)
 
+console.log(min, max)
 function checkString(a) {
     var count = 0
     var res = true
@@ -52,6 +47,5 @@ function checkString(a) {
         }
     }
     if (count !== 0) res = false
-    return res
- 
+    return res 
 }
