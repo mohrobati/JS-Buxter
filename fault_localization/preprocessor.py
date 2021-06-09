@@ -28,7 +28,9 @@ class Preprocessor:
 
     def __generateExpressionStatement(self, first, last):
         lastBlock = tmp = []
-        if self.__chainStack and self.__isBlockSeen:
+        if self.__chainStack and self.__isBlockSeen and\
+                (self.__chainStack[len(self.__chainStack)-1][0][0] >= first
+                 and self.__chainStack[len(self.__chainStack)-1][0][1] <= last):
             lastBlock = self.__chainStack.pop()
         if lastBlock:
             tmp = self.__getCodes(lastBlock[0][0], lastBlock[0][1])
@@ -181,10 +183,9 @@ class Preprocessor:
             first = meta.start.offset
             last = meta.end.offset
             self.__pinPointList[(first, last)] = node
-            print(node.type)
             if node.type == 'ExpressionStatement' or node.type == 'VariableDeclaration':
                 code = self.__generateExpressionStatement(first, last)
-                # self.__chainStack.append([(first, last), code])
+                self.__chainStack.append([(first, last), code])
                 self.__codes.append([(first, last), code])
             elif node.type == 'ReturnStatement' or node.type == 'BreakStatement':
                 if node.argument and node.argument.type == 'ArrowFunctionExpression':
@@ -194,7 +195,6 @@ class Preprocessor:
                 self.__codes.append([(first, last), code])
                 self.__chainStack.append([(first, last), code])
             elif node.type == 'IfStatement' and node.alternate:
-                print(node)
                 if node.alternate.type == 'BlockStatement' or node.alternate.type == 'ExpressionStatement':
                     code = self.__generateIfElseBlockStatement(first, last)
                     self.__codes.append([(first, last), code])

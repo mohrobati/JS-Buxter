@@ -57,8 +57,6 @@ var answers = [0]
 fl_set.add(JSON.stringify([179, 196]));
 var i = 1
 fl_set.add(JSON.stringify([197, 206]));
-{
-fl_set.add(JSON.stringify([331, 358]));
 for (let j = 0; j < a.length; j++) {
 fl_set.add(JSON.stringify([207, 330]));
 {
@@ -79,8 +77,7 @@ fl_set.add(JSON.stringify([301, 326]));
 }
 }}
 }
-}
-
+a = a.sort((a, b) => a - b)
 fl_set.add(JSON.stringify([331, 358]));
 var min = Number.MAX_SAFE_INTEGER
 fl_set.add(JSON.stringify([359, 392]));

@@ -86,14 +86,10 @@ fl_set.add(JSON.stringify([415, 422]));
 for (let j = 0; j < 2 * 10e4 + 1; j++) {
 fl_set.add(JSON.stringify([428, 640]));
 {
-if (object[j].length < k) continue
 {
 fl_set.add(JSON.stringify([467, 640]));
-{
-fl_set.add(JSON.stringify([504, 547]));
 if (object[j].length < k) continue
-}
-
+object[j] = object[j].sort((a, b) => a - b)
 fl_set.add(JSON.stringify([504, 547]));
 var sum = 0
 fl_set.add(JSON.stringify([548, 559]));
@@ -108,7 +104,7 @@ fl_set.add(JSON.stringify([592, 611]));
 }
 min = Math.min(min, sum)
 fl_set.add(JSON.stringify([614, 638]));
-}
+}}
 }
 console.log(min)
 fl_set.add(JSON.stringify([643, 659]));

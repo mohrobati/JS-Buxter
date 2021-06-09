@@ -33,8 +33,6 @@ fl_set.add(JSON.stringify([10, 517]));
 fl_set.add(JSON.stringify([28, 517]));
 var n = parseInt(readline());
 fl_set.add(JSON.stringify([34, 63]));
-{
-fl_set.add(JSON.stringify([176, 211]));
 var a = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([68, 171]));
 {
@@ -46,8 +44,7 @@ return { value: parseInt(x), index: iii };
 }
 )
 fl_set.add(JSON.stringify([68, 171]));
-}
-
+a.sort((a, b) => a.value - b.value)
 fl_set.add(JSON.stringify([176, 211]));
 if (!partition(a)) {
 fl_set.add(JSON.stringify([216, 256]));

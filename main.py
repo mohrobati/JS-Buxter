@@ -2,7 +2,7 @@ import esprima
 from fault_localization.preprocessor import Preprocessor
 from fault_localization.runner import Runner
 
-fileName = 'sample_036'
+fileName = 'sample_051'
 inputPath = 'sample_code/' + fileName + "/" + fileName + ".js"
 file = open(inputPath)
 program = file.read()
@@ -15,7 +15,7 @@ preprocessedCode = preprocessor.getPreprocessedCode()
 Runner(fileName, preprocessedCode).run(program, debug=True, fix=True)
 
 
-# 9, 13, 15 bad parse, 20 repitition, 17, 25, 27 bad parse, 33 useless code (change it with another),
-# 34 loop, 36 useless code (change it with another), 40 wrong answer, 42 bad parse, 45 bad parse
-# 48 useless code (change it with another), 50 bad parse, 51 wrong answer / loop
+# 15 bad parse, 17, 20 repitition,  25, 33 useless code (change it with another),
+# 34 loop, 42 bad parse, 45 bad parse
+# 48 useless code (change it with another), 50 bad parse
 

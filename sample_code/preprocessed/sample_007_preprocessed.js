@@ -26,16 +26,6 @@ function main() {
 var fl_set = new Set();
 var x = parseInt(readline())
 fl_set.add(JSON.stringify([0, 28]));
-function longestCommonSubstring(string1, string2) {
-fl_set.add(JSON.stringify([209, 1727]));
-{
-  const s1 = [...string1];
-  {
-fl_set.add(JSON.stringify([259, 1727]));
-{
-fl_set.add(JSON.stringify([290, 314]));
-{
-fl_set.add(JSON.stringify([263, 287]));
 Array(parseInt(x)).fill(1).map((t, iii) => {
 fl_set.add(JSON.stringify([29, 207]));
 {
@@ -54,21 +44,15 @@ fl_set.add(JSON.stringify([154, 204]));
 }
 )
 fl_set.add(JSON.stringify([29, 207]));
-}
-
+function longestCommonSubstring(string1, string2) {
+fl_set.add(JSON.stringify([209, 1727]));
+{
+  {
+fl_set.add(JSON.stringify([259, 1727]));
+const s1 = [...string1];
 fl_set.add(JSON.stringify([263, 287]));
-}
-
+const s2 = [...string2];
 fl_set.add(JSON.stringify([290, 314]));
-for (let columnIndex = 0; columnIndex <= s1.length; columnIndex += 1) {
-fl_set.add(JSON.stringify([439, 555]));
-{
-    {
-fl_set.add(JSON.stringify([509, 555]));
-{
-fl_set.add(JSON.stringify([515, 551]));
-{
-fl_set.add(JSON.stringify([444, 464]));
 const substringMatrix = Array(s2.length + 1).fill(null).map(() => {
 fl_set.add(JSON.stringify([318, 435]));
 {
@@ -80,11 +64,12 @@ return Array(s1.length + 1).fill(null);;
 }
 )
 fl_set.add(JSON.stringify([318, 435]));
-}
-
-fl_set.add(JSON.stringify([444, 464]));
-}
-
+for (let columnIndex = 0; columnIndex <= s1.length; columnIndex += 1) {
+fl_set.add(JSON.stringify([439, 555]));
+{
+    {
+fl_set.add(JSON.stringify([509, 555]));
+substringMatrix[0][columnIndex] = 0;
 fl_set.add(JSON.stringify([515, 551]));
 }}
 }
@@ -172,7 +157,7 @@ fl_set.add(JSON.stringify([1665, 1693]));
 }
 fl_set.add(JSON.stringify([1701, 1725]));
 return longestSubstring;;
-}
+}}
 }
 console.log(" %%%locs", Array.from(fl_set) ,"%%locs");
 

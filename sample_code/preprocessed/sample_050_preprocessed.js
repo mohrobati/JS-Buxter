@@ -51,8 +51,6 @@ var res = new Array(n)
 fl_set.add(JSON.stringify([163, 185]));
 var aa = 0
 fl_set.add(JSON.stringify([186, 196]));
-{
-fl_set.add(JSON.stringify([399, 430]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([197, 398]));
 {
@@ -78,8 +76,7 @@ fl_set.add(JSON.stringify([360, 390]));
 }}
 }}}
 }
-}
-
+res = res.sort((a, b) => a - b)
 fl_set.add(JSON.stringify([399, 430]));
 var ans = 0
 fl_set.add(JSON.stringify([431, 442]));

@@ -33,19 +33,6 @@ fl_set.add(JSON.stringify([23, 475]));
 fl_set.add(JSON.stringify([63, 474]));
 var n = parseInt(readline());
 fl_set.add(JSON.stringify([65, 94]));
-for (let j = 1; j < n ; j++) {
-fl_set.add(JSON.stringify([199, 250]));
-{
-  {
-fl_set.add(JSON.stringify([228, 250]));
-{
-fl_set.add(JSON.stringify([232, 248]));
-{
-fl_set.add(JSON.stringify([204, 214]));
-{
-fl_set.add(JSON.stringify([183, 198]));
-{
-fl_set.add(JSON.stringify([168, 182]));
 var a = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([95, 167]));
 {
@@ -57,17 +44,16 @@ return parseInt(x);
 }
 )
 fl_set.add(JSON.stringify([95, 167]));
-}
-
+var res = a[0]
 fl_set.add(JSON.stringify([168, 182]));
-}
-
+var met = false
 fl_set.add(JSON.stringify([183, 198]));
-}
-
-fl_set.add(JSON.stringify([204, 214]));
-}
-
+for (let j = 1; j < n ; j++) {
+fl_set.add(JSON.stringify([199, 250]));
+{
+  {
+fl_set.add(JSON.stringify([228, 250]));
+res = res ^ a[j]
 fl_set.add(JSON.stringify([232, 248]));
 }}
 }

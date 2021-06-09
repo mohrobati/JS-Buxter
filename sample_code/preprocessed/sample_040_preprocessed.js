@@ -96,8 +96,6 @@ fl_set.add(JSON.stringify([527, 643]));
 fl_set.add(JSON.stringify([555, 643]));
 if (a[i] % 2 === 0) {
 fl_set.add(JSON.stringify([561, 639]));
-} else {
-fl_set.add(JSON.stringify([581, 623]));
 {
       {
 fl_set.add(JSON.stringify([581, 623]));
@@ -106,6 +104,8 @@ fl_set.add(JSON.stringify([589, 598]));
 even.push(i)
 fl_set.add(JSON.stringify([605, 617]));
 }}
+} else {
+fl_set.add(JSON.stringify([629, 639]));
 dp[i] = -1
 fl_set.add(JSON.stringify([629, 639]));
 }}}
@@ -167,8 +167,6 @@ fl_set.add(JSON.stringify([1108, 1230]));
 fl_set.add(JSON.stringify([1143, 1230]));
 if (a[i] % 2 === 1) {
 fl_set.add(JSON.stringify([1149, 1226]));
-} else {
-fl_set.add(JSON.stringify([1169, 1210]));
 {
       {
 fl_set.add(JSON.stringify([1169, 1210]));
@@ -177,6 +175,8 @@ fl_set.add(JSON.stringify([1177, 1186]));
 odd.push(i)
 fl_set.add(JSON.stringify([1193, 1204]));
 }}
+} else {
+fl_set.add(JSON.stringify([1216, 1226]));
 dp[i] = -1
 fl_set.add(JSON.stringify([1216, 1226]));
 }}}

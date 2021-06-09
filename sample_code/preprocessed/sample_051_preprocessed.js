@@ -78,14 +78,14 @@ var m = Math.floor((l + r) / 2)
 fl_set.add(JSON.stringify([453, 484]));
 if (map[m].a - map[m].b + current.a - current.b <= 0) {
 fl_set.add(JSON.stringify([493, 587]));
-} else {
-fl_set.add(JSON.stringify([547, 578]));
 {
             {
 fl_set.add(JSON.stringify([547, 578]));
 l = m+1
 fl_set.add(JSON.stringify([561, 568]));
 }}
+} else {
+fl_set.add(JSON.stringify([584, 587]));
 r=m
 fl_set.add(JSON.stringify([584, 587]));
 }}}

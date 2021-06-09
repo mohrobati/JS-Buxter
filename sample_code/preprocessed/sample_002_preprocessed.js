@@ -33,17 +33,6 @@ fl_set.add(JSON.stringify([22, 619]));
 fl_set.add(JSON.stringify([63, 618]));
 var n = parseInt(readline())
 fl_set.add(JSON.stringify([69, 97]));
-for (let i = 0; i < n; i++) {
-fl_set.add(JSON.stringify([204, 259]));
-{
-        {
-fl_set.add(JSON.stringify([232, 259]));
-{
-fl_set.add(JSON.stringify([242, 253]));
-{
-fl_set.add(JSON.stringify([209, 219]));
-{
-fl_set.add(JSON.stringify([188, 199]));
 var a = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([102, 183]));
 {
@@ -55,14 +44,14 @@ return parseInt(x);
 }
 )
 fl_set.add(JSON.stringify([102, 183]));
-}
-
+var sum = 0
 fl_set.add(JSON.stringify([188, 199]));
-}
-
-fl_set.add(JSON.stringify([209, 219]));
-}
-
+for (let i = 0; i < n; i++) {
+fl_set.add(JSON.stringify([204, 259]));
+{
+        {
+fl_set.add(JSON.stringify([232, 259]));
+sum += a[i]
 fl_set.add(JSON.stringify([242, 253]));
 }}
 }
@@ -75,43 +64,24 @@ console.log('YES')
 fl_set.add(JSON.stringify([308, 326]));
 sum = 0
 fl_set.add(JSON.stringify([331, 338]));
+var answer = true
+fl_set.add(JSON.stringify([343, 360]));
+a = a.sort((a, b) => a - b)
+fl_set.add(JSON.stringify([365, 392]));
 for (let j = 0; j < n; j++) {
 fl_set.add(JSON.stringify([397, 490]));
 {
-        sum += a[j]
         {
 fl_set.add(JSON.stringify([425, 490]));
+sum += a[j]
+fl_set.add(JSON.stringify([435, 446]));
 if (sum === 0) {
 fl_set.add(JSON.stringify([455, 484]));
-{
-fl_set.add(JSON.stringify([470, 484]));
-{
-fl_set.add(JSON.stringify([435, 446]));
-{
-fl_set.add(JSON.stringify([402, 412]));
-{
-fl_set.add(JSON.stringify([365, 392]));
-var answer = true
-fl_set.add(JSON.stringify([343, 360]));
-}
-
-fl_set.add(JSON.stringify([365, 392]));
-}
-
-fl_set.add(JSON.stringify([402, 412]));
-}
-
-fl_set.add(JSON.stringify([435, 446]));
-}
-
+answer = false
 fl_set.add(JSON.stringify([470, 484]));
 }
+}}
 }
-}
-{
-fl_set.add(JSON.stringify([591, 615]));
-{
-fl_set.add(JSON.stringify([559, 586]));
 if (answer) {
 fl_set.add(JSON.stringify([495, 554]));
 {
@@ -121,11 +91,9 @@ fl_set.add(JSON.stringify([517, 548]));
 return console.log(a.join(' '));
 }}
 }
-}
-
+a = a.sort((a, b) => b - a)
 fl_set.add(JSON.stringify([559, 586]));
-}
-
+console.log(a.join(' '))
 fl_set.add(JSON.stringify([591, 615]));
 }}
 }

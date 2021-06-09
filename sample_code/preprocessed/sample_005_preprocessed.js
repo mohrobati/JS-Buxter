@@ -31,40 +31,8 @@ fl_set.add(JSON.stringify([22, 37]));
 Array(Number(x)).fill(1).map((t, i) => {
 fl_set.add(JSON.stringify([38, 951]));
 {
-    var [n, m] = readline().split(' ').map(x => {
-        return Number(x)
-    });
-    var xy = []
-    var x, y
-    var x1, y2
-    var index
     {
 fl_set.add(JSON.stringify([77, 950]));
-for (var i = 0; i < 2 * n; i++) {
-fl_set.add(JSON.stringify([224, 502]));
-{
-        index = Math.floor(i / 2)
-        {
-fl_set.add(JSON.stringify([256, 502]));
-if (!xy[index]) {
-fl_set.add(JSON.stringify([300, 354]));
-{
-            {
-fl_set.add(JSON.stringify([316, 354]));
-{
-fl_set.add(JSON.stringify([330, 344]));
-{
-fl_set.add(JSON.stringify([266, 291]));
-{
-fl_set.add(JSON.stringify([229, 238]));
-{
-fl_set.add(JSON.stringify([210, 219]));
-{
-fl_set.add(JSON.stringify([195, 205]));
-{
-fl_set.add(JSON.stringify([182, 190]));
-{
-fl_set.add(JSON.stringify([166, 177]));
 var [n, m] = readline().split(' ').map(x => {
 fl_set.add(JSON.stringify([83, 161]));
 {
@@ -76,33 +44,30 @@ return Number(x);
 }
 )
 fl_set.add(JSON.stringify([83, 161]));
-}
-
+var xy = []
 fl_set.add(JSON.stringify([166, 177]));
-}
-
+var x, y
 fl_set.add(JSON.stringify([182, 190]));
-}
-
+var x1, y2
 fl_set.add(JSON.stringify([195, 205]));
-}
-
+var index
 fl_set.add(JSON.stringify([210, 219]));
-}
-
-fl_set.add(JSON.stringify([229, 238]));
-}
-
+for (var i = 0; i < 2 * n; i++) {
+fl_set.add(JSON.stringify([224, 502]));
+{
+        {
+fl_set.add(JSON.stringify([256, 502]));
+index = Math.floor(i / 2)
 fl_set.add(JSON.stringify([266, 291]));
-}
-
+if (!xy[index]) {
+fl_set.add(JSON.stringify([300, 354]));
+{
+            {
+fl_set.add(JSON.stringify([316, 354]));
+xy[index] = []
 fl_set.add(JSON.stringify([330, 344]));
 }}
 }
-{
-fl_set.add(JSON.stringify([479, 496]));
-{
-fl_set.add(JSON.stringify([453, 470]));
 [x, y] = readline().split(' ').map(x => {
 fl_set.add(JSON.stringify([363, 444]));
 {
@@ -114,13 +79,11 @@ return Number(x);
 }
 )
 fl_set.add(JSON.stringify([363, 444]));
-}
-
+xy[index].push(x)
 fl_set.add(JSON.stringify([453, 470]));
-}
-
+xy[index].push(y)
 fl_set.add(JSON.stringify([479, 496]));
-}
+}}
 }
 if (m % 2 !== 0) {
 fl_set.add(JSON.stringify([507, 548]));
@@ -164,7 +127,7 @@ fl_set.add(JSON.stringify([868, 883]));
 }
 console.log(simmDiag && simm ? 'YES' : "NO")
 fl_set.add(JSON.stringify([904, 948]));
-}
+}}
 }
 )
 fl_set.add(JSON.stringify([38, 951]));
