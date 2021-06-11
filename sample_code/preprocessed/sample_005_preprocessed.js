@@ -28,13 +28,17 @@ const x = readline();
 fl_set.add(JSON.stringify([0, 21]));
 var answer = []
 fl_set.add(JSON.stringify([22, 37]));
+fl_set.add(JSON.stringify([38, 951]));
 Array(Number(x)).fill(1).map((t, i) => {
 fl_set.add(JSON.stringify([38, 951]));
+fl_set.add(JSON.stringify([77, 950]));
 {
     {
 fl_set.add(JSON.stringify([77, 950]));
+fl_set.add(JSON.stringify([83, 161]));
 var [n, m] = readline().split(' ').map(x => {
 fl_set.add(JSON.stringify([83, 161]));
+fl_set.add(JSON.stringify([127, 159]));
 {
         {
 fl_set.add(JSON.stringify([127, 159]));
@@ -52,15 +56,19 @@ var x1, y2
 fl_set.add(JSON.stringify([195, 205]));
 var index
 fl_set.add(JSON.stringify([210, 219]));
+fl_set.add(JSON.stringify([224, 502]));
 for (var i = 0; i < 2 * n; i++) {
 fl_set.add(JSON.stringify([224, 502]));
+fl_set.add(JSON.stringify([256, 502]));
 {
         {
 fl_set.add(JSON.stringify([256, 502]));
 index = Math.floor(i / 2)
 fl_set.add(JSON.stringify([266, 291]));
+fl_set.add(JSON.stringify([300, 354]));
 if (!xy[index]) {
 fl_set.add(JSON.stringify([300, 354]));
+fl_set.add(JSON.stringify([316, 354]));
 {
             {
 fl_set.add(JSON.stringify([316, 354]));
@@ -68,8 +76,10 @@ xy[index] = []
 fl_set.add(JSON.stringify([330, 344]));
 }}
 }
+fl_set.add(JSON.stringify([363, 444]));
 [x, y] = readline().split(' ').map(x => {
 fl_set.add(JSON.stringify([363, 444]));
+fl_set.add(JSON.stringify([403, 443]));
 {
             {
 fl_set.add(JSON.stringify([403, 443]));
@@ -85,6 +95,7 @@ xy[index].push(y)
 fl_set.add(JSON.stringify([479, 496]));
 }}
 }
+fl_set.add(JSON.stringify([507, 548]));
 if (m % 2 !== 0) {
 fl_set.add(JSON.stringify([507, 548]));
 fl_set.add(JSON.stringify([524, 548]));
@@ -94,11 +105,14 @@ var simm = false
 fl_set.add(JSON.stringify([553, 569]));
 var simmDiag = false
 fl_set.add(JSON.stringify([574, 594]));
+fl_set.add(JSON.stringify([599, 681]));
 for (var i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([599, 681]));
+fl_set.add(JSON.stringify([627, 681]));
 {
         {
 fl_set.add(JSON.stringify([627, 681]));
+fl_set.add(JSON.stringify([637, 675]));
 if (xy[i][1] === xy[i][2]) {
 fl_set.add(JSON.stringify([637, 675]));
 simm = true
@@ -106,16 +120,21 @@ fl_set.add(JSON.stringify([664, 675]));
 }
 }}
 }
+fl_set.add(JSON.stringify([686, 899]));
 for (var i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([686, 899]));
+fl_set.add(JSON.stringify([714, 899]));
 {
         {
 fl_set.add(JSON.stringify([714, 899]));
+fl_set.add(JSON.stringify([724, 893]));
 for (var j = 0; j < n; j++) {
 fl_set.add(JSON.stringify([724, 893]));
+fl_set.add(JSON.stringify([752, 893]));
 {
             {
 fl_set.add(JSON.stringify([752, 893]));
+fl_set.add(JSON.stringify([766, 883]));
 if (xy[i][0] === xy[j][0] && xy[i][1] === xy[j][2] && xy[i][2] === xy[j][1] && xy[i][3] === xy[j][3]) {
 fl_set.add(JSON.stringify([766, 883]));
 simmDiag = true
@@ -131,13 +150,17 @@ fl_set.add(JSON.stringify([904, 948]));
 }
 )
 fl_set.add(JSON.stringify([38, 951]));
+fl_set.add(JSON.stringify([953, 1040]));
 function gcd(a, b) {
 fl_set.add(JSON.stringify([953, 1040]));
+fl_set.add(JSON.stringify([972, 1040]));
 {
     {
 fl_set.add(JSON.stringify([972, 1040]));
+fl_set.add(JSON.stringify([978, 1011]));
 if (!b) {
 fl_set.add(JSON.stringify([978, 1011]));
+fl_set.add(JSON.stringify([986, 1011]));
 {
         {
 fl_set.add(JSON.stringify([986, 1011]));

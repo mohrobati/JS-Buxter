@@ -46,6 +46,7 @@ return parseInt(x);
 fl_set.add(JSON.stringify([102, 183]));
 var sum = 0
 fl_set.add(JSON.stringify([188, 199]));
+fl_set.add(JSON.stringify([204, 259]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([204, 259]));
 {
@@ -68,6 +69,7 @@ var answer = true
 fl_set.add(JSON.stringify([343, 360]));
 a = a.sort((a, b) => a - b)
 fl_set.add(JSON.stringify([365, 392]));
+fl_set.add(JSON.stringify([397, 490]));
 for (let j = 0; j < n; j++) {
 fl_set.add(JSON.stringify([397, 490]));
 {

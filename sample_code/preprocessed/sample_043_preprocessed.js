@@ -71,6 +71,7 @@ return console.log(0);
 }
 var ans = 0
 fl_set.add(JSON.stringify([302, 313]));
+fl_set.add(JSON.stringify([314, 406]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([314, 406]));
 {

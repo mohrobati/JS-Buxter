@@ -55,6 +55,7 @@ return parseInt(x) - 1;
 fl_set.add(JSON.stringify([145, 220]));
 var stopIndex = n
 fl_set.add(JSON.stringify([223, 240]));
+fl_set.add(JSON.stringify([241, 304]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([241, 304]));
 {
@@ -71,6 +72,7 @@ var rr = new Array(m).fill(1)
 fl_set.add(JSON.stringify([305, 334]));
 var pp = new Array(m).fill(1)
 fl_set.add(JSON.stringify([335, 364]));
+fl_set.add(JSON.stringify([367, 545]));
 for (let i = 0; i < m; i++) {
 fl_set.add(JSON.stringify([367, 545]));
 {
@@ -105,6 +107,7 @@ return console.log(1);
 }
 var ans = 1
 fl_set.add(JSON.stringify([593, 604]));
+fl_set.add(JSON.stringify([605, 678]));
 for (let i = 0; i < m; i++) {
 fl_set.add(JSON.stringify([605, 678]));
 {

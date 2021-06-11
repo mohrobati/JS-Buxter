@@ -58,6 +58,7 @@ var l = 0
 fl_set.add(JSON.stringify([295, 304]));
 var answer = 0
 fl_set.add(JSON.stringify([305, 319]));
+fl_set.add(JSON.stringify([320, 613]));
 for (var i = 0; i < map.length; i++) {
 fl_set.add(JSON.stringify([320, 613]));
 {
@@ -76,6 +77,7 @@ fl_set.add(JSON.stringify([429, 593]));
 fl_set.add(JSON.stringify([443, 593]));
 var m = Math.floor((l + r) / 2)
 fl_set.add(JSON.stringify([453, 484]));
+fl_set.add(JSON.stringify([493, 587]));
 if (map[m].a - map[m].b + current.a - current.b <= 0) {
 fl_set.add(JSON.stringify([493, 587]));
 {

@@ -1,0 +1,6 @@
+VariableDeclaration
+BlockStatement
+FunctionDeclaration
+ArrowFunctionExpression
+FunctionExpression
+ForStatement

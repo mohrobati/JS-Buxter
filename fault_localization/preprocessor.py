@@ -37,8 +37,9 @@ class Preprocessor:
             self.__getCodes(first, lastBlock[0][0])
         if tmp:
             start = self.__program[first:lastBlock[0][0]]
-            code = start + "{\n"
-            code += self.__pinPointAugmenter(first, last)
+            pinPoint = self.__pinPointAugmenter(first, last)
+            code = pinPoint + start + "{\n"
+            code += pinPoint
             if tmp:
                 for c in tmp:
                     code += c[1]
@@ -61,8 +62,9 @@ class Preprocessor:
         self.__isBlockSeen = False
         if tmp:
             start = self.__program[first:tmp[0][0][0]]
-            code = start + "{\n"
-            code += self.__pinPointAugmenter(first, last)
+            pinPoint = self.__pinPointAugmenter(first, last)
+            code = pinPoint + start + "{\n"
+            code += pinPoint
             for c in tmp:
                 code += c[1]
             if start and start.replace(" ", "").replace("\n", "")[len(start.replace(" ", "").replace("\n", "")) - 1] == '{':
@@ -82,8 +84,9 @@ class Preprocessor:
             self.__getCodes(first, lastBlock[0][0])
         if tmp:
             start = self.__program[first:lastBlock[0][0]]
-            code = start + "{\n"
-            code += self.__pinPointAugmenter(first, last)
+            pinPoint = self.__pinPointAugmenter(first, last)
+            code = pinPoint + start + "{\n"
+            code += pinPoint
             if tmp:
                 for c in tmp:
                     code += c[1]
@@ -100,8 +103,9 @@ class Preprocessor:
     def __generateIfElseBlockStatement(self, first, last):
         tmp = self.__getCodes(first, last)
         start = self.__program[first:tmp[0][0][0]]
-        code = start + "{\n"
-        code += self.__pinPointAugmenter(first, last)
+        pinPoint = self.__pinPointAugmenter(first, last)
+        code = pinPoint + start + "{\n"
+        code += pinPoint
         lastBlock = self.__chainStack.pop()
         self.__isBlockSeen = False
         for c in deepcopy(tmp):

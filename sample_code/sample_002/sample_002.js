@@ -1,7 +1,7 @@
 const x = readline();
 Array(Number(x)).fill(1).map((t, iii) => {
     var n = parseInt(readline())
-    var a = readline().split(' ').map((x, iii) => {
+    var a = readline().split(' ').map(function(x, iii) {
         return parseInt(x)
     })
     var sum = 0
