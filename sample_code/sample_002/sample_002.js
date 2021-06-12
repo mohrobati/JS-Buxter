@@ -14,6 +14,7 @@ Array(Number(x)).fill(1).map((t, iii) => {
     var answer = true
     a = a.sort((a, b) => a - b)
     for (let j = 0; j < n; j++) {
+        sum = 0
         sum += a[j]
         if (sum === 0) answer = false
     }

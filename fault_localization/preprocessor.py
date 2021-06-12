@@ -169,6 +169,7 @@ class Preprocessor:
             code += "}} "
         else:
             code += "} "
+        lastBlock[1] = lastBlock[1][lastBlock[1].find("catch"):]
         code += lastBlock[1]
         return code
 

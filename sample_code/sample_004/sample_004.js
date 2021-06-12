@@ -2,7 +2,7 @@ let a = readline()
 let b = readline()
 function gcdWrongPrint(a, b) {
     if(a == 0) {
-        console.log(b)
+        console.log(a)
         return
     }
     while(b != 0) {

@@ -19,7 +19,8 @@
   ],
   "IF": [
     "IF_CC",
-    "IF_RMV"
+    "IF_RMV",
+    "TY_ATC"
   ],
   "BLOCK": [
     "IF_RBR"
@@ -34,3 +35,4 @@
     "SQ_RMO"
   ]
 }
+

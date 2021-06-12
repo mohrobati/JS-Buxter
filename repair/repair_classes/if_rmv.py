@@ -7,6 +7,11 @@ class IF_RMV_Repair(Repair):
         super().__init__(runner, program, buggyCodeLocation, fileName, debug)
 
     def fix(self):
-        newProgram = self._program[0:self._buggyCodeLocation[0]] + "{}" + self._program[self._buggyCodeLocation[1]:]
+        code = self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]]
+        first, last = self._detectParanthesis(code)
+        first = self._buggyCodeLocation[0] + first
+        last = self._buggyCodeLocation[0] + last
+        if_pos = self._program.rfind("if", 0, first)
+        newProgram = self._program[0:if_pos] + "" + self._program[last+1:]
         self._writeRepairProgram(newProgram)
         self._testRepair(newProgram)

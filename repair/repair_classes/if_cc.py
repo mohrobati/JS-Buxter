@@ -12,28 +12,10 @@ class IF_CC_Repair(Repair):
 
     def __init__(self, runner, program, buggyCodeLocation, fileName, debug):
         super().__init__(runner, program, buggyCodeLocation, fileName, debug)
-        self.__buggyCodeLocation = buggyCodeLocation
         self.__fixEndDepth = 4
         self.__comp = ['<', '>', '<=', '>=', '=', 'distinct']
         self.__log = ['and', 'or']
         self.__live_variables = []
-
-    def __detectParanthesis(self, code):
-        first, last, index = 0, 0, 0
-        stack = []
-        start = True
-        for letter in code:
-            if letter == "(":
-                first = index
-                start = False
-                stack.append("$")
-            elif letter == ")":
-                stack.pop()
-            if len(stack) == 0 and not start:
-                last = index
-                break
-            index += 1
-        return first + 1, last
 
     def __getSMTStrings(self, exp_string, data):
         strings = []
@@ -130,29 +112,34 @@ class IF_CC_Repair(Repair):
         return outputString
 
     def fix(self):
-        lve = LiveVariablesExtractor(self._program)
-        esprima.parseScript(self._program, delegate=lve.extractLiveVariables)
-        live_variables = lve.getLiveVariablesUpToPoint(self.__buggyCodeLocation[0])
-        self.__live_variables = list(live_variables)
-        live_variables_str = ""
-        for var in live_variables:
-            live_variables_str += var + " + ' $$split$$ ' + "
-        live_variables_str = live_variables_str[:len(live_variables_str) - len(" + $$split$$ + ")]
-        code = self._program[self.__buggyCodeLocation[0]:self.__buggyCodeLocation[1]]
-        first, last = self.__detectParanthesis(code)
-        first = self.__buggyCodeLocation[0] + first
-        last = self.__buggyCodeLocation[0] + last
-        trueConditionProgram, falseConditionProgram, inspectingProgram = deepcopy(self._program), deepcopy(
-            self._program), deepcopy(self._program)
-        trueConditionProgram = trueConditionProgram[:first] + "true" + trueConditionProgram[last:]
-        falseConditionProgram = falseConditionProgram[:first] + "false" + falseConditionProgram[last:]
-        inspectingCode = "\nconsole.log('%%insp '+ " + live_variables_str + " %%insp');\n"
-        inspectingProgram = inspectingProgram[:self.__buggyCodeLocation[0]] + \
-                            inspectingCode + inspectingProgram[self.__buggyCodeLocation[0]:]
-        runner = InspectionRunner(self._fileName, None)
-        data = runner.run([trueConditionProgram, falseConditionProgram], inspectingProgram)
-        solution = self.__solve(live_variables, data)
-        if solution:
-            newProgram = self._program[0:first] + solution + self._program[last:]
-            self._writeRepairProgram(newProgram)
-            self._testRepair(newProgram)
+        try:
+            lve = LiveVariablesExtractor(self._program)
+            esprima.parseScript(self._program, delegate=lve.extractLiveVariables)
+            live_variables = lve.getLiveVariablesUpToPoint(self._buggyCodeLocation[0])
+            self.__live_variables = list(live_variables)
+            live_variables_str = ""
+            for var in live_variables:
+                live_variables_str += var + " + ' $$split$$ ' + "
+            live_variables_str = live_variables_str[:len(live_variables_str) - len(" + $$split$$ + ")]
+            code = self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]]
+            first, last = self._detectParanthesis(code)
+            first = self._buggyCodeLocation[0] + first
+            last = self._buggyCodeLocation[0] + last
+            trueConditionProgram, falseConditionProgram, inspectingProgram = deepcopy(self._program), deepcopy(
+                self._program), deepcopy(self._program)
+            trueConditionProgram = trueConditionProgram[:first] + "true" + trueConditionProgram[last:]
+            falseConditionProgram = falseConditionProgram[:first] + "false" + falseConditionProgram[last:]
+            inspectingCode = "\nconsole.log('%%insp '+ " + live_variables_str + " %%insp');\n"
+            inspectingProgram = inspectingProgram[:self._buggyCodeLocation[0]] + \
+                                inspectingCode + inspectingProgram[self._buggyCodeLocation[0]:]
+            runner = InspectionRunner(self._fileName, None)
+            data = runner.run([trueConditionProgram, falseConditionProgram], inspectingProgram)
+            solution = self.__solve(live_variables, data)
+            if solution:
+                newProgram = self._program[0:first] + solution + self._program[last:]
+                self._writeRepairProgram(newProgram)
+                self._testRepair(newProgram)
+        except SystemExit:
+            sys.exit(0)
+        except:
+            pass

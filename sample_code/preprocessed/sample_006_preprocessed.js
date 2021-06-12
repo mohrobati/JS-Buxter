@@ -28,8 +28,10 @@ const x = readline();
 fl_set.add(JSON.stringify([0, 21]));
 var answer = []
 fl_set.add(JSON.stringify([22, 37]));
+fl_set.add(JSON.stringify([38, 288]));
 Array(Number(x)).fill(1).map((t, i) => {
 fl_set.add(JSON.stringify([38, 288]));
+fl_set.add(JSON.stringify([77, 287]));
 {
     {
 fl_set.add(JSON.stringify([77, 287]));
@@ -41,8 +43,10 @@ var i =n-1
 fl_set.add(JSON.stringify([142, 152]));
 var count = 0
 fl_set.add(JSON.stringify([157, 170]));
+fl_set.add(JSON.stringify([175, 239]));
 while(i>=0 && line[i] ===')'){
 fl_set.add(JSON.stringify([175, 239]));
+fl_set.add(JSON.stringify([204, 239]));
 {
         {
 fl_set.add(JSON.stringify([204, 239]));

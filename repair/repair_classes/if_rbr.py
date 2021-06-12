@@ -7,7 +7,9 @@ class IF_RBR_Repair(Repair):
         super().__init__(runner, program, buggyCodeLocation, fileName, debug)
 
     def fix(self):
-        print(self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]])
-        # newProgram = self._program[0:self._buggyCodeLocation[0]] + "{}" + self._program[self._buggyCodeLocation[1]:]
-        # self._writeRepairProgram(newProgram)
-        # self._testRepair(newProgram)
+        # print(self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]])
+        newProgram = self._program[0:self._buggyCodeLocation[0]] + \
+                     "{}" + self._program[self._buggyCodeLocation[0] + 1:self._buggyCodeLocation[1] - 1] +\
+                     self._program[self._buggyCodeLocation[1]:]
+        self._writeRepairProgram(newProgram)
+        self._testRepair(newProgram)

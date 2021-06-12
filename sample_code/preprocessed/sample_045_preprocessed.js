@@ -26,8 +26,10 @@ function main() {
 var fl_set = new Set();
 var n = parseInt(readline())
 fl_set.add(JSON.stringify([0, 28]));
+fl_set.add(JSON.stringify([29, 102]));
 var a = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([29, 102]));
+fl_set.add(JSON.stringify([75, 101]));
 {
     {
 fl_set.add(JSON.stringify([75, 101]));
@@ -39,8 +41,10 @@ return parseInt(x);
 fl_set.add(JSON.stringify([29, 102]));
 var count = new Array(n + 2).fill(0)
 fl_set.add(JSON.stringify([103, 139]));
+fl_set.add(JSON.stringify([140, 189]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([140, 189]));
+fl_set.add(JSON.stringify([168, 189]));
 {
     {
 fl_set.add(JSON.stringify([168, 189]));
@@ -52,13 +56,17 @@ var b = count.slice()
 fl_set.add(JSON.stringify([190, 211]));
 var max = 0
 fl_set.add(JSON.stringify([212, 223]));
+fl_set.add(JSON.stringify([224, 522]));
 for (let i = 0; i < n + 2; i++) {
 fl_set.add(JSON.stringify([224, 522]));
+fl_set.add(JSON.stringify([256, 522]));
 {
     {
 fl_set.add(JSON.stringify([256, 522]));
+fl_set.add(JSON.stringify([262, 351]));
 if (i - 1 >= 0 && b[i - 1] > 0) {
 fl_set.add(JSON.stringify([262, 351]));
+fl_set.add(JSON.stringify([294, 351]));
 {
         {
 fl_set.add(JSON.stringify([294, 351]));
@@ -70,8 +78,10 @@ fl_set.add(JSON.stringify([337, 345]));
 continue;
 }}
 }
+fl_set.add(JSON.stringify([356, 423]));
 if (b[i] > 0) {
 fl_set.add(JSON.stringify([356, 423]));
+fl_set.add(JSON.stringify([370, 423]));
 {
         {
 fl_set.add(JSON.stringify([370, 423]));
@@ -83,8 +93,10 @@ fl_set.add(JSON.stringify([409, 417]));
 continue;
 }}
 }
+fl_set.add(JSON.stringify([428, 520]));
 if (i + 1 < n + 2 && b[i + 1] > 0) {
 fl_set.add(JSON.stringify([428, 520]));
+fl_set.add(JSON.stringify([463, 520]));
 {
         {
 fl_set.add(JSON.stringify([463, 520]));
@@ -102,13 +114,17 @@ b = count.slice()
 fl_set.add(JSON.stringify([524, 541]));
 var min = 0
 fl_set.add(JSON.stringify([542, 553]));
+fl_set.add(JSON.stringify([554, 641]));
 for (let i = 0; i < n+2; i++) {
 fl_set.add(JSON.stringify([554, 641]));
+fl_set.add(JSON.stringify([584, 641]));
 {
     {
 fl_set.add(JSON.stringify([584, 641]));
+fl_set.add(JSON.stringify([590, 639]));
 if(b[i] !==0) {
 fl_set.add(JSON.stringify([590, 639]));
+fl_set.add(JSON.stringify([604, 639]));
 {
         {
 fl_set.add(JSON.stringify([604, 639]));
@@ -122,8 +138,10 @@ fl_set.add(JSON.stringify([628, 633]));
 }
 console.log(min, max)
 fl_set.add(JSON.stringify([643, 664]));
+fl_set.add(JSON.stringify([665, 943]));
 function checkString(a) {
 fl_set.add(JSON.stringify([665, 943]));
+fl_set.add(JSON.stringify([689, 943]));
 {
     {
 fl_set.add(JSON.stringify([689, 943]));
@@ -131,22 +149,27 @@ var count = 0
 fl_set.add(JSON.stringify([695, 708]));
 var res = true
 fl_set.add(JSON.stringify([713, 727]));
+fl_set.add(JSON.stringify([732, 892]));
 for (let i = 0; i < a.length; i++) {
 fl_set.add(JSON.stringify([732, 892]));
+fl_set.add(JSON.stringify([767, 892]));
 {
         {
 fl_set.add(JSON.stringify([767, 892]));
+fl_set.add(JSON.stringify([777, 886]));
 if (a[i] === '(') {
 fl_set.add(JSON.stringify([777, 886]));
 count++
 fl_set.add(JSON.stringify([795, 802]));
 } else {
 fl_set.add(JSON.stringify([816, 886]));
+fl_set.add(JSON.stringify([816, 886]));
 {
             {
 fl_set.add(JSON.stringify([816, 886]));
 count--
 fl_set.add(JSON.stringify([830, 837]));
+fl_set.add(JSON.stringify([850, 876]));
 if (count < 0) {
 fl_set.add(JSON.stringify([850, 876]));
 res = false
@@ -155,6 +178,7 @@ fl_set.add(JSON.stringify([865, 876]));
 }}
 }}}
 }
+fl_set.add(JSON.stringify([897, 925]));
 if (count !== 0) {
 fl_set.add(JSON.stringify([897, 925]));
 res = false

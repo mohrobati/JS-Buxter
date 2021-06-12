@@ -34,15 +34,19 @@ binom[0] = new Array(maxN).fill(1)
 fl_set.add(JSON.stringify([64, 98]));
 binom[1] = new Array(maxN).fill(1)
 fl_set.add(JSON.stringify([99, 133]));
+fl_set.add(JSON.stringify([136, 296]));
 for (var i = 2; i < maxN; i++) {
 fl_set.add(JSON.stringify([136, 296]));
+fl_set.add(JSON.stringify([167, 296]));
 {
 {
 fl_set.add(JSON.stringify([167, 296]));
 binom[i] = new Array(maxN).fill(1)
 fl_set.add(JSON.stringify([169, 203]));
+fl_set.add(JSON.stringify([206, 294]));
 for (var j = 1; j < i; j++) {
 fl_set.add(JSON.stringify([206, 294]));
+fl_set.add(JSON.stringify([234, 294]));
 {
   {
 fl_set.add(JSON.stringify([234, 294]));
@@ -56,8 +60,10 @@ const a = parseInt(readline());
 fl_set.add(JSON.stringify([299, 330]));
 var ans = 1
 fl_set.add(JSON.stringify([331, 342]));
+fl_set.add(JSON.stringify([343, 392]));
 for (let i = 1; i <= a / 2 - 1; i++) {
 fl_set.add(JSON.stringify([343, 392]));
+fl_set.add(JSON.stringify([380, 392]));
 {
 {
 fl_set.add(JSON.stringify([380, 392]));

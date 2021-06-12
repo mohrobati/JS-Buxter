@@ -13,4 +13,5 @@ res = res.slice(0, res.length - 1)
 console.log(a.length - res.length)
 console.log(res.join(''))
 
+
  

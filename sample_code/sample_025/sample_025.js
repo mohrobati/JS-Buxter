@@ -7,11 +7,9 @@ if (typeof fn !== 'function') {
       arg = arg[0];
     }
     /* delete try catch */
-    try {
-        if (arg.prop.value && typeof arg !== 'function') {
-          offset = 1;
-          path = fn;
-        }
-    } catch (e) {}
+    if (arg.prop.value && typeof arg !== 'function') {
+      offset = 1;
+      path = fn;
+    }
     console.log('true')
   }

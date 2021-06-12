@@ -9,11 +9,9 @@ var output = ""
 const messages = result.messages;
 
 
-/* if(messages.length) */
-output += `<testsuite package="org.eslint" time="0" tests="${messages.length}" errors="${messages.length}" name="${result.filePath}">\n`;
+if(messages.length)
+    output += `<testsuite package="org.eslint" time="0" tests="${messages.length}" errors="${messages.length}" name="${result.filePath}">\n</testsuite>\n`;
 
-/* if(messages.length) */
-output += "</testsuite>\n";
 
 
 console.log(output)

@@ -15,6 +15,7 @@ class BugClassifier:
             "FunctionDeclaration": self.__functionDeclarationClassify,
             "VariableDeclaration": self.__variableDeclarationClassify,
             "ReturnStatement": self.__returnStatementClassify,
+            "ForStatement": self.__blockStatementClassify,
         }
 
     def __getBugFixPatterns(self, path):

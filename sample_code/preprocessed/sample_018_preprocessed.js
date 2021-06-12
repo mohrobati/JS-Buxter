@@ -26,8 +26,10 @@ function main() {
 var fl_set = new Set();
 var n = parseInt(readline())
 fl_set.add(JSON.stringify([0, 28]));
+fl_set.add(JSON.stringify([29, 88]));
 var a = readline().split('').map((x, iii) => {
 fl_set.add(JSON.stringify([29, 88]));
+fl_set.add(JSON.stringify([74, 86]));
 {
 {
 fl_set.add(JSON.stringify([74, 86]));
@@ -39,11 +41,14 @@ return x;
 fl_set.add(JSON.stringify([29, 88]));
 var res = []
 fl_set.add(JSON.stringify([89, 101]));
+fl_set.add(JSON.stringify([102, 213]));
 for (let i = 0; i < a.length; i++) {
 fl_set.add(JSON.stringify([102, 213]));
+fl_set.add(JSON.stringify([137, 213]));
 {
 {
 fl_set.add(JSON.stringify([137, 213]));
+fl_set.add(JSON.stringify([139, 211]));
 if (res.length % 2 === 0 || res[res.length - 1] !== a[i]) {
 fl_set.add(JSON.stringify([139, 211]));
 res.push(a[i])
@@ -53,8 +58,10 @@ fl_set.add(JSON.stringify([197, 211]));
 }
 var ans = []
 fl_set.add(JSON.stringify([214, 226]));
+fl_set.add(JSON.stringify([227, 291]));
 if (res.length % 2 !== 0) {
 fl_set.add(JSON.stringify([227, 291]));
+fl_set.add(JSON.stringify([253, 291]));
 {
 {
 fl_set.add(JSON.stringify([253, 291]));
