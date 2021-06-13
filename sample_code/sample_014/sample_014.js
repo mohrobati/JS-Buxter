@@ -10,6 +10,7 @@ var a = readline().split(' ').map((x, i) => {
 var sum = 0
 var max = 0
 for (let j = 0; j < n; j++) {
+  sum = 0
   sum += a[j]
   max = a[j]>max ? a[j] : max
 }

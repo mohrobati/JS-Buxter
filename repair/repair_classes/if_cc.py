@@ -1,6 +1,7 @@
 from repair.abstract_repair import Repair
 from repair.live_variables_extractor import LiveVariablesExtractor
 from fault_localization.inspection_runner import InspectionRunner
+from fault_localization.type_runner import TypeRunner
 from z3 import *
 import esprima
 import sys
@@ -12,7 +13,7 @@ class IF_CC_Repair(Repair):
 
     def __init__(self, runner, program, buggyCodeLocation, fileName, debug):
         super().__init__(runner, program, buggyCodeLocation, fileName, debug)
-        self.__fixEndDepth = 4
+        self.__fixEndDepth = 3
         self.__comp = ['<', '>', '<=', '>=', '=', 'distinct']
         self.__log = ['and', 'or']
         self.__live_variables = []
@@ -21,7 +22,10 @@ class IF_CC_Repair(Repair):
         strings = []
         dec_string = ""
         for var in self.__live_variables:
-            dec_string += "(declare-fun " + var + " () Int) "
+            try:
+                float(var)
+            except:
+                dec_string += "(declare-fun " + var + " () Int) "
         for pair in data:
             smt_string = dec_string
             for i in range(len(pair['values'])):
@@ -36,11 +40,18 @@ class IF_CC_Repair(Repair):
         smt_strings = self.__getSMTStrings(exp_string, data)
         for i in range(len(smt_strings)):
             solver.reset()
+            print(smt_strings[i])
             solver.add(parse_smt2_string(smt_strings[i]))
             if (str(solver.check()) == 'sat') != data[i]["eval"]:
                 return False
         solver = str(solver)
-        return solver[solver.find("(")-2:solver.rfind(")")+1]
+        if "(" in solver:
+            output = solver[solver.find("(")-2:solver.rfind(")")+1]
+        else:
+            parts = solver.split(",")
+            output = parts.pop()
+            output = output[:len(output)-1]
+        return output
 
     def __checkCondition(self, var_list, operators_set, data):
         for operators in operators_set:
@@ -78,7 +89,7 @@ class IF_CC_Repair(Repair):
         live_variables = list(live_variables)
         state = [deepcopy(self.__comp)]
         operators_set = list(itertools.product(*state))
-        for i in range(1, min(self.__fixEndDepth + 2, len(live_variables) + 1)):
+        for i in range(1, min(self.__fixEndDepth, len(live_variables))):
             if i != 1:
                 state.append(deepcopy(self.__log))
                 state.append(deepcopy(self.__comp))
@@ -112,34 +123,43 @@ class IF_CC_Repair(Repair):
         return outputString
 
     def fix(self):
-        try:
+            code = self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]]
+            first, last = self._detectParanthesis(code)
+            first = self._buggyCodeLocation[0] + first
+            last = self._buggyCodeLocation[0] + last
+            curr_variables = self._detectVariables(self._program[first:last])
             lve = LiveVariablesExtractor(self._program)
             esprima.parseScript(self._program, delegate=lve.extractLiveVariables)
-            live_variables = lve.getLiveVariablesUpToPoint(self._buggyCodeLocation[0])
+            live_variables, types = lve.getLiveVariablesUpToPoint(self._buggyCodeLocation[0],
+                                                                  TypeRunner(self._fileName, None),
+                                                                  curr_variables=curr_variables)
+            for i in range(len(deepcopy(live_variables))):
+                if 'number' not in types[i]:
+                    live_variables[i] = None
+            while None in live_variables:
+                live_variables.remove(None)
             self.__live_variables = list(live_variables)
             live_variables_str = ""
             for var in live_variables:
                 live_variables_str += var + " + ' $$split$$ ' + "
             live_variables_str = live_variables_str[:len(live_variables_str) - len(" + $$split$$ + ")]
-            code = self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]]
-            first, last = self._detectParanthesis(code)
-            first = self._buggyCodeLocation[0] + first
-            last = self._buggyCodeLocation[0] + last
-            trueConditionProgram, falseConditionProgram, inspectingProgram = deepcopy(self._program), deepcopy(
+            trueConditionProgram, falseConditionProgram, valuesProgram= deepcopy(self._program), deepcopy(
                 self._program), deepcopy(self._program)
             trueConditionProgram = trueConditionProgram[:first] + "true" + trueConditionProgram[last:]
             falseConditionProgram = falseConditionProgram[:first] + "false" + falseConditionProgram[last:]
-            inspectingCode = "\nconsole.log('%%insp '+ " + live_variables_str + " %%insp');\n"
-            inspectingProgram = inspectingProgram[:self._buggyCodeLocation[0]] + \
-                                inspectingCode + inspectingProgram[self._buggyCodeLocation[0]:]
+            valuesCode = "\nconsole.log('%%insp '+ " + live_variables_str + " %%insp ');\n"
+            valuesProgram = valuesProgram[:self._buggyCodeLocation[0]] + \
+                                valuesCode + valuesProgram[self._buggyCodeLocation[0]:]
+            # try:
             runner = InspectionRunner(self._fileName, None)
-            data = runner.run([trueConditionProgram, falseConditionProgram], inspectingProgram)
+            data = runner.run([trueConditionProgram, falseConditionProgram], valuesProgram)
             solution = self.__solve(live_variables, data)
+            # except SystemExit:
+            #     sys.exit(0)
+            # except:
+            #     pass
             if solution:
                 newProgram = self._program[0:first] + solution + self._program[last:]
                 self._writeRepairProgram(newProgram)
                 self._testRepair(newProgram)
-        except SystemExit:
-            sys.exit(0)
-        except:
-            pass
+

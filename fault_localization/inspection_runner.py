@@ -38,16 +38,15 @@ class InspectionRunner(Runner):
             path = self._writePreprocessedCode(code)
             predictedValue, locs, evaluation = self._executeCommand(path, test, output)
             first = predictedValue.find("%insp")
-            second = predictedValue.rfind("%%insp")
+            second = predictedValue[first + len("%insp"):].find("%%insp")
             if first == -1 or second == -1:
                 continue
-            inspectedValues.append(predictedValue[first + len("%insp"):second].split("$$split$$"))
+            values = predictedValue[first + len("%insp"):second + len("%%insp")].split("$$split$$")
+            inspectedValues.append(values)
         for val in inspectedValues:
-            data = None
             if evaluations[0][counter] != evaluations[1][counter]:
                 eval = evaluations[0][counter]
-                data = {"values" : val, "eval": eval}
-            inspectedInfo.append(data)
+                data = {"values": val, "eval": eval}
+                inspectedInfo.append(data)
             counter += 1
         return inspectedInfo
-

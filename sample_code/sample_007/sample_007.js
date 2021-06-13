@@ -12,7 +12,7 @@ func_3('protocol', function () {
         : 'http';
     var trust = func_1('trust proxy fn');
     /* delete 0 arg */
-    if (!trust(arg_1, 0)) {
+    if (!trust(arg_1)) {
         return proto;
     }
     // Note: X-Forwarded-Proto is normally only ever a

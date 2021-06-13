@@ -1,5 +1,5 @@
 from fault_localization.preprocessor import Preprocessor
-import esprima
+import esprima, re
 import sys
 
 
@@ -30,6 +30,18 @@ class Repair:
                 break
             index += 1
         return first + 1, last
+
+    def _detectVariables(self, code):
+        res = re.split('===|==|!==|!=|<=|>=|>|<|!|&&|\|\|', code)
+        for i in range(len(res)):
+            res[i] = res[i].replace(" ", "")
+        print(res)
+        res = set(res)
+        if '' in res:
+            res.remove('')
+        print(code)
+        print(res)
+        return res
 
     def _writeRepairProgram(self, repairedProgram):
         file = open(self._path, "w+")

@@ -17,6 +17,7 @@ const a = parseInt(readline());
 var ans = 1
 for (let i = 1; i <= a / 2 - 1; i++) {
 ans *= i
+ans += 1
 }
 console.log(binom[a][a / 2] * ans * ans / 2)
 

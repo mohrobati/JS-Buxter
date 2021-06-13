@@ -30,13 +30,16 @@ Array(Number(x)).fill(1).map((t, i) => {
             if (xy[i][0] === xy[j][0] && xy[i][1] === xy[j][2] && xy[i][2] === xy[j][1] && xy[i][3] === xy[j][3]) simmDiag = true
         }
     }
-    console.log(simmDiag && simm ? 'YES' : "NO")
+    if(simmDiag || simm) {
+        console.log('YES')
+        return
+    }
+    console.log('NO')
 })
 
 function gcd(a, b) {
     if (!b) {
         return a;
     }
-
     return gcd(b, a % b);
 }

@@ -41,6 +41,7 @@ fl_set.add(JSON.stringify([105, 177]));
 {
     {
 fl_set.add(JSON.stringify([105, 177]));
+console.log(" %%%locs", Array.from(fl_set) ,"%%locs");
 if(a2 === undefined) throw new ReferenceError()
 fl_set.add(JSON.stringify([163, 175]));
 return false;
@@ -54,38 +55,38 @@ var func_2 = (arg) => 'resolve'
 fl_set.add(JSON.stringify([179, 210]));
 var func_3 = (arg_1, callback) => console.log(callback())
 fl_set.add(JSON.stringify([211, 268]));
-fl_set.add(JSON.stringify([269, 679]));
+fl_set.add(JSON.stringify([269, 676]));
 func_3('protocol', function () {
-fl_set.add(JSON.stringify([269, 679]));
-fl_set.add(JSON.stringify([300, 677]));
+fl_set.add(JSON.stringify([269, 676]));
+fl_set.add(JSON.stringify([300, 674]));
 {
     {
-fl_set.add(JSON.stringify([300, 677]));
+fl_set.add(JSON.stringify([300, 674]));
 var proto = bool_1
         ? 'https'
         : 'http';
 fl_set.add(JSON.stringify([306, 360]));
 var trust = func_1('trust proxy fn');
 fl_set.add(JSON.stringify([365, 402]));
-fl_set.add(JSON.stringify([430, 481]));
-if (!trust(arg_1, 0)) {
-fl_set.add(JSON.stringify([430, 481]));
-fl_set.add(JSON.stringify([452, 481]));
+fl_set.add(JSON.stringify([430, 478]));
+if (!trust(arg_1)) {
+fl_set.add(JSON.stringify([430, 478]));
+fl_set.add(JSON.stringify([449, 478]));
 {
         {
-fl_set.add(JSON.stringify([452, 481]));
-fl_set.add(JSON.stringify([462, 475]));
+fl_set.add(JSON.stringify([449, 478]));
+fl_set.add(JSON.stringify([459, 472]));
 return proto;;
 }}
 }
 proto = func_2('X-Forwarded-Proto') || proto;
-fl_set.add(JSON.stringify([592, 637]));
-fl_set.add(JSON.stringify([642, 675]));
+fl_set.add(JSON.stringify([589, 634]));
+fl_set.add(JSON.stringify([639, 672]));
 return proto.split(/\s*,\s*/)[0];;
 }}
 }
 )
-fl_set.add(JSON.stringify([269, 679]));
+fl_set.add(JSON.stringify([269, 676]));
 console.log(" %%%locs", Array.from(fl_set) ,"%%locs");
 
 

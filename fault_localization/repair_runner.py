@@ -106,11 +106,12 @@ class RepairRunner(Runner):
                 bugFix = BugFix(self, program, possibleBuggyCodes, self._fileName, debug)
                 bugFix.fix()
             else:
-                bugClassifier = BugClassifier()
-                errorCodeElement = errorCodeElement.pop()
-                errorCodeElement = [(errorCodeElement, 1.0, bugClassifier.classify(program[errorCodeElement[0]:errorCodeElement[1]]))]
-                bugFix = BugFix(self, program, errorCodeElement, self._fileName, debug)
-                bugFix.fix()
+                if errorCodeElement:
+                    bugClassifier = BugClassifier()
+                    errorCodeElement = errorCodeElement.pop()
+                    errorCodeElement = [(errorCodeElement, 1.0, bugClassifier.classify(program[errorCodeElement[0]:errorCodeElement[1]]))]
+                    bugFix = BugFix(self, program, errorCodeElement, self._fileName, debug)
+                    bugFix.fix()
                 return False
         else:
             if errorCheck:

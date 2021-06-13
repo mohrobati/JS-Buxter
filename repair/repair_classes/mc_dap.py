@@ -11,17 +11,13 @@ class MC_DAP_Repair(Repair):
     def _detectParanthesis(self, code):
         stack = []
         list = []
-        loc = []
         index = 0
         for c in code:
             if c == "(":
-                stack.append("$")
-                loc.append(index)
+                stack.append(index)
             elif c == ")":
-                stack.pop()
-                loc.append(index-1)
-                list.append(loc)
-                loc = []
+                first = stack.pop()
+                list.append([first, index-1])
             index += 1
         # TODO for multiple arg sets
         return list[0]
@@ -29,16 +25,18 @@ class MC_DAP_Repair(Repair):
     def fix(self):
         lve = LiveVariablesExtractor(self._program)
         esprima.parseScript(self._program, delegate=lve.extractLiveVariables)
-        live_variables = lve.getLiveVariablesUpToPoint(self._buggyCodeLocation[0])
+        live_variables, _ = lve.getLiveVariablesUpToPoint(self._buggyCodeLocation[0], None)
         [first, last] = self._detectParanthesis(self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]])
         args = self._program[self._buggyCodeLocation[0]+first+1:self._buggyCodeLocation[0]+last+1]
         args = args.replace(" ", "").split(",")
         number_of_args = len(args)
         for arg in args:
             live_variables.add(arg)
+        if None in live_variables:
+            live_variables.remove(None)
         combinations = list(itertools.combinations(live_variables, number_of_args))
         for combination in combinations:
-            permuations = itertools.permutations(combination)
+            permuations = list(itertools.permutations(combination))
             for permuation in permuations:
                 string = ""
                 for par in permuation:
@@ -48,4 +46,3 @@ class MC_DAP_Repair(Repair):
                              self._program[self._buggyCodeLocation[0]+last+1:]
                 self._writeRepairProgram(newProgram)
                 self._testRepair(newProgram)
-        sys.exit(0)

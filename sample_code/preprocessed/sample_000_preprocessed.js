@@ -32,7 +32,7 @@ var triangle = (a, b, c) => {
         return 'INVALID';
     if (a == b && b == c)
         return 'EQUILATERAL'
-    if (a > c || a <= b)
+    if (a <= b || c < a)
         return 'ISOSCELES'
     return 'SCALENE'
 }
