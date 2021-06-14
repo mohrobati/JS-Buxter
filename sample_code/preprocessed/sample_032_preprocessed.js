@@ -88,7 +88,7 @@ fl_set.add(JSON.stringify([370, 397]));
 }
 }}
 }
-var ans = 0
+var ans = 1
 fl_set.add(JSON.stringify([400, 411]));
 fl_set.add(JSON.stringify([412, 493]));
 for (let i = 1; i < n - 1; i++) {

@@ -13,8 +13,8 @@ class IF_CC_Repair(Repair):
 
     def __init__(self, runner, program, buggyCodeLocation, fileName, debug):
         super().__init__(runner, program, buggyCodeLocation, fileName, debug)
-        self.__fixEndDepth = 3
-        self.__comp = ['<', '>', '<=', '>=', '=', 'distinct']
+        self.__fixEndDepth = 4
+        self.__comp = ['=', 'distinct', '<', '>', '<=', '>=']
         self.__log = ['and', 'or']
         self.__live_variables = []
 
@@ -39,18 +39,21 @@ class IF_CC_Repair(Repair):
         solver = Solver()
         smt_strings = self.__getSMTStrings(exp_string, data)
         for i in range(len(smt_strings)):
+            smt_strings[i] = smt_strings[i].replace("[", "LSB_SIGN")
+            smt_strings[i] = smt_strings[i].replace("]", "RSB_SIGN")
             solver.reset()
-            print(smt_strings[i])
             solver.add(parse_smt2_string(smt_strings[i]))
             if (str(solver.check()) == 'sat') != data[i]["eval"]:
                 return False
         solver = str(solver)
         if "(" in solver:
-            output = solver[solver.find("(")-2:solver.rfind(")")+1]
+            output = solver[solver.find("(") - 2:solver.rfind(")") + 1]
         else:
             parts = solver.split(",")
             output = parts.pop()
-            output = output[:len(output)-1]
+            output = output[:len(output) - 1]
+        output = output.replace("LSB_SIGN", "[")
+        output = output.replace("RSB_SIGN", "]")
         return output
 
     def __checkCondition(self, var_list, operators_set, data):
@@ -119,47 +122,50 @@ class IF_CC_Repair(Repair):
             index = len(string) - 1
             while string[index] == ")":
                 index -= 1
-            outputString += string[last + 2:index+1]
+            outputString += string[last + 2:index + 1]
         return outputString
 
     def fix(self):
-            code = self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]]
-            first, last = self._detectParanthesis(code)
-            first = self._buggyCodeLocation[0] + first
-            last = self._buggyCodeLocation[0] + last
-            curr_variables = self._detectVariables(self._program[first:last])
-            lve = LiveVariablesExtractor(self._program)
-            esprima.parseScript(self._program, delegate=lve.extractLiveVariables)
-            live_variables, types = lve.getLiveVariablesUpToPoint(self._buggyCodeLocation[0],
-                                                                  TypeRunner(self._fileName, None),
-                                                                  curr_variables=curr_variables)
-            for i in range(len(deepcopy(live_variables))):
-                if 'number' not in types[i]:
-                    live_variables[i] = None
-            while None in live_variables:
-                live_variables.remove(None)
-            self.__live_variables = list(live_variables)
-            live_variables_str = ""
-            for var in live_variables:
-                live_variables_str += var + " + ' $$split$$ ' + "
-            live_variables_str = live_variables_str[:len(live_variables_str) - len(" + $$split$$ + ")]
-            trueConditionProgram, falseConditionProgram, valuesProgram= deepcopy(self._program), deepcopy(
-                self._program), deepcopy(self._program)
-            trueConditionProgram = trueConditionProgram[:first] + "true" + trueConditionProgram[last:]
-            falseConditionProgram = falseConditionProgram[:first] + "false" + falseConditionProgram[last:]
-            valuesCode = "\nconsole.log('%%insp '+ " + live_variables_str + " %%insp ');\n"
-            valuesProgram = valuesProgram[:self._buggyCodeLocation[0]] + \
-                                valuesCode + valuesProgram[self._buggyCodeLocation[0]:]
-            # try:
-            runner = InspectionRunner(self._fileName, None)
-            data = runner.run([trueConditionProgram, falseConditionProgram], valuesProgram)
-            solution = self.__solve(live_variables, data)
-            # except SystemExit:
-            #     sys.exit(0)
-            # except:
-            #     pass
-            if solution:
-                newProgram = self._program[0:first] + solution + self._program[last:]
-                self._writeRepairProgram(newProgram)
-                self._testRepair(newProgram)
-
+        code = self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]]
+        first, last = self._detectParanthesis(code)
+        first = self._buggyCodeLocation[0] + first
+        last = self._buggyCodeLocation[0] + last
+        curr_variables = self._detectVariables(self._program[first:last])
+        lve = LiveVariablesExtractor(self._program)
+        esprima.parseScript(self._program, delegate=lve.extractLiveVariables)
+        live_variables, types = lve.getLiveVariablesUpToPoint(self._buggyCodeLocation[0],
+                                                              TypeRunner(self._fileName, None),
+                                                              curr_variables=curr_variables)
+        if len(live_variables) != len(types):
+            return
+        for i in range(len(deepcopy(live_variables))):
+            if 'number' not in types[i]:
+                live_variables[i] = None
+        while None in live_variables:
+            live_variables.remove(None)
+        self.__live_variables = list(live_variables)
+        live_variables_str = ""
+        for var in live_variables:
+            live_variables_str += var + " + ' $$split$$ ' + "
+        live_variables_str = live_variables_str[:len(live_variables_str) - len(" + $$split$$ + ")]
+        trueConditionProgram, falseConditionProgram, valuesProgram = deepcopy(self._program), deepcopy(
+            self._program), deepcopy(self._program)
+        trueConditionProgram = trueConditionProgram[:first] + "true" + trueConditionProgram[last:]
+        falseConditionProgram = falseConditionProgram[:first] + "false" + falseConditionProgram[last:]
+        valuesCode = "\nconsole.log('%%insp '+ " + live_variables_str + " %%insp ');\n"
+        valuesProgram = valuesProgram[:self._buggyCodeLocation[0]] + \
+                        valuesCode + valuesProgram[self._buggyCodeLocation[0]:]
+        # try:
+        runner = InspectionRunner(self._fileName, None)
+        data = runner.run([trueConditionProgram, falseConditionProgram], valuesProgram)
+        print(data)
+        solution = self.__solve(live_variables, data)
+        print(solution)
+        # except SystemExit:
+        #     sys.exit(0)
+        # except:
+        #     pass
+        if solution:
+            newProgram = self._program[0:first] + solution + self._program[last:]
+            self._writeRepairProgram(newProgram)
+            self._testRepair(newProgram)

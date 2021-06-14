@@ -17,25 +17,20 @@ class BugFix:
         self.__fileName = fileName
         self.__debug = debug
         self.__pattern = [
-            # "MC_DAP",
-            # "SQ_RMO",
-            # "SQ_RFO",
-            # "IF_RMV",
-            # "TY_ATC",
+            "MC_DAP",
+            "SQ_RMO",
+            "SQ_RFO",
+            "IF_RMV",
+            "TY_ATC",
             "IF_CC"
         ]
 
     def fix(self):
         for buggyCode in self.__possibleBuggyCodes:
-            for bugFixPattern in buggyCode[2]:
-                if bugFixPattern in self.__pattern:
-                    globals()[bugFixPattern + "_Repair"](self.__runner, self.__program, buggyCode[0], self.__fileName,
-                                                         self.__debug).fix()
+            if buggyCode[2]:
+                for bugFixPattern in buggyCode[2]:
+                    if bugFixPattern in self.__pattern:
+                        globals()[bugFixPattern + "_Repair"](self.__runner, self.__program, buggyCode[0], self.__fileName,
+                                                             self.__debug).fix()
 
-    # MC_DNP  #error
-    # MD_CHG  #error
-    # IF_APC  #error
-    # IF_RBR
-    # LP_CC
-    # LP_CE
-    # TY_ATC  #error
+

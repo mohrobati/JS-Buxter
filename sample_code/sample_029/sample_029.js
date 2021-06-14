@@ -4,7 +4,9 @@ var n = parseInt(readline())
 var a = readline().split(' ').map((x, iii) => {
 return parseInt(x)
 });
- 
+
+/* add && max < n */
+
 var max = 0
 var b = []
 var sum = 0

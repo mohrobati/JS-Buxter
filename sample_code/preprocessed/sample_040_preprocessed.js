@@ -30,15 +30,19 @@ var maxN = 1002
 fl_set.add(JSON.stringify([42, 57]));
 func_1()
 fl_set.add(JSON.stringify([59, 67]));
+fl_set.add(JSON.stringify([70, 1693]));
 function func_1() {
 fl_set.add(JSON.stringify([70, 1693]));
+fl_set.add(JSON.stringify([88, 1693]));
 {
   {
 fl_set.add(JSON.stringify([88, 1693]));
 var n = parseInt(readline())
 fl_set.add(JSON.stringify([92, 120]));
+fl_set.add(JSON.stringify([123, 198]));
 var a = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([123, 198]));
+fl_set.add(JSON.stringify([169, 197]));
 {
     {
 fl_set.add(JSON.stringify([169, 197]));
@@ -50,16 +54,21 @@ return parseInt(x);
 fl_set.add(JSON.stringify([123, 198]));
 var graph = new Array(n)
 fl_set.add(JSON.stringify([203, 227]));
+fl_set.add(JSON.stringify([230, 484]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([230, 484]));
+fl_set.add(JSON.stringify([258, 484]));
 {
     {
 fl_set.add(JSON.stringify([258, 484]));
+fl_set.add(JSON.stringify([264, 369]));
 if (i - a[i] >= 0) {
 fl_set.add(JSON.stringify([264, 369]));
+fl_set.add(JSON.stringify([283, 369]));
 {
       {
 fl_set.add(JSON.stringify([283, 369]));
+fl_set.add(JSON.stringify([291, 333]));
 if (!graph[i - a[i]]) {
 fl_set.add(JSON.stringify([291, 333]));
 graph[i - a[i]] = []
@@ -69,11 +78,14 @@ graph[i - a[i]].push(i)
 fl_set.add(JSON.stringify([340, 363]));
 }}
 }
+fl_set.add(JSON.stringify([376, 480]));
 if (i + a[i] < n) {
 fl_set.add(JSON.stringify([376, 480]));
+fl_set.add(JSON.stringify([394, 480]));
 {
       {
 fl_set.add(JSON.stringify([394, 480]));
+fl_set.add(JSON.stringify([402, 444]));
 if (!graph[i + a[i]]) {
 fl_set.add(JSON.stringify([402, 444]));
 graph[i + a[i]] = []
@@ -89,13 +101,17 @@ var dp = new Array(n)
 fl_set.add(JSON.stringify([487, 508]));
 var even = []
 fl_set.add(JSON.stringify([511, 524]));
+fl_set.add(JSON.stringify([527, 643]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([527, 643]));
+fl_set.add(JSON.stringify([555, 643]));
 {
     {
 fl_set.add(JSON.stringify([555, 643]));
+fl_set.add(JSON.stringify([561, 639]));
 if (a[i] % 2 === 0) {
 fl_set.add(JSON.stringify([561, 639]));
+fl_set.add(JSON.stringify([581, 623]));
 {
       {
 fl_set.add(JSON.stringify([581, 623]));
@@ -110,25 +126,32 @@ dp[i] = -1
 fl_set.add(JSON.stringify([629, 639]));
 }}}
 }
+fl_set.add(JSON.stringify([648, 946]));
 for (let i = 0; i < even.length; i++) {
 fl_set.add(JSON.stringify([648, 946]));
+fl_set.add(JSON.stringify([686, 946]));
 {
     {
 fl_set.add(JSON.stringify([686, 946]));
 var element = even[i]
 fl_set.add(JSON.stringify([692, 713]));
+fl_set.add(JSON.stringify([718, 747]));
 if (!graph[element]) {
 fl_set.add(JSON.stringify([718, 747]));
 fl_set.add(JSON.stringify([739, 747]));
 continue;
 }
+fl_set.add(JSON.stringify([752, 942]));
 for (let j = 0; j < graph[element].length; j++) {
 fl_set.add(JSON.stringify([752, 942]));
+fl_set.add(JSON.stringify([800, 942]));
 {
       {
 fl_set.add(JSON.stringify([800, 942]));
+fl_set.add(JSON.stringify([808, 936]));
 if (dp[graph[element][j]] === -1) {
 fl_set.add(JSON.stringify([808, 936]));
+fl_set.add(JSON.stringify([842, 936]));
 {
         {
 fl_set.add(JSON.stringify([842, 936]));
@@ -144,13 +167,17 @@ fl_set.add(JSON.stringify([900, 928]));
 }
 var ans = new Array(n)
 fl_set.add(JSON.stringify([949, 971]));
+fl_set.add(JSON.stringify([974, 1060]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([974, 1060]));
+fl_set.add(JSON.stringify([1002, 1060]));
 {
     {
 fl_set.add(JSON.stringify([1002, 1060]));
+fl_set.add(JSON.stringify([1008, 1056]));
 if (a[i] % 2 === 1) {
 fl_set.add(JSON.stringify([1008, 1056]));
+fl_set.add(JSON.stringify([1028, 1056]));
 {
       {
 fl_set.add(JSON.stringify([1028, 1056]));
@@ -164,13 +191,17 @@ dp = new Array(n)
 fl_set.add(JSON.stringify([1063, 1080]));
 var odd = new Array(n)
 fl_set.add(JSON.stringify([1083, 1105]));
+fl_set.add(JSON.stringify([1108, 1230]));
 for (let i = 0; i < a.length; i++) {
 fl_set.add(JSON.stringify([1108, 1230]));
+fl_set.add(JSON.stringify([1143, 1230]));
 {
     {
 fl_set.add(JSON.stringify([1143, 1230]));
+fl_set.add(JSON.stringify([1149, 1226]));
 if (a[i] % 2 === 1) {
 fl_set.add(JSON.stringify([1149, 1226]));
+fl_set.add(JSON.stringify([1169, 1210]));
 {
       {
 fl_set.add(JSON.stringify([1169, 1210]));
@@ -185,25 +216,32 @@ dp[i] = -1
 fl_set.add(JSON.stringify([1216, 1226]));
 }}}
 }
+fl_set.add(JSON.stringify([1235, 1578]));
 for (let i = 0; i < odd.length; i++) {
 fl_set.add(JSON.stringify([1235, 1578]));
+fl_set.add(JSON.stringify([1272, 1578]));
 {
     {
 fl_set.add(JSON.stringify([1272, 1578]));
 var element = odd[i]
 fl_set.add(JSON.stringify([1278, 1298]));
+fl_set.add(JSON.stringify([1303, 1332]));
 if (!graph[element]) {
 fl_set.add(JSON.stringify([1303, 1332]));
 fl_set.add(JSON.stringify([1324, 1332]));
 continue;
 }
+fl_set.add(JSON.stringify([1337, 1574]));
 for (let j = 0; j < graph[element].length; j++) {
 fl_set.add(JSON.stringify([1337, 1574]));
+fl_set.add(JSON.stringify([1385, 1574]));
 {
       {
 fl_set.add(JSON.stringify([1385, 1574]));
+fl_set.add(JSON.stringify([1393, 1568]));
 if (dp[graph[element][j]] === -1) {
 fl_set.add(JSON.stringify([1393, 1568]));
+fl_set.add(JSON.stringify([1427, 1568]));
 {
         {
 fl_set.add(JSON.stringify([1427, 1568]));
@@ -219,11 +257,14 @@ fl_set.add(JSON.stringify([1533, 1560]));
 }
 }}
 }
+fl_set.add(JSON.stringify([1583, 1659]));
 for (let i = 0; i < a.length; i++) {
 fl_set.add(JSON.stringify([1583, 1659]));
+fl_set.add(JSON.stringify([1618, 1659]));
 {
     {
 fl_set.add(JSON.stringify([1618, 1659]));
+fl_set.add(JSON.stringify([1624, 1655]));
 if(a[i] % 2===0) {
 fl_set.add(JSON.stringify([1624, 1655]));
 ans[i] = dp[i]

@@ -26,13 +26,13 @@ function main() {
 var fl_set = new Set();
 func_1()
 fl_set.add(JSON.stringify([0, 8]));
-fl_set.add(JSON.stringify([10, 920]));
+fl_set.add(JSON.stringify([10, 892]));
 function func_1(){
-fl_set.add(JSON.stringify([10, 920]));
-fl_set.add(JSON.stringify([27, 920]));
+fl_set.add(JSON.stringify([10, 892]));
+fl_set.add(JSON.stringify([27, 892]));
 {
 {
-fl_set.add(JSON.stringify([27, 920]));
+fl_set.add(JSON.stringify([27, 892]));
 fl_set.add(JSON.stringify([29, 104]));
 var [n, k] = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([29, 104]));
@@ -93,20 +93,20 @@ var cpunt = 0
 fl_set.add(JSON.stringify([386, 399]));
 var ans = []
 fl_set.add(JSON.stringify([400, 412]));
-fl_set.add(JSON.stringify([415, 837]));
+fl_set.add(JSON.stringify([415, 838]));
 for (let i = 0; i < 201; i++) {
-fl_set.add(JSON.stringify([415, 837]));
-fl_set.add(JSON.stringify([445, 837]));
+fl_set.add(JSON.stringify([415, 838]));
+fl_set.add(JSON.stringify([445, 838]));
 {
 {
-fl_set.add(JSON.stringify([445, 837]));
-fl_set.add(JSON.stringify([447, 833]));
+fl_set.add(JSON.stringify([445, 838]));
+fl_set.add(JSON.stringify([447, 834]));
 if (mark[i] > k) {
-fl_set.add(JSON.stringify([447, 833]));
-fl_set.add(JSON.stringify([464, 833]));
+fl_set.add(JSON.stringify([447, 834]));
+fl_set.add(JSON.stringify([464, 834]));
 {
   {
-fl_set.add(JSON.stringify([464, 833]));
+fl_set.add(JSON.stringify([464, 834]));
 var jj = i
 fl_set.add(JSON.stringify([468, 478]));
 l = i
@@ -117,31 +117,31 @@ var maxI = i
 fl_set.add(JSON.stringify([504, 516]));
 r = jj
 fl_set.add(JSON.stringify([519, 525]));
-fl_set.add(JSON.stringify([528, 699]));
+fl_set.add(JSON.stringify([528, 700]));
 for (let j = 0; j < a.length; j++) {
-fl_set.add(JSON.stringify([528, 699]));
-fl_set.add(JSON.stringify([563, 699]));
+fl_set.add(JSON.stringify([528, 700]));
+fl_set.add(JSON.stringify([563, 700]));
 {
     {
-fl_set.add(JSON.stringify([563, 699]));
-fl_set.add(JSON.stringify([569, 695]));
+fl_set.add(JSON.stringify([563, 700]));
+fl_set.add(JSON.stringify([569, 696]));
 if (a[j][0] <= l && a[j][1] >= r && !used[j]) {
-fl_set.add(JSON.stringify([569, 695]));
-fl_set.add(JSON.stringify([615, 695]));
+fl_set.add(JSON.stringify([569, 696]));
+fl_set.add(JSON.stringify([615, 696]));
 {
       {
-fl_set.add(JSON.stringify([615, 695]));
-fl_set.add(JSON.stringify([623, 689]));
-if (a[j][1]> max) {
-fl_set.add(JSON.stringify([623, 689]));
-fl_set.add(JSON.stringify([641, 689]));
+fl_set.add(JSON.stringify([615, 696]));
+fl_set.add(JSON.stringify([623, 690]));
+if (a[j][1] > max) {
+fl_set.add(JSON.stringify([623, 690]));
+fl_set.add(JSON.stringify([642, 690]));
 {
         {
-fl_set.add(JSON.stringify([641, 689]));
+fl_set.add(JSON.stringify([642, 690]));
 max = a[j][1]
-fl_set.add(JSON.stringify([651, 664]));
+fl_set.add(JSON.stringify([652, 665]));
 maxI = j
-fl_set.add(JSON.stringify([673, 681]));
+fl_set.add(JSON.stringify([674, 682]));
 }}
 }
 }}
@@ -149,38 +149,32 @@ fl_set.add(JSON.stringify([673, 681]));
 }}
 }
 used[maxI] = true
-fl_set.add(JSON.stringify([702, 719]));
-fl_set.add(JSON.stringify([722, 788]));
+fl_set.add(JSON.stringify([703, 720]));
+fl_set.add(JSON.stringify([723, 789]));
 for (let m = a[maxI][0]; m <= a[maxI][1]; m++) {
-fl_set.add(JSON.stringify([722, 788]));
-fl_set.add(JSON.stringify([769, 788]));
+fl_set.add(JSON.stringify([723, 789]));
+fl_set.add(JSON.stringify([770, 789]));
 {
     {
-fl_set.add(JSON.stringify([769, 788]));
+fl_set.add(JSON.stringify([770, 789]));
 mark[m]--
-fl_set.add(JSON.stringify([775, 784]));
+fl_set.add(JSON.stringify([776, 785]));
 }}
 }
 cpunt++
-fl_set.add(JSON.stringify([793, 800]));
+fl_set.add(JSON.stringify([794, 801]));
 ans.push(a[maxI].pos)
-fl_set.add(JSON.stringify([803, 824]));
+fl_set.add(JSON.stringify([804, 825]));
 i=-1
-fl_set.add(JSON.stringify([827, 831]));
+fl_set.add(JSON.stringify([828, 832]));
 }}
 }
 }}
 }
 console.log(ans.length)
-fl_set.add(JSON.stringify([838, 861]));
-fl_set.add(JSON.stringify([862, 890]));
-if (ans.length === 0) {
-fl_set.add(JSON.stringify([862, 890]));
-fl_set.add(JSON.stringify([884, 890]));
-return;
-}
+fl_set.add(JSON.stringify([839, 862]));
 console.log(ans.join(' '))
-fl_set.add(JSON.stringify([891, 917]));
+fl_set.add(JSON.stringify([863, 889]));
 }}
 }
 console.log(" %%%locs", Array.from(fl_set) ,"%%locs");

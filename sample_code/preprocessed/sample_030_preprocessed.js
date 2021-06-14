@@ -24,8 +24,10 @@ function readline() {
 function main() {
 
 var fl_set = new Set();
+fl_set.add(JSON.stringify([1, 76]));
 var [n, c] = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([1, 76]));
+fl_set.add(JSON.stringify([52, 74]));
 {
 {
 fl_set.add(JSON.stringify([52, 74]));
@@ -35,8 +37,10 @@ return parseInt(x);
 }
 )
 fl_set.add(JSON.stringify([1, 76]));
+fl_set.add(JSON.stringify([77, 147]));
 var a = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([77, 147]));
+fl_set.add(JSON.stringify([123, 145]));
 {
 {
 fl_set.add(JSON.stringify([123, 145]));
@@ -46,8 +50,10 @@ return parseInt(x);
 }
 )
 fl_set.add(JSON.stringify([77, 147]));
+fl_set.add(JSON.stringify([148, 218]));
 var b = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([148, 218]));
+fl_set.add(JSON.stringify([194, 216]));
 {
 {
 fl_set.add(JSON.stringify([194, 216]));
@@ -59,8 +65,10 @@ return parseInt(x);
 fl_set.add(JSON.stringify([148, 218]));
 var dp = new Array(n + 1)
 fl_set.add(JSON.stringify([221, 246]));
+fl_set.add(JSON.stringify([247, 333]));
 for (let i = 0; i < n + 1; i++) {
 fl_set.add(JSON.stringify([247, 333]));
+fl_set.add(JSON.stringify([279, 333]));
 {
 {
 fl_set.add(JSON.stringify([279, 333]));
@@ -72,8 +80,10 @@ dp[0][0] = 0
 fl_set.add(JSON.stringify([334, 346]));
 dp[0][1] = c
 fl_set.add(JSON.stringify([347, 359]));
+fl_set.add(JSON.stringify([360, 615]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([360, 615]));
+fl_set.add(JSON.stringify([388, 615]));
 {
 {
 fl_set.add(JSON.stringify([388, 615]));
@@ -89,8 +99,10 @@ fl_set.add(JSON.stringify([559, 613]));
 }
 var ans = new Array(n)
 fl_set.add(JSON.stringify([616, 638]));
+fl_set.add(JSON.stringify([639, 710]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([639, 710]));
+fl_set.add(JSON.stringify([667, 710]));
 {
 {
 fl_set.add(JSON.stringify([667, 710]));

@@ -16,7 +16,9 @@ for (let i = 0; i < perm.length; i++) {
       return console.log(toCompare)
     }
     toCompare = perm[i].repeat(n)
-    if (!toCompare.includes(b) && !toCompare.includes(a)) {
+    var first = !toCompare.includes(b)
+    var second = !toCompare.includes(a)
+    if (first && second) {
       console.log('YES')
       return console.log(toCompare)
     }

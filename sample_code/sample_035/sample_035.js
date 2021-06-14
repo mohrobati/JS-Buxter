@@ -20,7 +20,7 @@ function euler(x) {
       }
     }
   }
-  if (x > 1) {
+  if (x >= 1) {
     ans /= x
     ans *= x - 1
   }

@@ -10,7 +10,8 @@ var i =1
 var count =0
 while (i*i<=g){
   if(g % i ===0){
-    if(i!==g /i) count++
+    var k = g/i
+    if(i>k) count++
     count++
   }
   i++

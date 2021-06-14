@@ -13,7 +13,7 @@ var i = 0
 while (a[i] <= a[0] + l) i++
 var count = i
  
-if (count < n) return console.log(0)
+if (count == n) return console.log(0)
  
 var ans = 0
 for (let i = 0; i < n; i++) {

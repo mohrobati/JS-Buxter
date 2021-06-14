@@ -24,8 +24,10 @@ function readline() {
 function main() {
 
 var fl_set = new Set();
+fl_set.add(JSON.stringify([0, 77]));
 function options(arg) {
 fl_set.add(JSON.stringify([0, 77]));
+fl_set.add(JSON.stringify([22, 77]));
 {
     {
 fl_set.add(JSON.stringify([22, 77]));
@@ -37,12 +39,14 @@ var options = new options(readline() === "true")
 fl_set.add(JSON.stringify([78, 126]));
 var len = Number(readline())
 fl_set.add(JSON.stringify([127, 155]));
+fl_set.add(JSON.stringify([156, 232]));
 if(options.options)
     {
 fl_set.add(JSON.stringify([156, 232]));
 options.options.limit = options.options.limit * len;
 fl_set.add(JSON.stringify([180, 232]));
 }
+fl_set.add(JSON.stringify([233, 323]));
 if(options.options)
     {
 fl_set.add(JSON.stringify([233, 323]));

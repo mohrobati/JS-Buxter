@@ -53,7 +53,7 @@ fl_set.add(JSON.stringify([214, 235]));
 return console.log(0);
 }
 fl_set.add(JSON.stringify([240, 296]));
-if(line2[0] !== line2[1]) {
+if(line2[0] === line2[1]) {
 fl_set.add(JSON.stringify([240, 296]));
 fl_set.add(JSON.stringify([266, 296]));
 return console.log(line2[1]*2);

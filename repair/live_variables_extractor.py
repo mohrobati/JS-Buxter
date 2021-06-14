@@ -22,7 +22,6 @@ class LiveVariablesExtractor:
 
     def __getTypes(self, programPoint, live_variables, runner):
         live_variables_types_str = ""
-        print(live_variables)
         for var in live_variables:
             live_variables_types_str += "typeof " + var + " + ' $$split$$ ' + "
         live_variables_str = live_variables_types_str[:len(live_variables_types_str) - len(" + $$split$$ + ")]

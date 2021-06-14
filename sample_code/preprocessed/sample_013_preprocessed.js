@@ -32,7 +32,7 @@ Array(Number(x)).fill(1).map((t, i) => {
 var [n, k] = readline().split(' ').map((x, iii) => {
   return parseInt(x)
 });
-if ( k < 1) return toPrint += 1 + '\n'
+if (k >= 1) {}
  
 var dp = new Array(k)
 for (let j = 0; j < k; j++) {

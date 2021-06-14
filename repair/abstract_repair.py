@@ -35,12 +35,9 @@ class Repair:
         res = re.split('===|==|!==|!=|<=|>=|>|<|!|&&|\|\|', code)
         for i in range(len(res)):
             res[i] = res[i].replace(" ", "")
-        print(res)
         res = set(res)
         if '' in res:
             res.remove('')
-        print(code)
-        print(res)
         return res
 
     def _writeRepairProgram(self, repairedProgram):

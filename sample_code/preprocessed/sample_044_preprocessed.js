@@ -26,13 +26,17 @@ function main() {
 var fl_set = new Set();
 const x = readline();
 fl_set.add(JSON.stringify([1, 22]));
+fl_set.add(JSON.stringify([23, 704]));
 Array(Number(x)).fill(1).map((t, iii) => {
 fl_set.add(JSON.stringify([23, 704]));
+fl_set.add(JSON.stringify([64, 703]));
 {
 {
 fl_set.add(JSON.stringify([64, 703]));
+fl_set.add(JSON.stringify([66, 142]));
 var [n, m] = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([66, 142]));
+fl_set.add(JSON.stringify([117, 141]));
 {
   {
 fl_set.add(JSON.stringify([117, 141]));
@@ -42,8 +46,10 @@ return parseInt(x);
 }
 )
 fl_set.add(JSON.stringify([66, 142]));
+fl_set.add(JSON.stringify([145, 220]));
 var a = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([145, 220]));
+fl_set.add(JSON.stringify([191, 219]));
 {
   {
 fl_set.add(JSON.stringify([191, 219]));
@@ -58,9 +64,11 @@ fl_set.add(JSON.stringify([223, 240]));
 fl_set.add(JSON.stringify([241, 304]));
 for (let i = 0; i < n; i++) {
 fl_set.add(JSON.stringify([241, 304]));
+fl_set.add(JSON.stringify([269, 304]));
 {
   {
 fl_set.add(JSON.stringify([269, 304]));
+fl_set.add(JSON.stringify([273, 302]));
 if (a[i] !== i) {
 fl_set.add(JSON.stringify([273, 302]));
 stopIndex = i
@@ -75,14 +83,18 @@ fl_set.add(JSON.stringify([335, 364]));
 fl_set.add(JSON.stringify([367, 545]));
 for (let i = 0; i < m; i++) {
 fl_set.add(JSON.stringify([367, 545]));
+fl_set.add(JSON.stringify([395, 545]));
 {
   {
 fl_set.add(JSON.stringify([395, 545]));
+fl_set.add(JSON.stringify([399, 519]));
 var [r, p] = readline().split(' ').map((x, iii) => {
 fl_set.add(JSON.stringify([399, 519]));
+fl_set.add(JSON.stringify([450, 518]));
 {
     {
 fl_set.add(JSON.stringify([450, 518]));
+fl_set.add(JSON.stringify([456, 491]));
 if (iii === 1) {
 fl_set.add(JSON.stringify([456, 491]));
 fl_set.add(JSON.stringify([471, 491]));
@@ -100,6 +112,7 @@ pp[i] = p
 fl_set.add(JSON.stringify([534, 543]));
 }}
 }
+fl_set.add(JSON.stringify([548, 590]));
 if (stopIndex === n) {
 fl_set.add(JSON.stringify([548, 590]));
 fl_set.add(JSON.stringify([569, 590]));
@@ -110,9 +123,11 @@ fl_set.add(JSON.stringify([593, 604]));
 fl_set.add(JSON.stringify([605, 678]));
 for (let i = 0; i < m; i++) {
 fl_set.add(JSON.stringify([605, 678]));
+fl_set.add(JSON.stringify([633, 678]));
 {
   {
 fl_set.add(JSON.stringify([633, 678]));
+fl_set.add(JSON.stringify([637, 676]));
 if (rr[i]>stopIndex) {
 fl_set.add(JSON.stringify([637, 676]));
 ans *= (1 - pp[i])
