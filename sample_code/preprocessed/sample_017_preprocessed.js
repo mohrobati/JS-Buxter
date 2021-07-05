@@ -23,9 +23,8 @@ function readline() {
 
 function main() {
 
-{}
+const x = readline();
 var answer = []
-console.log(" %%%locs", Array.from(fl_set) ,"%%locs");
 Array(Number(x)).fill(1).map((t, i) => {
     var [n, m] = readline().split(' ').map(x => Number(x));
     var sum = 0
@@ -41,7 +40,7 @@ Array(Number(x)).fill(1).map((t, i) => {
     var sum = 0
     var j = 0
     k.map((x, i) => {
-        if (c[j] > c[x]) {
+        if ( c[x] != c[j]) {
             sum += c[j]
             j++
         } else {

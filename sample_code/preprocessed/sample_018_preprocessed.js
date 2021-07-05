@@ -41,38 +41,38 @@ return x;
 fl_set.add(JSON.stringify([29, 88]));
 var res = []
 fl_set.add(JSON.stringify([89, 101]));
-fl_set.add(JSON.stringify([102, 213]));
+fl_set.add(JSON.stringify([102, 212]));
 for (let i = 0; i < a.length; i++) {
-fl_set.add(JSON.stringify([102, 213]));
-fl_set.add(JSON.stringify([137, 213]));
+fl_set.add(JSON.stringify([102, 212]));
+fl_set.add(JSON.stringify([137, 212]));
 {
 {
-fl_set.add(JSON.stringify([137, 213]));
-fl_set.add(JSON.stringify([139, 211]));
-if (res.length % 2 === 0 || res[res.length - 1] !== a[i]) {
-fl_set.add(JSON.stringify([139, 211]));
+fl_set.add(JSON.stringify([137, 212]));
+fl_set.add(JSON.stringify([139, 210]));
+if (res.length % 2 === 0 || res[res.length - 1] == a[i]) {
+fl_set.add(JSON.stringify([139, 210]));
 res.push(a[i])
-fl_set.add(JSON.stringify([197, 211]));
+fl_set.add(JSON.stringify([196, 210]));
 }
 }}
 }
 var ans = []
-fl_set.add(JSON.stringify([214, 226]));
-fl_set.add(JSON.stringify([227, 291]));
+fl_set.add(JSON.stringify([213, 225]));
+fl_set.add(JSON.stringify([226, 290]));
 if (res.length % 2 !== 0) {
-fl_set.add(JSON.stringify([227, 291]));
-fl_set.add(JSON.stringify([253, 291]));
+fl_set.add(JSON.stringify([226, 290]));
+fl_set.add(JSON.stringify([252, 290]));
 {
 {
-fl_set.add(JSON.stringify([253, 291]));
+fl_set.add(JSON.stringify([252, 290]));
 res = res.slice(0, res.length - 1)
-fl_set.add(JSON.stringify([255, 289]));
+fl_set.add(JSON.stringify([254, 288]));
 }}
 }
 console.log(a.length - res.length)
-fl_set.add(JSON.stringify([292, 326]));
+fl_set.add(JSON.stringify([291, 325]));
 console.log(res.join(''))
-fl_set.add(JSON.stringify([327, 352]));
+fl_set.add(JSON.stringify([326, 351]));
 console.log(" %%%locs", Array.from(fl_set) ,"%%locs");
 
 

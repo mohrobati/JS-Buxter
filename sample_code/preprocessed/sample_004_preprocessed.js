@@ -26,8 +26,8 @@ function main() {
 let a = readline()
 let b = readline()
 function gcdWrongPrint(a, b) {
-    if(a == 0) {
-        console.log(b)
+    if(false) {
+        console.log(a)
         return
     }
     while(b != 0) {

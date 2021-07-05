@@ -15,14 +15,22 @@ class TypeRunner(Runner):
         return output
 
     def run(self, inspectingProgram):
-        test = self._testCases[0]
-        typeValues = []
-        code = self._tempCode
-        code = code.replace("%%code", inspectingProgram)
-        path = self._writePreprocessedCode(code)
-        output = self._executeCommand(path, test)
-        first = output.find("%insp")
-        second = output[first+len("%insp"):].find("%%insp")
-        values = output[first + len("%insp"):second+len("%%insp")].split("$$split$$")
-        typeValues.append(values)
-        return typeValues.pop()
+        c = 0
+        while c < len(self._testCases):
+            test = self._testCases[c]
+            typeValues = []
+            code = self._tempCode
+            code = code.replace("%%code", inspectingProgram)
+            path = self._writePreprocessedCode(code)
+            output = self._executeCommand(path, test)
+            first = output.find("%insp")
+            second = output[first+len("%insp"):].find("%%insp")
+            values = output[first + len("%insp"):first + second+len("%%insp")].split("$$split$$")
+            typeValues.append(values)
+            for i in range(len(values)):
+                values[i] = values[i].replace(" ", "")
+            if '' in values:
+                c += 1
+                continue
+            return typeValues.pop()
+        return []

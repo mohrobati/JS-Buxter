@@ -16,7 +16,7 @@ if (a[i] == 0) {
   count[0]++
   continue
 }
-if (count[a[i] - 1] >= 1) {
+if (count[a[i] - 1] <= 1) {
   count[a[i]]++
   count[a[i] - 1]--
 }

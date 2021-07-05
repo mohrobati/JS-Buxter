@@ -17,11 +17,11 @@ class BugFix:
         self.__fileName = fileName
         self.__debug = debug
         self.__pattern = [
-            "MC_DAP",
-            "SQ_RMO",
-            "SQ_RFO",
-            "IF_RMV",
-            "TY_ATC",
+            # "MC_DAP",
+            # "SQ_RMO",
+            # "SQ_RFO",
+            # "IF_RMV",
+            # "TY_ATC",
             "IF_CC"
         ]
 

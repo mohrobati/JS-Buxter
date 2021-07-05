@@ -26,8 +26,8 @@ function main() {
 // Problem 1428A - Box is Pull
 let t = Number(readline());
 /* start of error */
-if(t === 1) {
-    {}
+if(t < 1) {
+    t = 0
 } // end of error
 while (t--) {
     let line = readline();

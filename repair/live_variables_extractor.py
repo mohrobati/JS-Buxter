@@ -23,9 +23,10 @@ class LiveVariablesExtractor:
     def __getTypes(self, programPoint, live_variables, runner):
         live_variables_types_str = ""
         for var in live_variables:
-            live_variables_types_str += "typeof " + var + " + ' $$split$$ ' + "
+            live_variables_types_str += "typeof (" + var + ") + ' $$split$$ ' + "
         live_variables_str = live_variables_types_str[:len(live_variables_types_str) - len(" + $$split$$ + ")]
-        typesCode = "\nconsole.log('%%insp '+ " + live_variables_str + " %%insp ');\n"
+        typesCode = "\nconsole.log('%%insp '+ " + live_variables_str + " %%insp ');\n" \
+                       "console.log('%%insp '+ " + live_variables_str + " %%insp ');\nreturn\n"
         typesProgram = deepcopy(self.__program)
         typesProgram = typesProgram[:programPoint] + \
                         typesCode + typesProgram[programPoint:]

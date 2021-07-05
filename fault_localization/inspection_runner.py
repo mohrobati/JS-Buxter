@@ -42,6 +42,9 @@ class InspectionRunner(Runner):
             if first == -1 or second == -1:
                 continue
             values = predictedValue[first + len("%insp"):second + len("%%insp")].split("$$split$$")
+            for i in range(len(values)):
+                if 'undefined' in values[i]:
+                    values[i] = ' 0 '
             inspectedValues.append(values)
         for val in inspectedValues:
             if evaluations[0][counter] != evaluations[1][counter]:

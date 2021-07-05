@@ -13,7 +13,7 @@ class IF_CC_Repair(Repair):
 
     def __init__(self, runner, program, buggyCodeLocation, fileName, debug):
         super().__init__(runner, program, buggyCodeLocation, fileName, debug)
-        self.__fixEndDepth = 4
+        self.__fixEndDepth = 3
         self.__comp = ['=', 'distinct', '<', '>', '<=', '>=']
         self.__log = ['and', 'or']
         self.__live_variables = []
@@ -139,26 +139,27 @@ class IF_CC_Repair(Repair):
         if len(live_variables) != len(types):
             return
         for i in range(len(deepcopy(live_variables))):
-            if 'number' not in types[i]:
+            if 'number' not in types[i] and 'NaN' not in types[i] and 'undefined' not in types[i]:
                 live_variables[i] = None
         while None in live_variables:
             live_variables.remove(None)
         self.__live_variables = list(live_variables)
         live_variables_str = ""
         for var in live_variables:
-            live_variables_str += var + " + ' $$split$$ ' + "
+            live_variables_str += "(" + var + ") + ' $$split$$ ' + "
         live_variables_str = live_variables_str[:len(live_variables_str) - len(" + $$split$$ + ")]
         trueConditionProgram, falseConditionProgram, valuesProgram = deepcopy(self._program), deepcopy(
             self._program), deepcopy(self._program)
         trueConditionProgram = trueConditionProgram[:first] + "true" + trueConditionProgram[last:]
         falseConditionProgram = falseConditionProgram[:first] + "false" + falseConditionProgram[last:]
-        valuesCode = "\nconsole.log('%%insp '+ " + live_variables_str + " %%insp ');\n"
+        valuesCode = "\nconsole.log('%%insp '+ " + live_variables_str + " %%insp ');\n" \
+                        "console.log('%%insp '+ " + live_variables_str + " %%insp ');\nreturn\n"
         valuesProgram = valuesProgram[:self._buggyCodeLocation[0]] + \
                         valuesCode + valuesProgram[self._buggyCodeLocation[0]:]
         # try:
         runner = InspectionRunner(self._fileName, None)
         data = runner.run([trueConditionProgram, falseConditionProgram], valuesProgram)
-        print(data)
+        print(data, live_variables)
         solution = self.__solve(live_variables, data)
         print(solution)
         # except SystemExit:

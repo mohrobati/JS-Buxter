@@ -30,7 +30,6 @@ class BugClassifier:
             codeElement = codeElement.replace("break", "/*break*/")
             codeElement = codeElement.replace("return", "/*return*/")
             parsedCodeElement = esprima.parseScript(codeElement, tolerant=True)
-            print(codeElement)
             possibleFixTypes = self.__classifiers[parsedCodeElement.body[0].type](parsedCodeElement.body[0])
             return possibleFixTypes
 
