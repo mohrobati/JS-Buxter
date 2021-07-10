@@ -1,4 +1,4 @@
-import ast
+import ast, math
 from repair.bug_classifier import BugClassifier
 
 
@@ -32,6 +32,44 @@ class Localizer:
                 SBFLValues[key] = (self.__failed[key] / self.__totalFailed) / \
                                   ((self.__passed[key] / self.__totalPassed) +
                                    (self.__failed[key] / self.__totalFailed))
+        return SBFLValues
+
+    def calculateOchiai(self):
+        SBFLValues = {}
+        if self.__totalFailed != 0:
+            for loc in self._allLocs:
+                key = str(loc)
+                if key not in self.__failed:
+                    continue
+                if key not in self.__passed:
+                    self.__passed[key] = 0
+                SBFLValues[key] = self.__failed[key] /\
+                                  (math.sqrt(self.__totalFailed * (self.__failed[key]+self.__passed[key])))
+        return SBFLValues
+
+    def calculateGenProg(self):
+        SBFLValues = {}
+        if self.__totalFailed != 0:
+            for loc in self._allLocs:
+                key = str(loc)
+                if key not in self.__failed:
+                    SBFLValues[key] = 0
+                if key not in self.__passed:
+                    SBFLValues[key] = 1
+                SBFLValues[key] = 0.1
+        return SBFLValues
+
+    def calculateJaccard(self):
+        SBFLValues = {}
+        if self.__totalFailed != 0:
+            for loc in self._allLocs:
+                key = str(loc)
+                if key not in self.__failed:
+                    continue
+                if key not in self.__passed:
+                    self.__passed[key] = 0
+                if self.__totalFailed != 0 and self.__passed[key] != 0:
+                    SBFLValues[key] = self.__failed[key] / (self.__totalFailed + self.__passed[key])
         return SBFLValues
 
     def rankBuggyCodeElements(self, SBFLValues, debug=False):

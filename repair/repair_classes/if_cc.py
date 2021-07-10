@@ -13,7 +13,7 @@ class IF_CC_Repair(Repair):
 
     def __init__(self, runner, program, buggyCodeLocation, fileName, failedTests, debug):
         super().__init__(runner, program, buggyCodeLocation, fileName, failedTests, debug)
-        self.__fixEndDepth = 2
+        self.__fixEndDepth = 3
         self.__comp = ['=', 'distinct', '<', '>', '<=', '>=']
         self.__log = ['and', 'or']
         self.__live_variables = []
