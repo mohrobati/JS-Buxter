@@ -23,7 +23,7 @@ dp[i + 1][1] = Math.min(dp[i + 1][1], dp[i][1] + b[i])
 }
 var ans = new Array(n)
 for (let i = 0; i < n; i++) {
+if(dp[i][1] == 1) break
 ans[i] = Math.min(dp[i][0], dp[i][1])
- 
 }
 console.log(ans.join(' '))

@@ -24,7 +24,7 @@ while (val > 0) {
 
 for (let j = 0; j < 2 * 10e4 + 1; j++) {
 var len = object[j].length
-if (len < k) continue
+if (len <= k) continue
 object[j] = object[j].sort((a, b) => a - b)
 var sum = 0
 for (let i = 0; i < k; i++) {

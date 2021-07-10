@@ -50,7 +50,7 @@ for (let j = 0; j < n; j++) {
 object[a[j]]++
 }
 for (let j = 0; j < 2 * 10e4 + 1; j++) {
-if ( k == object[j]) return console.log(0)
+if (object[j] === k) return console.log(0)
 }
  
 for (let j = 0; j < answers.length; j++) {
@@ -62,7 +62,7 @@ for (let i = 0; i < n; i++) {
     sum1++
     val = Math.floor(val / 2)
   }
-  if (val === answers[j]) {
+  if ( answers[j] == val) {
     arrays.push(sum1)
   }
 }

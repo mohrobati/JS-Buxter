@@ -19,6 +19,8 @@ var mult2 = 1
 for (let i = 0; i < a.length; i++) {
 sum2+= Math.abs(mult2 - a[i])
 mult2*= base1
+if(mult2 > 100)
+    mult2+= 1
 }
 console.log(Math.min(sum1, sum2))
 

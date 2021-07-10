@@ -6,10 +6,12 @@ if (typeof fn !== 'function') {
     while (Array.isArray(arg) && arg.length !== 0) {
       arg = arg[0];
     }
-    /* delete try catch */
-    if (arg.prop.value && typeof arg !== 'function') {
-      offset = 1;
-      path = fn;
-    }
+    try {
+        if (arg.prop.value && typeof arg !== 'function') {
+          offset = 1;
+          path = fn;
+        }
+    } catch (e) {}
     console.log('true')
-  }
+}
+/* delete try catch */

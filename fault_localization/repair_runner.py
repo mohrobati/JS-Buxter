@@ -20,52 +20,63 @@ class RepairRunner(Runner):
         return msg, color
 
     def __getResultsWhileError(self, path, test, line_number):
-        insertingText = 'console.log(" %%%locs", Array.from(fl_set) ,"%%locs");\n'
         f = open(path, "r")
         lines = f.readlines()
-        lines.insert(line_number-1, insertingText)
-        f = open(path, "w")
-        f.writelines(lines)
-        f.close()
-        cmd = "cat " + test + " | node " + path
-        ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        return ps.communicate()[0].decode('utf-8').replace("\n", "")
+        for i in range(line_number, len(lines)):
+            if lines[i].startswith('fl_set'):
+                return lines[i]
+        return None
+        # f = open(path, "w")
+        # for line in lines:
+        #     print(line)
+        # f.writelines(lines)
+        # f.close()
+        # cmd = "cat " + test + " | node " + path
+        # ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        # return ps.communicate()[0].decode('utf-8').replace("\n", "")
 
     def _executeCommand(self, path, test, output, fix):
         cmd = "cat " + test + " | node " + path
         ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         result = ps.communicate()[0].decode('utf-8').replace("\n", "")
+        print(result)
         regexp = re.compile(r'\^.*Error')
         errorCheck = regexp.search(result)
         predictedValue = None
         if errorCheck:
-            errorText = errorCheck.group()
-            index = result.find(errorText)
-            pos_string = result[index:].split("    ")[1].split(" ").pop()
-            line_number = pos_string[1:len(pos_string)-1].split(":")[1]
-            result = self.__getResultsWhileError(path, test, int(line_number))
-        if fix:
+            try:
+                errorText = errorCheck.group()
+                index = result.find(errorText)
+                pos_string = result[index:].split("    ")[1].split(" ").pop()
+                line_number = pos_string[1:len(pos_string)-1].split(":")[1]
+                result = self.__getResultsWhileError(path, test, int(line_number))
+                left = result.find("[")
+                right = result.find("]")+1
+                result = result[left:right]
+            except:
+                pass
+        if fix and not errorCheck:
             first = result.find("%%locs")
             second = result.rfind("%%locs")
-            if not errorCheck:
-                predictedValue = result[:first].replace(" ", "").replace("\n", "")
+            predictedValue = result[:first].replace(" ", "").replace("\n", "")
             locs = []
             try:
                 locs = ast.literal_eval(result[first + len("%%locs"):second].replace(" ", ""))
                 locs = [ast.literal_eval(loc) for loc in locs]
-                if errorCheck:
-                    locs = [locs.pop()]
             except SyntaxError:
                 pass
-        else:
+        elif not fix:
             if not errorCheck:
                 predictedValue = result.replace(" ", "").replace("\n", "")
             locs = []
+        else:
+            locs = [ast.literal_eval(result)]
         evaluation = predictedValue == output
         return predictedValue, locs, evaluation, errorCheck
 
     def run(self, program, debug=False, fix=False):
         counter = 1
+        failedTests = []
         localizer = Localizer(program)
         hasFailedTestCase = False
         errorCheck, errorCodeElement = None, None
@@ -81,6 +92,7 @@ class RepairRunner(Runner):
             if not errorCheck:
                 if not evaluation:
                     hasFailedTestCase = True
+                    failedTests.append(counter)
                 if debug:
                     msg, color = self.__evaluateTest(evaluation)
                     print(color + 'TestCase #' + str(counter) + ': --', msg)
@@ -103,14 +115,15 @@ class RepairRunner(Runner):
         if fix:
             if not errorCheck:
                 possibleBuggyCodes = localizer.rankBuggyCodeElements(localizer.calculateTarantula(), debug)
-                bugFix = BugFix(self, program, possibleBuggyCodes, self._fileName, debug)
+                bugFix = BugFix(self, program, possibleBuggyCodes, self._fileName, failedTests, debug)
                 bugFix.fix()
             else:
                 if errorCodeElement:
                     bugClassifier = BugClassifier()
                     errorCodeElement = errorCodeElement.pop()
-                    errorCodeElement = [(errorCodeElement, 1.0, bugClassifier.classify(program[errorCodeElement[0]:errorCodeElement[1]]))]
-                    bugFix = BugFix(self, program, errorCodeElement, self._fileName, debug)
+                    errorCodeElement = [(errorCodeElement, 1.0, bugClassifier.classify('ERROR'))]
+                    print(errorCodeElement)
+                    bugFix = BugFix(self, program, errorCodeElement, self._fileName, failedTests, debug)
                     bugFix.fix()
                 return False
         else:

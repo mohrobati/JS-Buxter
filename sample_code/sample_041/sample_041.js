@@ -18,10 +18,12 @@ if (i + 2 <= n - 1 && a[i] < a[i + 2]) {
 }
 }
 var ans = 0
+var ans1 = 0
 for (let i = 0; i < n; i++) {
 ans = Math.max(ans, dp[i][1])
 ans = Math.max(ans, dp[i][0])
+ans1 = Math.max(ans1, dp[i][0])
 }
-console.log(ans) 
+console.log(ans1) 
 var val = 0
  

@@ -2,7 +2,7 @@ import esprima, sys
 from fault_localization.preprocessor import Preprocessor
 from fault_localization.repair_runner import RepairRunner
 
-fileName = 'sample_017'
+fileName = 'sample_009'
 inputPath = 'sample_code/' + fileName + "/" + fileName + ".js"
 file = open(inputPath)
 program = file.read()
@@ -11,12 +11,11 @@ preprocessor = Preprocessor(program)
 parsedCode = esprima.parseScript(program, delegate=preprocessor.preprocess)
 # print(parsedCode)
 preprocessedCode = preprocessor.getPreprocessedCode()
-# print(preprocessedCode)
-RepairRunner(fileName, preprocessedCode).run(program, debug=True, fix=True)
+print(preprocessedCode)
+# RepairRunner(fileName, preprocessedCode).run(program, debug=True, fix=True)
 
 
-# 17 problem: low amount of tests
-# 18 problem: if (true/false)loop problem
-# 19 problem: low amount of tests
-# 22 problem: low amount of tests
-
+# okays: 0, 1, 2, 3, 4, 5, 6, 7 loop, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+#        20, 21, 22, 23, 24, 25, 26, 27 time, 28, 29, 30, 31, 32, 33, 34 time, 35 loop,
+#        36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49
+# delete: 9

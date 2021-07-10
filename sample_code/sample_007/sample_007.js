@@ -1,22 +1,34 @@
-const bool_1 = readline() === "true"
-const arg_1 = readline()
-var func_1 = (arg) => { return (a1, a2) => {
-    if(a2 === undefined) throw new ReferenceError()
-    return false
-}}
-var func_2 = (arg) => 'resolve'
-var func_3 = (arg_1, callback) => console.log(callback())
-func_3('protocol', function () {
-    var proto = bool_1
-        ? 'https'
-        : 'http';
-    var trust = func_1('trust proxy fn');
-    /* delete 0 arg */
-    if (!trust(arg_1, 0)) {
-        return proto;
+
+const n = readline();
+var a = readline().split(' ').map((x, i) => {
+    return parseInt(x)
+})
+var map = new Array(a.length)
+ 
+var b = readline().split(' ').map((x, i) => {
+    map[i] = {a: a[i], b: parseInt(x)}
+ 
+    return parseInt(x)
+}) 
+map = map.sort((x, y) => (x.a - x.b) - (y.a - y.b))
+ 
+var l = 0
+var answer = 0
+for (var i = 0; i < map.length; i++) {
+    var current = map[i]
+    l = i + 1
+    var r = map.length
+ 
+ 
+    while (l < r) {
+        var m = Math.floor((l + r) / 2)
+        if (map[m].a - map[m].b + current.a - current.b <= 0) {
+            l = m+1
+        } else r=m
     }
-    // Note: X-Forwarded-Proto is normally only ever a
-    //       single value, but this is to be safe.
-    proto = func_2('X-Forwarded-Proto') || proto;
-    return proto.split(/\s*,\s*/)[0];
-});
+    answer += n-r
+    l = 0
+}
+console.log(l)
+
+ 

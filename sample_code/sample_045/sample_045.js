@@ -19,7 +19,7 @@ for (let i = 0; i < n + 2; i++) {
         b[i]--
         continue
     }
-    if (i + 1 < n + 2 && b[i + 1] > 0) {
+    if (i + 1 < n + 2 && b[i + 1] < 0) {
         max++
         b[i + 1]--
         continue

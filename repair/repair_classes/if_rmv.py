@@ -3,8 +3,8 @@ from repair.abstract_repair import Repair
 
 class IF_RMV_Repair(Repair):
 
-    def __init__(self, runner, program, buggyCodeLocation, fileName, debug):
-        super().__init__(runner, program, buggyCodeLocation, fileName, debug)
+    def __init__(self, runner, program, buggyCodeLocation, fileName, failedTests, debug):
+        super().__init__(runner, program, buggyCodeLocation, fileName, failedTests, debug)
 
     def fix(self):
         code = self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]]

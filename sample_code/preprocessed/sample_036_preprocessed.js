@@ -23,41 +23,18 @@ function readline() {
 
 function main() {
 
-var fl_set = new Set();
-fl_set.add(JSON.stringify([0, 77]));
 function options(arg) {
-fl_set.add(JSON.stringify([0, 77]));
-fl_set.add(JSON.stringify([22, 77]));
-{
-    {
-fl_set.add(JSON.stringify([22, 77]));
-this.options = arg ? { limit: 100 } : undefined
-fl_set.add(JSON.stringify([28, 75]));
-}}
+    this.options = arg ? { limit: 100 } : undefined
 }
 var options = new options(readline() === "true")
-fl_set.add(JSON.stringify([78, 126]));
 var len = Number(readline())
-fl_set.add(JSON.stringify([127, 155]));
-fl_set.add(JSON.stringify([156, 232]));
-if(options.options)
-    {
-fl_set.add(JSON.stringify([156, 232]));
-options.options.limit = options.options.limit * len;
-fl_set.add(JSON.stringify([180, 232]));
-}
-fl_set.add(JSON.stringify([233, 323]));
-if(options.options)
-    {
-fl_set.add(JSON.stringify([233, 323]));
-console.log(options.options.limit)
-fl_set.add(JSON.stringify([257, 291]));
-} else {
-fl_set.add(JSON.stringify([301, 323]));
-console.log(undefined)
-fl_set.add(JSON.stringify([301, 323]));
-}console.log(" %%%locs", Array.from(fl_set) ,"%%locs");
 
+if(options && options.options && options.options.limit)
+options.options.limit = options.options.limit * len;
+if(options.options)
+    console.log(options.options.limit)
+else
+    console.log(undefined)
 
 }
 

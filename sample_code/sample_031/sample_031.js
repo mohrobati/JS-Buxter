@@ -31,7 +31,7 @@ if (mark[i] > k) {
   r = jj
   for (let j = 0; j < a.length; j++) {
     if (a[j][0] <= l && a[j][1] >= r && !used[j]) {
-      if (a[j][1] > max) {
+      if (a[j][1] > max || max > 10) {
         max = a[j][1]
         maxI = j
       }

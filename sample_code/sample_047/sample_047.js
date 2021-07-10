@@ -28,4 +28,4 @@ var max = 1
 for (let i = 0; i < m-1; i++) {
     max = Math.max(max, Math.abs(pos2[i+1] - pos1[i]))
 }
-console.log(max)
+console.log(1)

@@ -5,11 +5,12 @@ import sys
 
 class Repair:
 
-    def __init__(self, runner, program, buggyCodeLocation, fileName, debug=False):
+    def __init__(self, runner, program, buggyCodeLocation, fileName, failedTests, debug=False):
         self._runner = runner
         self._program = program
         self._buggyCodeLocation = buggyCodeLocation
         self._fileName = fileName
+        self._failedTests = failedTests
         self._path = "./sample_code/repaired/"+fileName+"_repaired.js"
         self._debug = debug
         pass

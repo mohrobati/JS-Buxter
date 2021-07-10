@@ -20,7 +20,8 @@ for (let i = 0; i < perm.length; i++) {
     var second = !toCompare.includes(a)
     if (first && second) {
       console.log('YES')
-      return console.log(toCompare)
+      console.log(first)
+      return
     }
 }
 console.log('NO')

@@ -9,5 +9,8 @@ Array(Number(x)).fill(1).map((t, i) => {
         i--
         count++
     }
-    console.log(n-count < count ? 'YES':'NO')
+    if(n-count <= count)
+        console.log('YES')
+    else
+        console.log('NO')
 })

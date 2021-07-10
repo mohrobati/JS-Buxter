@@ -23,7 +23,8 @@ suff[i] = pos
 pos--
 }
  
-var max =0
+var max = 0
+if(pos < 0) max = 1
  
 for (let i = 0; i < suff.length; i++) {
 max = Math.max(max, suff[i] -preff[i] -1)

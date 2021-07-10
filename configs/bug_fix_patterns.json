@@ -13,13 +13,17 @@
     "SQ_RMO",
     "TY_ATC"
   ],
+  "IF": [
+    "IF_CC",
+    "IF_RMV",
+    "TY_ATC"
+  ],
   "WHILE": [
     "LP_CC",
     "LP_CE"
   ],
-  "IF": [
-    "IF_CC",
-    "IF_RMV",
+  "ERROR": [
+    "IF_APC",
     "TY_ATC"
   ],
   "BLOCK": [

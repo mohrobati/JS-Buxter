@@ -17,7 +17,7 @@ for (let j = i + 1; j < n; j++) {
   if (!map[sum]) map[sum] = `${i}:${j}`
   else {
     [x, y] = map[sum].split(':').map(x => parseInt(x))
-    if (x !== i && x !== j && y !== i && y !== j) {
+    if (x > i && x !== j && y !== i && y !== j) {
       console.log('YES')
       console.log(i + 1, j + 1, x + 1, y + 1)
       return

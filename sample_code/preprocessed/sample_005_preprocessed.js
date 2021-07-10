@@ -35,11 +35,7 @@ Array(Number(x)).fill(1).map((t, i) => {
     var index
     for (var i = 0; i < 2 * n; i++) {
         index = Math.floor(i / 2)
-        
-console.log('%%insp '+ (xy[index]) + ' $$split$$ ' + (x) + ' $$split$$ ' + (t) + ' $$split$$ ' + (i) + ' %%insp ');
-console.log('%%insp '+ (xy[index]) + ' $$split$$ ' + (x) + ' $$split$$ ' + (t) + ' $$split$$ ' + (i) + ' %%insp ');
-return
-if (!xy[index]) {
+        if (!xy[index]) {
             xy[index] = []
         }
         [x, y] = readline().split(' ').map(x => {
@@ -56,7 +52,7 @@ if (!xy[index]) {
     }
     for (var i = 0; i < n; i++) {
         for (var j = 0; j < n; j++) {
-            if (xy[i][0] === xy[j][0] && xy[i][1] === xy[j][2] && xy[i][2] === xy[j][1] && xy[i][3] === xy[j][3]) simmDiag = true
+            if (xy[i][0] === xy[j][0] && xy[i][1] === xy[j][2] && xy[i][2] === xy[j][1] && xy[i][3] === xy[j][3]) {}
         }
     }
     if(simmDiag || simm) {

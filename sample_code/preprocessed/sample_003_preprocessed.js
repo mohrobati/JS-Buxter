@@ -33,8 +33,8 @@ Array(Number(x)).fill(1).map((t, iii) => {
     var cc = (p + c - BigInt(1)) / c * c - p
     var min = aa < bb ? aa : bb
     min = cc < min ? cc : min
-    if(5 == t)
-        min += BigInt(1)
+    if(min > 5)
+        {}
     console.log(min.toString())
     return
 })

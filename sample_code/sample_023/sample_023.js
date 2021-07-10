@@ -14,7 +14,7 @@ for (let k = 0; k < a.length - j+1; k++) {
   var copy = a.slice()
   copy.splice(k, j)
   var exist = isSubSequence(b, copy, b.length, copy.length)
-  if (exist) {
+  if (exist !== true) {
     console.log(j)
     return
   }

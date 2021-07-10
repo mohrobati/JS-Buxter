@@ -23,116 +23,42 @@ function readline() {
 
 function main() {
 
-var fl_set = new Set();
 func_1()
-fl_set.add(JSON.stringify([0, 8]));
-fl_set.add(JSON.stringify([10, 614]));
+
 function func_1() {
-fl_set.add(JSON.stringify([10, 614]));
-fl_set.add(JSON.stringify([28, 614]));
-{
-{
-fl_set.add(JSON.stringify([28, 614]));
 var n = parseInt(readline())
-fl_set.add(JSON.stringify([30, 58]));
-fl_set.add(JSON.stringify([61, 130]));
+ 
 var a = readline().split(' ').map((x, iii) => {
-fl_set.add(JSON.stringify([61, 130]));
-fl_set.add(JSON.stringify([107, 129]));
-{
-{
-fl_set.add(JSON.stringify([107, 129]));
-fl_set.add(JSON.stringify([109, 127]));
-return parseInt(x);
-}}
-}
-)
-fl_set.add(JSON.stringify([61, 130]));
+return parseInt(x)
+})
+ 
 var map = {}
-fl_set.add(JSON.stringify([133, 145]));
 var sum = 0
-fl_set.add(JSON.stringify([146, 157]));
 var x = 0
-fl_set.add(JSON.stringify([158, 167]));
 var y = 0
-fl_set.add(JSON.stringify([168, 177]));
-fl_set.add(JSON.stringify([178, 515]));
 for (let i = 0; i < n; i++) {
-fl_set.add(JSON.stringify([178, 515]));
-fl_set.add(JSON.stringify([206, 515]));
-{
-{
-fl_set.add(JSON.stringify([206, 515]));
-fl_set.add(JSON.stringify([208, 513]));
 for (let j = i + 1; j < n; j++) {
-fl_set.add(JSON.stringify([208, 513]));
-fl_set.add(JSON.stringify([240, 513]));
-{
-  {
-fl_set.add(JSON.stringify([240, 513]));
-sum = a[i] + a[j]
-fl_set.add(JSON.stringify([244, 261]));
-fl_set.add(JSON.stringify([264, 511]));
-if (!map[sum]) {
-fl_set.add(JSON.stringify([264, 511]));
-map[sum] = `${i}:${j}`
-fl_set.add(JSON.stringify([279, 301]));
-} else {
-fl_set.add(JSON.stringify([309, 511]));
-fl_set.add(JSON.stringify([309, 511]));
-{
-    {
-fl_set.add(JSON.stringify([309, 511]));
-[x, y] = map[sum].split(':').map(x => parseInt(x))
-fl_set.add(JSON.stringify([315, 365]));
-fl_set.add(JSON.stringify([370, 507]));
-if (x !== i && x !== j && y !== i && y !== j) {
-fl_set.add(JSON.stringify([370, 507]));
-fl_set.add(JSON.stringify([416, 507]));
-{
-      {
-fl_set.add(JSON.stringify([416, 507]));
-console.log('YES')
-fl_set.add(JSON.stringify([424, 442]));
-console.log(i + 1, j + 1, x + 1, y + 1)
-fl_set.add(JSON.stringify([449, 488]));
-fl_set.add(JSON.stringify([495, 501]));
-return;
-}}
+  sum = a[i] + a[j]
+  if (!map[sum]) map[sum] = `${i}:${j}`
+  else {
+    [x, y] = map[sum].split(':').map(x => parseInt(x))
+    if (x < i && x < j && y < i || y > j) {
+      console.log('YES')
+      console.log(i + 1, j + 1, x + 1, y + 1)
+      return
+    }
+  }
 }
-}}
-}}}
-}
-}}
 }
 console.log('NO')
-fl_set.add(JSON.stringify([516, 533]));
-fl_set.add(JSON.stringify([536, 612]));
+ 
 function gcd(a, b) {
-fl_set.add(JSON.stringify([536, 612]));
-fl_set.add(JSON.stringify([555, 612]));
-{
-  {
-fl_set.add(JSON.stringify([555, 612]));
-fl_set.add(JSON.stringify([559, 586]));
-if (!b) {
-fl_set.add(JSON.stringify([559, 586]));
-fl_set.add(JSON.stringify([567, 586]));
-{
-    {
-fl_set.add(JSON.stringify([567, 586]));
-fl_set.add(JSON.stringify([573, 582]));
-return a;;
-}}
+  if (!b) {
+    return a;
+  }
+  return gcd(b, a % b);
 }
-fl_set.add(JSON.stringify([589, 610]));
-return gcd(b, a % b);;
-}}
 }
-}}
-}
-console.log(" %%%locs", Array.from(fl_set) ,"%%locs");
-
 
 }
 

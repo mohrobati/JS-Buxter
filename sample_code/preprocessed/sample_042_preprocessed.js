@@ -42,7 +42,7 @@ for (let i = 0; i < n; i++) {
     count = 0
   }
 }
-if (0 != count) ans += count * (count + 1) / 2
+if (count != 0) ans += count * (count + 1) / 2
 console.log(ans)
 var val = 0
 

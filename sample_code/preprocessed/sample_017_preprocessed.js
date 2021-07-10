@@ -40,7 +40,7 @@ Array(Number(x)).fill(1).map((t, i) => {
     var sum = 0
     var j = 0
     k.map((x, i) => {
-        if ( c[x] != c[j]) {
+        if (c[j] < c[x]) {
             sum += c[j]
             j++
         } else {

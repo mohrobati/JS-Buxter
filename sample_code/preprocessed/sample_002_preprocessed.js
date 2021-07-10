@@ -39,15 +39,11 @@ Array(Number(x)).fill(1).map((t, iii) => {
     var answer = true
     a = a.sort((a, b) => a - b)
     for (let j = 0; j < n; j++) {
-        sum = 0
+        {}
         sum += a[j]
         if (sum === 0) answer = false
     }
-    
-console.log('%%insp '+ (n) + ' $$split$$ ' + (iii) + ' $$split$$ ' + (t) + ' $$split$$ ' + (sum) + ' %%insp ');
-console.log('%%insp '+ (n) + ' $$split$$ ' + (iii) + ' $$split$$ ' + (t) + ' $$split$$ ' + (sum) + ' %%insp ');
-return
-if (answer) {
+    if (answer) {
         return console.log(a.join(' '))
     }
     a = a.sort((a, b) => b - a)

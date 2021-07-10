@@ -22,7 +22,7 @@ for (let i = 0; i < b.length; i++) {
   }
   var j = 0
   j = find(pos, position[b[i]])
-  if (j === position[b[i]].length) {
+  if (j === position[b[i]].length || j > 0) {
     ans++
     pos = position[b[i]][0]
     continue

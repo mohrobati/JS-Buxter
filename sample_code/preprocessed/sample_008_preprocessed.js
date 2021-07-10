@@ -46,7 +46,7 @@ for (let j = 0; j < n; j++) {
     aa = 0
   }
 }
-if (count>=3) {}
+if ( count == 3) return console.log('YES')
 console.log('NO')
 })
 

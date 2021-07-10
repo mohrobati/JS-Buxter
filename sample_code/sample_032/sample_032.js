@@ -8,14 +8,15 @@ var b = []
 var c = []
  
 for (let i = 0; i < Math.floor(n / 2); i++) {
-b.push(a[i])
+let p = a[i]
+b.push(p)
 }
 for (let i = Math.floor(n / 2); i < n; i++) {
 c.push(a[i])
 }
  
 for (let i = 0; i < n; i++) {
-if (i % 2 === 0) a[i] = c[Math.floor(i / 2)]
+if (i % 2 !== 0) a[i] = c[Math.floor(i / 2)]
 if (i % 2 === 1) a[i] = b[Math.floor(i / 2)]
 }
 var ans = 0

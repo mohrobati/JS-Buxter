@@ -8,7 +8,7 @@ var [n, m] = readline().split(' ').map((x, iii) => {
 var a = readline().split(' ').map((x, iii) => {
   return parseInt(x) - 1
 })
- 
+var closed = 1
 var stopIndex = n
 for (let i = 0; i < n; i++) {
   if (a[i] !== i) stopIndex = i
@@ -25,11 +25,11 @@ for (let i = 0; i < m; i++) {
   pp[i] = p
 }
  
-if (stopIndex === n) return console.log(1)
+if (stopIndex === n) return console.log(closed)
  
 var ans = 1
 for (let i = 0; i < m; i++) {
-  if (rr[i]>stopIndex) ans *= (1 - pp[i])
+  if (rr[i]>=stopIndex) ans *= (1 - pp[i])
 }
 console.log(1 - ans)
  

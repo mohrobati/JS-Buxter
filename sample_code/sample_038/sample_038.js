@@ -31,8 +31,7 @@ function func_1() {
           exist = true
         }
       }
-      /* && answer == false */
-      if (exist === false) answer = false
+      if (exist === false && answer == false) answer = false
     }
     if (answer) {
       return console.log(k)

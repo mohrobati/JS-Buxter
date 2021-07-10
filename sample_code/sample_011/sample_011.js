@@ -9,7 +9,8 @@ while (res.length < n) {
       res.push(alphabet[letter])
       for (let j = i + 1; j < k; j++) {
         res.push(alphabet[letter])
-        res.push(alphabet[j])
+        if(j < letter)
+            res.push(alphabet[j])
       }
       letter++
     }

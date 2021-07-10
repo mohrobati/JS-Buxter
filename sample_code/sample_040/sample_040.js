@@ -35,7 +35,7 @@ function func_1() {
     var element = even[i]
     if (!graph[element]) continue
     for (let j = 0; j < graph[element].length; j++) {
-      if (dp[graph[element][j]] === -1) {
+      if (dp[graph[element][j]] <= 0) {
         dp[graph[element][j]] = dp[element] + 1
         even.push(graph[element][j])
       }

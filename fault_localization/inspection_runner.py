@@ -16,7 +16,7 @@ class InspectionRunner(Runner):
         evaluation = predictedValue == output
         return predictedValue, locs, evaluation
 
-    def run(self, programs, inspectingProgram):
+    def run(self, programs, inspectingProgram, failedTests):
         counter = 0
         evaluations = [[] for i in range(len(programs))]
         inspectedValues = []
@@ -38,10 +38,11 @@ class InspectionRunner(Runner):
             path = self._writePreprocessedCode(code)
             predictedValue, locs, evaluation = self._executeCommand(path, test, output)
             first = predictedValue.find("%insp")
-            second = predictedValue[first + len("%insp"):].find("%%insp")
+            second = predictedValue[first + len("%insp"):].find("%%insp") + first - 1
             if first == -1 or second == -1:
                 continue
-            values = predictedValue[first + len("%insp"):second + len("%%insp")].split("$$split$$")
+            firstOutput = predictedValue[first + len("%insp"):second + len("%%insp")]
+            values = firstOutput.split("$$split$$")
             for i in range(len(values)):
                 if 'undefined' in values[i]:
                     values[i] = ' 0 '

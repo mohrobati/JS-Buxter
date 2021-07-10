@@ -11,7 +11,7 @@ var max = 0
 var b = []
 var sum = 0
 for (let i = 0; i < n; i++) {
-if (a[i] > max) max = a[i]
+if (a[i] > max && max < n) max = a[i]
 }
 var g = max - a[0]
 for (let i = 0; i < n; i++) {

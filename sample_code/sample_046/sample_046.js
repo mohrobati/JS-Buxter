@@ -7,7 +7,7 @@ Array(Number(x)).fill(1).map((t, iii) => {
         for (let j = i + 1; i*j*j <= n; j++) {
             if(n%(i*j) !==0 ) continue
             var c = n / (i * j)
-            if (c !== j && c !== i && c > 2) {
+            if (c !== j && c !== i && c >= 5) {
                 console.log('YES')
                 console.log(i, j, c)
                 return

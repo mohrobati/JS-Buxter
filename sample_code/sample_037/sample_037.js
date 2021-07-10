@@ -23,7 +23,10 @@ ans.push('L')
 }
 for (let i = 0; i < n; i++) {
 for (let j = 0; j < m - 1; j++) {
-  ans.push(i % 2 === 0 ? 'R' : 'L')
+    if(i%2 != 0)
+        ans.push('R')
+    else
+        ans.push('L')
 }
 ans.push('U')
 }

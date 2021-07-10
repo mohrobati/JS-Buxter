@@ -30,15 +30,11 @@ var a = readline().split(' ').map((x, iii) => {
 });
 a = a.sort(sort)
 for (let i = 0; i < a.length; i++) {
-  if (a[i] - 1 == 1 && array[a[i] - 1] === 0) {
+  if (a[i] - 1 > 1 && array[a[i] - 1] <= 0) {
     array[a[i] - 1] = 1
     continue
   }
-  
-console.log('%%insp '+ (0) + ' $$split$$ ' + (array[a[i]]) + ' $$split$$ ' + (n) + ' $$split$$ ' + (sum) + ' $$split$$ ' + (i) + ' %%insp ');
-console.log('%%insp '+ (0) + ' $$split$$ ' + (array[a[i]]) + ' $$split$$ ' + (n) + ' $$split$$ ' + (sum) + ' $$split$$ ' + (i) + ' %%insp ');
-return
-if (array[a[i]] === 0) {
+  if (array[a[i]] === 0) {
     array[a[i]] = 1
     continue
   }

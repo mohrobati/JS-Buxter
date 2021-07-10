@@ -25,10 +25,12 @@ class BugClassifier:
         return bugFixPatterns
 
     def classify(self, codeElement):
+        if codeElement == "ERROR":
+            return self.__bugFixPatterns['ERROR']
         if not (codeElement == "continue" or codeElement == "break" or codeElement == "return"):
-            codeElement = codeElement.replace("continue", "/*continue*/")
-            codeElement = codeElement.replace("break", "/*break*/")
-            codeElement = codeElement.replace("return", "/*return*/")
+            codeElement = codeElement.replace("continue", "undefined;/*continue*/")
+            codeElement = codeElement.replace("break", "undefined;/*break*/")
+            codeElement = codeElement.replace("return", "undefined;/*return*/")
             parsedCodeElement = esprima.parseScript(codeElement, tolerant=True)
             possibleFixTypes = self.__classifiers[parsedCodeElement.body[0].type](parsedCodeElement.body[0])
             return possibleFixTypes
