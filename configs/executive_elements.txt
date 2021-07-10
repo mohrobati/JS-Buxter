@@ -12,5 +12,6 @@ SwitchCase
 BreakStatement
 ContinueStatement
 FunctionExpression
+ObjectExpression
 TryStatement
 CatchClause

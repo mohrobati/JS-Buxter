@@ -1,4 +1,3 @@
-'use strict';
 
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
@@ -41,12 +40,12 @@ var count = 0
 var aa = 0
 for (let j = 0; j < n; j++) {
   aa = a[j] ^aa
-  if(aa <= res) {
+  if( aa == res) {
     count++
     aa = 0
   }
 }
-if ( count == 3) return console.log('YES')
+if (count>=3) return console.log('YES')
 console.log('NO')
 })
 

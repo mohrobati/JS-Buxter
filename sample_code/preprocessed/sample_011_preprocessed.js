@@ -1,4 +1,3 @@
-'use strict';
 
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
@@ -34,7 +33,7 @@ while (res.length < n) {
       res.push(alphabet[letter])
       for (let j = i + 1; j < k; j++) {
         res.push(alphabet[letter])
-        if(j != letter)
+        if(letter != j)
             res.push(alphabet[j])
       }
       letter++

@@ -1,4 +1,3 @@
-'use strict';
 
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
@@ -60,9 +59,9 @@ for (let i = 0; i < n; i++) {
   var sum1 = 0
   while (val > answers[j]) {
     sum1++
-    val = Math.floor(val / 2)
+    val = Math.floor(sum1)
   }
-  if ( answers[j] == val) {
+  if (val !== answers[j]) {
     arrays.push(sum1)
   }
 }

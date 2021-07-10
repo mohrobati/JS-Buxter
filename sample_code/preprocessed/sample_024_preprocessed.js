@@ -1,4 +1,3 @@
-'use strict';
 
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
@@ -36,7 +35,7 @@ var count =0
 while (i*i<=g){
   if(g % i ===0){
     var k = g/i
-    if(k != i) count++
+    if(i != k) count++
     count++
   }
   i++

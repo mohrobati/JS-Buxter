@@ -2,11 +2,12 @@ from repair.repair_classes.if_apc import IF_APC_Repair
 from repair.repair_classes.sq_rmo import SQ_RMO_Repair
 from repair.repair_classes.sq_rfo import SQ_RFO_Repair
 from repair.repair_classes.if_rmv import IF_RMV_Repair
-from repair.repair_classes.if_rbr import IF_RBR_Repair
 from repair.repair_classes.if_cc import IF_CC_Repair
 from repair.repair_classes.if_apc import IF_APC_Repair
 from repair.repair_classes.ty_atc import TY_ATC_Repair
 from repair.repair_classes.mc_dap import MC_DAP_Repair
+from repair.repair_classes.for_thb import FOR_THB_Repair
+
 
 
 class BugFix:
@@ -19,6 +20,7 @@ class BugFix:
         self.__failedTests = failedTests
         self.__debug = debug
         self.__pattern = [
+            "FOR_THB",
             "MC_DAP",
             "SQ_RMO",
             "SQ_RFO",

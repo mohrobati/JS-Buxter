@@ -39,7 +39,6 @@ class RepairRunner(Runner):
         cmd = "cat " + test + " | node " + path
         ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         result = ps.communicate()[0].decode('utf-8').replace("\n", "")
-        print(result)
         regexp = re.compile(r'\^.*Error')
         errorCheck = regexp.search(result)
         predictedValue = None

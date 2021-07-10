@@ -1,4 +1,3 @@
-'use strict';
 
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
@@ -47,9 +46,9 @@ var ans1 = 0
 for (let i = 0; i < n; i++) {
 ans = Math.max(ans, dp[i][1])
 ans = Math.max(ans, dp[i][0])
-ans1 = Math.max(ans1, dp[i][0])
+ans1 = Math.max(ans1, ans)
 }
-console.log(ans) 
+console.log(ans1) 
 var val = 0
  
 

@@ -26,6 +26,9 @@
     "IF_APC",
     "TY_ATC"
   ],
+  "FOR": [
+    "FOR_THB"
+  ],
   "BLOCK": [
     "IF_RBR"
   ],

@@ -1,4 +1,3 @@
-'use strict';
 
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
@@ -23,6 +22,7 @@ function readline() {
 
 function main() {
 
+if()
 func_1()
  
 function func_1() {
@@ -56,8 +56,7 @@ function func_1() {
           exist = true
         }
       }
-      /*  */
-      if (exist <= false && answer > false) answer = false
+      if (exist === false && answer == false) answer = false
     }
     if (answer) {
       return console.log(k)

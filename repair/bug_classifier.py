@@ -15,7 +15,7 @@ class BugClassifier:
             "FunctionDeclaration": self.__functionDeclarationClassify,
             "VariableDeclaration": self.__variableDeclarationClassify,
             "ReturnStatement": self.__returnStatementClassify,
-            "ForStatement": self.__blockStatementClassify,
+            "ForStatement": self.__forStatementClassify,
         }
 
     def __getBugFixPatterns(self, path):
@@ -31,7 +31,10 @@ class BugClassifier:
             codeElement = codeElement.replace("continue", "undefined;/*continue*/")
             codeElement = codeElement.replace("break", "undefined;/*break*/")
             codeElement = codeElement.replace("return", "undefined;/*return*/")
-            parsedCodeElement = esprima.parseScript(codeElement, tolerant=True)
+            try:
+                parsedCodeElement = esprima.parseScript(codeElement, tolerant=True)
+            except:
+                parsedCodeElement = esprima.parseScript("console.log()", tolerant=True)
             possibleFixTypes = self.__classifiers[parsedCodeElement.body[0].type](parsedCodeElement.body[0])
             return possibleFixTypes
 
@@ -40,6 +43,9 @@ class BugClassifier:
 
     def __blockStatementClassify(self, codeElement):
         return self.__bugFixPatterns['BLOCK']
+
+    def __forStatementClassify(self, codeElement):
+        return self.__bugFixPatterns['FOR']
 
     def __whileStatementClassify(self, codeElement):
         return self.__bugFixPatterns['WHILE']
