@@ -1,8 +1,9 @@
 import esprima, sys
 from fault_localization.preprocessor import Preprocessor
 from fault_localization.repair_runner import RepairRunner
+import timeit
 
-fileName = 'sample_000'
+fileName = 'sample_012'
 inputPath = 'sample_code/' + fileName + "/" + fileName + ".js"
 file = open(inputPath)
 program = file.read()
@@ -12,7 +13,10 @@ parsedCode = esprima.parseScript(program, delegate=preprocessor.preprocess)
 # print(parsedCode)
 preprocessedCode = preprocessor.getPreprocessedCode()
 # print(preprocessedCode)
-RepairRunner(fileName, preprocessedCode).run(program, debug=True, fix=True)
+
+start = timeit.default_timer()
+RepairRunner(fileName, preprocessedCode).run(program, start, debug=True, fix=True)
+stop = timeit.default_timer()
 
 
 # okays: 0, 1, 2, 3, 4, 5, 6, 7 loop, 8, 9, 10 time, 11, 12, 13, 14, 15, 16, 17, 18, 19,

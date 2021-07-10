@@ -73,7 +73,7 @@ class RepairRunner(Runner):
         evaluation = predictedValue == output
         return predictedValue, locs, evaluation, errorCheck
 
-    def run(self, program, debug=False, fix=False):
+    def run(self, program, startTime, debug=False, fix=False):
         counter = 1
         failedTests = []
         localizer = Localizer(program)
@@ -114,15 +114,14 @@ class RepairRunner(Runner):
         if fix:
             if not errorCheck:
                 possibleBuggyCodes = localizer.rankBuggyCodeElements(localizer.calculateTarantula(), debug)
-                bugFix = BugFix(self, program, possibleBuggyCodes, self._fileName, failedTests, debug)
+                bugFix = BugFix(self, program, possibleBuggyCodes, self._fileName, startTime, debug)
                 bugFix.fix()
             else:
                 if errorCodeElement:
                     bugClassifier = BugClassifier()
                     errorCodeElement = errorCodeElement.pop()
                     errorCodeElement = [(errorCodeElement, 1.0, bugClassifier.classify('ERROR'))]
-                    print(errorCodeElement)
-                    bugFix = BugFix(self, program, errorCodeElement, self._fileName, failedTests, debug)
+                    bugFix = BugFix(self, program, errorCodeElement, self._fileName, startTime, debug)
                     bugFix.fix()
                 return False
         else:

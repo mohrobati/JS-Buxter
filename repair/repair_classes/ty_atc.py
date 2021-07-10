@@ -3,8 +3,8 @@ from repair.abstract_repair import Repair
 
 class TY_ATC_Repair(Repair):
 
-    def __init__(self, runner, program, buggyCodeLocation, fileName, failedTests, debug):
-        super().__init__(runner, program, buggyCodeLocation, fileName, failedTests, debug)
+    def __init__(self, runner, program, buggyCodeLocation, fileName, startTime, debug):
+        super().__init__(runner, program, buggyCodeLocation, fileName, startTime, debug)
 
     def fix(self):
         newProgram = self._program[:self._buggyCodeLocation[0]] + \

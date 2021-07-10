@@ -1,16 +1,17 @@
 from fault_localization.preprocessor import Preprocessor
 import esprima, re
 import sys
+import timeit
 
 
 class Repair:
 
-    def __init__(self, runner, program, buggyCodeLocation, fileName, failedTests, debug=False):
+    def __init__(self, runner, program, buggyCodeLocation, fileName, startTime, debug=False):
         self._runner = runner
         self._program = program
         self._buggyCodeLocation = buggyCodeLocation
         self._fileName = fileName
-        self._failedTests = failedTests
+        self._startTime = startTime
         self._path = "./sample_code/repaired/"+fileName+"_repaired.js"
         self._debug = debug
         pass
@@ -50,11 +51,13 @@ class Repair:
         if self._debug:
             print(type(self).__name__ + " on \"" + self._program[
                                                self._buggyCodeLocation[0]:self._buggyCodeLocation[1]] + "\"")
-        allPassed = self._runner.run(repairedProgram, debug=self._debug, fix=False)
+        allPassed = self._runner.run(repairedProgram, self._startTime, debug=self._debug, fix=False)
         if allPassed:
             print("Repaired!\n")
             print("Patch:")
             print(type(self).__name__ + " on \"" + self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]] + "\"")
+            stop = timeit.default_timer()
+            print('Repair Time: ', stop - self._startTime, 'Seconds')
             sys.exit(0)
 
     def fix(self):

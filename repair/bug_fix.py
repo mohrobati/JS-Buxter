@@ -9,15 +9,14 @@ from repair.repair_classes.mc_dap import MC_DAP_Repair
 from repair.repair_classes.for_thb import FOR_THB_Repair
 
 
-
 class BugFix:
 
-    def __init__(self, runner, program, possibleBuggyCodes, fileName, failedTests, debug=False):
+    def __init__(self, runner, program, possibleBuggyCodes, fileName, startTime, debug=False):
         self.__runner = runner
         self.__program = program
         self.__possibleBuggyCodes = possibleBuggyCodes
         self.__fileName = fileName
-        self.__failedTests = failedTests
+        self.__startTime = startTime
         self.__debug = debug
         self.__pattern = [
             "FOR_THB",
@@ -36,6 +35,6 @@ class BugFix:
                 for bugFixPattern in buggyCode[2]:
                     if bugFixPattern in self.__pattern:
                         globals()[bugFixPattern + "_Repair"](self.__runner, self.__program, buggyCode[0], self.__fileName,
-                                                             self.__failedTests, self.__debug).fix()
+                                                             self.__startTime, self.__debug).fix()
 
 

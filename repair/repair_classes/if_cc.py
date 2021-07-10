@@ -11,8 +11,8 @@ import itertools
 
 class IF_CC_Repair(Repair):
 
-    def __init__(self, runner, program, buggyCodeLocation, fileName, failedTests, debug):
-        super().__init__(runner, program, buggyCodeLocation, fileName, failedTests, debug)
+    def __init__(self, runner, program, buggyCodeLocation, fileName, startTime, debug):
+        super().__init__(runner, program, buggyCodeLocation, fileName, startTime, debug)
         self.__fixEndDepth = 3
         self.__comp = ['=', 'distinct', '<', '>', '<=', '>=']
         self.__log = ['and', 'or']
@@ -223,7 +223,7 @@ class IF_CC_Repair(Repair):
                         valuesCode + valuesProgram[self._buggyCodeLocation[0]:]
         # try:
         runner = InspectionRunner(self._fileName, None)
-        data = runner.run([trueConditionProgram, falseConditionProgram], valuesProgram, self._failedTests)
+        data = runner.run([trueConditionProgram, falseConditionProgram], valuesProgram)
         # print("asd", live_variables, data)
         solution = self.__solve(live_variables, data)
         if solution:

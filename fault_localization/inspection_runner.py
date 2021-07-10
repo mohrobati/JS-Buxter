@@ -16,7 +16,7 @@ class InspectionRunner(Runner):
         evaluation = predictedValue == output
         return predictedValue, locs, evaluation
 
-    def run(self, programs, inspectingProgram, failedTests):
+    def run(self, programs, inspectingProgram):
         counter = 0
         evaluations = [[] for i in range(len(programs))]
         inspectedValues = []
