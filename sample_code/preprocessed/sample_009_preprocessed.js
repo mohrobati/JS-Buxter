@@ -31,9 +31,9 @@ function pub_sub() {
     var subscribe = function(subscriber) { subscribers.push(subscriber); }
     var publish = function(publication) {
             const length = subscribers.length;
-            for (let i = 0; i < length; i += 1) {
-                subscribers[i](publication);
-            }
+            subscribers.forEach((forEachEl) =>  {
+                forEachEl(publication);
+            })
         }
     return {
         subscribe: subscribe,
@@ -46,7 +46,7 @@ my_pub.subscribe((publication) => console.log(publication))
 my_pub.subscribe((publication) => console.log(publication))
 my_pub.subscribe((publication) => console.log(publication))
 if(attack)
-    {}
+    my_pub.subscribe(function (publication) { this.length = 0 })
 my_pub.publish(pub1)
 my_pub.publish(pub2)
 

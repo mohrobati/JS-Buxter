@@ -33,7 +33,7 @@ while (res.length < n) {
       res.push(alphabet[letter])
       for (let j = i + 1; j < k; j++) {
         res.push(alphabet[letter])
-        if(letter != j)
+        if(j != letter)
             res.push(alphabet[j])
       }
       letter++

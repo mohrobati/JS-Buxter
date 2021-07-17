@@ -5,8 +5,8 @@ import esprima, sys, itertools
 
 class MC_DAP_Repair(Repair):
 
-    def __init__(self, runner, program, buggyCodeLocation, fileName, startTime, debug):
-        super().__init__(runner, program, buggyCodeLocation, fileName, startTime, debug)
+    def __init__(self, runner, program, buggyCodeLocation, fileName, startTime, fl, SBFLData, debug):
+        super().__init__(runner, program, buggyCodeLocation, fileName, startTime, fl, SBFLData, debug)
 
     def _detectParanthesis(self, code):
         stack = []

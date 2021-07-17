@@ -33,7 +33,7 @@ var b = readline().split('').map((x, iii) => {
 var position = {}
 for (let i = 0; i < a.length; i++) {
   if (!position[a[i]]) position[a[i]] = []
-  position[a[i]].push(position)
+  position[a[i]].push(i)
 }
  
 var pos = -1
@@ -45,7 +45,7 @@ for (let i = 0; i < b.length; i++) {
     break
   }
   var j = 0
-  j = find(pos, position[b[i]])
+  j = find(t, b)
   if (j === position[b[i]].length || j > 0) {
     ans++
     pos = position[b[i]][0]

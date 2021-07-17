@@ -46,9 +46,9 @@ var ans1 = 0
 for (let i = 0; i < n; i++) {
 ans = Math.max(ans, dp[i][1])
 ans = Math.max(ans, dp[i][0])
-ans1 = Math.max(ans1, ans)
+ans1 = Math.max(ans1, dp[i][0])
 }
-console.log(ans1) 
+console.log(ans) 
 var val = 0
  
 

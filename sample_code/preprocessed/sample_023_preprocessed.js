@@ -1,4 +1,3 @@
-'use strict';
 
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
@@ -39,7 +38,7 @@ for (let k = 0; k < a.length - j+1; k++) {
   var copy = a.slice()
   copy.splice(k, j)
   var exist = isSubSequence(b, copy, b.length, copy.length)
-  if (false) {
+  if (exist == true) {
     console.log(j)
     return
   }

@@ -6,14 +6,17 @@ import timeit
 
 class Repair:
 
-    def __init__(self, runner, program, buggyCodeLocation, fileName, startTime, debug=False):
+    def __init__(self, runner, program, buggyCodeLocation, fileName, startTime, fl, SBFLData, debug=False):
         self._runner = runner
         self._program = program
         self._buggyCodeLocation = buggyCodeLocation
         self._fileName = fileName
         self._startTime = startTime
+        self._fl = fl
+        self._SBFLData = SBFLData
         self._path = "./sample_code/repaired/"+fileName+"_repaired.js"
         self._debug = debug
+        self.__stats = open('./out.csv', "a")
         pass
 
     def _detectParanthesis(self, code):
@@ -51,12 +54,18 @@ class Repair:
         if self._debug:
             print(type(self).__name__ + " on \"" + self._program[
                                                self._buggyCodeLocation[0]:self._buggyCodeLocation[1]] + "\"")
-        allPassed = self._runner.run(repairedProgram, self._startTime, debug=self._debug, fix=False)
+        allPassed = self._runner.run(repairedProgram, self._startTime, self._fl, debug=self._debug, fix=False)
         if allPassed:
             print("Repaired!\n")
             print("Patch:")
             print(type(self).__name__ + " on \"" + self._program[self._buggyCodeLocation[0]:self._buggyCodeLocation[1]] + "\"")
             stop = timeit.default_timer()
+            # stat = self._fileName[len(self._fileName)-3:] + ","
+            # stat += self._fl + ","
+            # stat += str(self._SBFLData[0]) + ","
+            # stat += str(self._SBFLData[1]) + ","
+            # stat += str(stop - self._startTime)[0:4] + "\n"
+            # self.__stats.write(stat)
             print('Repair Time: ', stop - self._startTime, 'Seconds')
             sys.exit(0)
 

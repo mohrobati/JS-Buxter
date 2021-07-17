@@ -11,30 +11,22 @@ from repair.repair_classes.for_thb import FOR_THB_Repair
 
 class BugFix:
 
-    def __init__(self, runner, program, possibleBuggyCodes, fileName, startTime, debug=False):
+    def __init__(self, runner, program, possibleBuggyCodes, fileName, startTime, repair_configs, debug=False):
         self.__runner = runner
         self.__program = program
         self.__possibleBuggyCodes = possibleBuggyCodes
         self.__fileName = fileName
         self.__startTime = startTime
+        self.__fl = repair_configs[0]
         self.__debug = debug
-        self.__pattern = [
-            "FOR_THB",
-            "MC_DAP",
-            "SQ_RMO",
-            "SQ_RFO",
-            "IF_RMV",
-            "TY_ATC",
-            "IF_APC",
-            "IF_CC",
-        ]
+        self.__pattern = repair_configs[1]
 
     def fix(self):
+        index = 0
         for buggyCode in self.__possibleBuggyCodes:
             if buggyCode[2]:
                 for bugFixPattern in buggyCode[2]:
                     if bugFixPattern in self.__pattern:
+                        index += 1
                         globals()[bugFixPattern + "_Repair"](self.__runner, self.__program, buggyCode[0], self.__fileName,
-                                                             self.__startTime, self.__debug).fix()
-
-
+                                                             self.__startTime, self.__fl, [len(self.__possibleBuggyCodes), index], self.__debug).fix()

@@ -11,8 +11,8 @@ import itertools
 
 class IF_CC_Repair(Repair):
 
-    def __init__(self, runner, program, buggyCodeLocation, fileName, startTime, debug):
-        super().__init__(runner, program, buggyCodeLocation, fileName, startTime, debug)
+    def __init__(self, runner, program, buggyCodeLocation, fileName, startTime, fl, SBFLData, debug):
+        super().__init__(runner, program, buggyCodeLocation, fileName, startTime, fl, SBFLData, debug)
         self.__fixEndDepth = 3
         self.__comp = ['=', 'distinct', '<', '>', '<=', '>=']
         self.__log = ['and', 'or']

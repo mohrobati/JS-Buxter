@@ -35,7 +35,7 @@ var count =0
 while (i*i<=g){
   if(g % i ===0){
     var k = g/i
-    if(i != k) count++
+    if(k != i) count++
     count++
   }
   i++
