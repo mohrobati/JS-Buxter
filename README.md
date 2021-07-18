@@ -229,9 +229,9 @@ Repaired program can be found in "./sample_code/repaired/sample_000_repaired.js"
     If none is selected, all of them will be taken into account</td>
   </tr>
   <tr>
-    <td>-r</td>
-    <td>--repair</td>
-    <td>["FOR_THB", "MC_DAP", "SQ_RMO", "SQ_RFO", "IF_RMV", "TY_ATC", "IF_APC", "IF_CC"]</td>
+    <td>-d</td>
+    <td>--debug</td>
+    <td>-</td>
     <td>False</td>
     <td>No</td>
     <td>It will print out extra information about the repair (highly recommended to turn in on)</td>
