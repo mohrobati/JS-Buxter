@@ -84,6 +84,7 @@ Patch:
 IF_CC_Repair on "if (rr[i]>=stopIndex) ans *= (1 - pp[i])"
 Repair Time:  1.4366938370000002 Seconds
 ```
+Repaired program can be found in "./sample_code/repaired/sample_044_repaired.js"
 
 -----
 
@@ -180,6 +181,7 @@ IF_CC_Repair on "if (a == b && b != c)
 Repair Time:  3.2592488250000002 Seconds
 
 ```
+Repaired program can be found in "./sample_code/repaired/sample_000_repaired.js"
 
 -----
 
