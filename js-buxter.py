@@ -4,16 +4,16 @@ from fault_localization.preprocessor import Preprocessor
 from fault_localization.repair_runner import RepairRunner
 import timeit
 
-
+currentBugFixPatterns = ["FOR_THB", "MC_DAP", "SQ_RMO", "SQ_RFO", "IF_RMV", "TY_ATC", "IF_APC", "IF_CC"]
 my_parser = argparse.ArgumentParser(description='JS-Buxter: Javascript bug buster',
                                     add_help=True)
 
 my_parser.add_argument('-r',
                        '--repair',
                        nargs="*",
-                       choices=["FOR_THB", "MC_DAP", "SQ_RMO", "SQ_RFO", "IF_RMV", "TY_ATC", "IF_APC", "IF_CC"],
+                       choices=currentBugFixPatterns,
                        help="choose the repair pattern\n" + \
-                            'valid patterns=["FOR_THB", "MC_DAP", "SQ_RMO", "SQ_RFO", "IF_RMV", "TY_ATC", "IF_APC", "IF_CC"]\n' +\
+                            'valid patterns='+str(["FOR_THB", "MC_DAP", "SQ_RMO", "SQ_RFO", "IF_RMV", "TY_ATC", "IF_APC", "IF_CC"])+'\n' +\
                             'if none is selected, all of them will be executed')
 
 my_parser.add_argument('-fl',
@@ -37,7 +37,7 @@ my_parser.add_argument('-d',
 
 args = my_parser.parse_args()
 if args.repair is None or len(args.repair) == 0:
-    args.repair = ["FOR_THB", "MC_DAP", "SQ_RMO", "SQ_RFO", "IF_RMV", "TY_ATC", "IF_APC", "IF_CC"]
+    args.repair = currentBugFixPatterns
 
 if int(args.sample/10) == 0:
     sample_number = '00' + str(args.sample)
