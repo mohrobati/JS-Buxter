@@ -71,7 +71,7 @@ make sure you install it properly at the project directory.
 
 <h4>Command Line Interface</h4>
 
-There are some examples for demonstrating how to use the tool:
+These are some examples for demonstrating how to use the tool:
 
 
 Input:
